@@ -12,94 +12,51 @@
 </nav>
 
 <div class="container-fluid">
-  <div class="row">
-    <nav class="col-md-2 d-none d-md-block pt-5" style="background-color:#1b253c;">
+ <div class="row vh-100">
+   <nav class="col-md-2 d-none d-md-block pt-5" style="background-color:#1b253c;">
       <div class="sidebar-sticky sticky-top">
          <ul class="nav flex-column pt-5">
           <div class="level">
               <span class="display-3 text-white">Lv.23</span>
           </div>
           <div class="sum-time mt-3 border border-white text-center py-2">
-            <i class="far fa-clock fa-2x text-white">総学習時間</i><br><br>
+            <i class="far fa-clock text-white">総学習時間</i><br><br>
             <span class="h3 text-white">98時間40分</span>
           </div>
           <div class="continuation-days text-center border border-white mt-5 py-2">
-              <i class="fas fa-running fa-2x text-white">継続日数</i><br><br>
+              <i class="fas fa-running text-white">継続日数</i><br><br>
               <span class="h3 text-white">87日</span>
           </div>
           <li class="nav-item mt-5">
-            <a class="nav-link" href="#">
-              <span data-feather="file"></span>
-              <!-- Orders -->
-              注文
+            <a class="nav-link text-white h5" href=" {{route('posts.index')}}">
+            <i class="fas fa-home"></i>
+              <span data-feather="home">ホーム</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="shopping-cart"></span>
-              <!-- Products -->
-              商品
+            <a class="nav-link text-white h5" href="#">
+            <i class="far fa-clock"></i>
+              <span data-feather="record">管理</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="users"></span>
-              <!-- Customers -->
-              お客様
+            <a class="nav-link text-white h5" href="#">
+            <i class="far fa-calendar-alt"></i>
+            <span data-feather="report">レポート</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="bar-chart-2"></span>
-              <!-- Reports -->
-              レポート
+            <a class="nav-link text-white h5" href="#">
+            <i class="fas fa-user-circle"></i>
+              <span data-feather="profile text-white">プロフィール</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="layers"></span>
-              <!-- Integrations -->
-              インテグレーション
-            </a>
-          </li>
-        </ul>
-
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <!-- <span>Saved reports</span> -->
-          <span>保存したレポート</span>
-          <a class="d-flex align-items-center text-muted" href="#">
-            <span data-feather="plus-circle"></span>
-          </a>
-        </h6>
-        <ul class="nav flex-column mb-2">
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              <!-- Current month -->
-              今月
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              <!-- Last quarter -->
-              前四半期
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              <!-- Social engagement -->
-              社会参画
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              <!-- Year-end sale -->
-              年末のセール
+          <li class="nav-item border border-light text-center">
+            <a class="post-link text-white" href="{{route('posts.create')}}">
+            <span data-feather="post rounded-circle">投稿する</span>
             </a>
           </li>
         </ul>
       </div>
     </nav>
+ 

@@ -14,6 +14,9 @@ Route::group(['prefix'=>'posts','as'=>'posts.','middleware'=>'auth'],function() 
     Route::get('index','PostController@index')->name('index');
     Route::get('create','PostController@create')->name('create');
     Route::post('store','PostController@store')->name('store');
+    Route::get('{post}/edit','PostController@edit')->name('edit');
+    Route::post('{post}/update','PostController@update')->name('update');
+    Route::post('{post}/destroy','PostController@destroy')->name('destroy');
 });
 
 Auth::routes();
