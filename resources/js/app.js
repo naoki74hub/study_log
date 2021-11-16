@@ -45,3 +45,4 @@ function onKeyUp() {
     //文字数反映
     string_num.innerText = inputText.length;
 }
+

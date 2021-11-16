@@ -1,0 +1,14 @@
+/* 時計の共通スタイル */
+.clock {
+  color:#000;
+  line-height:1.2;
+  text-align:center;
+  
+  &-data {
+      font-size:25px;
+  }
+  
+  &-time {
+       font-size:60px;
+  }
+}

@@ -17,8 +17,17 @@ Route::group(['prefix'=>'posts','as'=>'posts.','middleware'=>'auth'],function() 
     Route::get('{post}/edit','PostController@edit')->name('edit');
     Route::post('{post}/update','PostController@update')->name('update');
     Route::post('{post}/destroy','PostController@destroy')->name('destroy');
+    Route::get('{post}/','PostController@show')->name('show');
+    Route::post('search','PostController@search')->name('search');
+    Route::post('like', 'PostController@like')->name('like');
 });
 
+Route::group(['middleware' => 'auth'], function(){
+    Route::resource('/users','UserController');
+    Route::resource('comments','CommentController');
+    Route::get('time','PostController@time')->name('time');
+});
+   
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
