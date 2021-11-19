@@ -1,6 +1,7 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
+
 // Variables
 @import 'variables';
 
@@ -12,3 +13,7 @@
 @import '~@fortawesome/fontawesome-free/scss/regular';
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/brands';
+
+.liked {
+    color:pink;
+}

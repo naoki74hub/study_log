@@ -3,7 +3,7 @@
 @section('title','投稿詳細')
 
 @section('content')
- @include('nav')
+
 <div class="container mt-5">
  @include('posts.card')
 <div class="pt-3">

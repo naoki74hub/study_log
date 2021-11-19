@@ -2,8 +2,6 @@
 
 @section('title', 'コメント')
 
-@include('nav')
-
 @section('content')
 <div class="container pt-5">
     <div class="row">

@@ -18,7 +18,6 @@ class PostController extends Controller
    //index
    public function index(Request $request, Comment $comment, Post $post)
     {
-        
         $q = $request->query();
         
         if(isset($q['tag_name'])) {
@@ -32,15 +31,12 @@ class PostController extends Controller
         $posts = Post::latest()->get();
         return view('posts.index',compact('posts'));
         }
-        
-        return view('posts.index', $param);
-        
     }
     
     //create
     public function create()
     {
-        return view('posts.create');
+        return view('posts/create');
     }
     
     //store
@@ -50,9 +46,7 @@ class PostController extends Controller
         $post->time = $request->input('time');
         $post->body = $request->input('body');
         $post->user_id = auth()->user()->id;
-         
-        $filePath = $request->file('image_url')->store('images');
-        $post->image_url = basename($filePath);
+          
         //bodyからtagを抽出
         preg_match_all('/#([a-zA-Z0-9０-９ぁ-んァ-ヶー一-龠]+)/u',$request->body,$match);
         
@@ -69,6 +63,10 @@ class PostController extends Controller
         }
         
         $post->save();
+        $post->tags()->attach($tag_ids);
+    
+        
+    
         return redirect('posts/index');
     }
     
@@ -83,7 +81,23 @@ class PostController extends Controller
     //update
     public function update(PostRequest $request,Post $post)
     {
+        //bodyからtagを抽出
+        preg_match_all('/#([a-zA-Z0-9０-９ぁ-んァ-ヶー一-龠]+)/u',$request->body,$match);
+        
+        $tags = [];
+        foreach($match[1] as $tag) {
+            $found = Tag::firstOrCreate(['tag_name' => $tag]);
+            
+            array_push($tags,$found);
+        }
+        
+        $tag_ids = [];
+        foreach($tags as $tag) {
+            array_push($tag_ids,$tag['id']);
+        }
+        
         $post->fill($request->all())->save();
+        $post->tags()->attach($tag_ids);
         return redirect('posts/index');
     }
     
@@ -98,7 +112,7 @@ class PostController extends Controller
     //show
     public function show(Post $post)
     {
-        return view('posts.show',['post'=>$post]);
+        return view('posts/show',['post'=>$post]);
     }
     
     
@@ -118,35 +132,6 @@ class PostController extends Controller
             ]);
     }
     
-    
-    //time
-    public function time()
-    {
-        return view('time');
-    }
-    
-    //like
-    public function like(Request $request)
-{
-    $user_id = Auth::user()->id; //1.ログインユーザーのid取得
-    $post_id = $request->post_id; //2.投稿idの取得
-    $already_liked = Like::where('user_id', $user_id)->where('post_id', $post_id)->first(); //3.
-
-    if (!$already_liked) { //もしこのユーザーがこの投稿にまだいいねしてなかったら
-        $like = new Like; //4.Likeクラスのインスタンスを作成
-        $like->post_id = $post_id; //Likeインスタンスにreview_id,user_idをセット
-        $like->user_id = $user_id;
-        $like->save();
-    } else { //もしこのユーザーがこの投稿に既にいいねしてたらdelete
-        Like::where('post_id', $post_id)->where('user_id', $user_id)->delete();
-    }
-    //5.この投稿の最新の総いいね数を取得
-    $post_likes_count = Post::withCount('likes')->findOrFail($post_id)->likes_count;
-    $param = [
-        'post_likes_count' => $post_likes_count,
-    ];
-    return response()->json($param); //6.JSONデータをjQueryに返す
-}
 }
 
         

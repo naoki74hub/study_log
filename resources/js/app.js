@@ -32,17 +32,3 @@ require('./bootstrap');
 // });
 
 
-// 投稿画面の本文の入力した文字数入力
-const textarea = document.querySelector('textarea');
-//入力中の文字数
-const string_num = document.querySelector('.string_num');
-//テキストを入力するたびにonKeyUp()を実行する
-textarea.addEventListener('keyup',onKeyUp);
-
-function onKeyUp() {
-    //入力されたテキスト
-    const inputText = textarea.value;
-    //文字数反映
-    string_num.innerText = inputText.length;
-}
-

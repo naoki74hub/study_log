@@ -11,64 +11,17 @@
             {{ $post->created_at->format('Y/m/d H:i')}} 
           </div>
           <div class="card-image mt-2">
-            <img src="{{'/storage/images/'.$post['image_url']}}" width="200px" height="180px">
+            <img src="/storage/{{ $post->image_url }}" width="200px" height="180px">
           </div>
         </div>
     <div class="card-body">
+    <div class="d-flex justify-content-between">
       <h3 class="h4 card-title">
           <a class="text-dark" href="{{ route('posts.show' , ['post' => $post->id]) }}">
            {{$post->title}}
            </a>
         </h3>
-         <div class="post-card">
-         <div class="d-flex flex-row pt-2" >
-          <i class="far fa-clock fa-2x text-success"></i>
-          <div class="study-time ml-2">
-            <p class="h3 mb-0">{{$post->time}}</p>
-          </div>
-        </div>
-        <div class="card-text mt-3">
-          {{$post->body}}
-       </div>
-      </div>
-      <div class="tags">
-        @foreach($post->tags as $tag)
-          <a href="{{ route('posts.index', ['tag_name'=>$tag->tag_name]) }}">
-            #{{ $tag->tag_name }}
-          </a>
-        @endforeach
-      </div>
-      
-      <!--コメント機能-->
-    <div class="mt-3">
-      <a href="{{ route('posts.show',['post'=> $post->id]) }}" class='comments mr-3'>
-        <i class="far fa-comment-alt fa-2x"></i>
-      </a>
-    
-      @auth
-       <!-- Review.phpに作ったisLikedByメソッドをここで使用 -->
-        @if (!$post->isLikedBy(Auth::user()))
-           <span class="likes">
-            <i class="fas fa-heart fa-2x like-toggle" data-post-id="{{ $post->id }}"></i>
-            <span class="like-counter">{{$post->likes_count}}</span>
-           </span><!-- /.likes -->
-        @else
-          <span class="likes">
-            <i class="fas fa-heart heart fa-2x like-toggle liked" data-post-id="{{ $post->id }}"></i>
-            <span class="like-counter">{{$post->likes_count}}</span>
-          </span><!-- /.likes -->
-        @endif
-        @endauth
-        @guest
-         <span class="likes">
-          <i class="fas heart heart fa-2x"></i>
-          <span class="like-counter">{{$post->likes_count}}</span>
-         </span><!-- /.likes -->
-    @endguest
-        </div>
-      </div>
-     
-     @if( Auth::id() === $post->user_id )
+         @if( Auth::id() === $post->user_id )
         <!-- dropdown -->
           <div class="ml-auto card-text">
             <div class="dropdown">
@@ -106,7 +59,7 @@
                     {{ $post->title }}を削除します。よろしいですか？
                   </div>
                   <div class="modal-footer justify-content-between">
-                    <a class="btn btn-outline-grey" data-dismiss="modal">キャンセル</a>
+                    <a class="btn border" data-dismiss="modal">キャンセル</a>
                     <button type="submit" class="btn btn-danger">削除する</button>
                   </div>
                 </form>
@@ -115,5 +68,52 @@
           </div>
           <!-- modal -->
         @endif
-    </div>
+      </div>
+         <div class="post-card">
+         <div class="d-flex flex-row pt-2" >
+          <i class="far fa-clock fa-2x text-success"></i>
+          <div class="study-time ml-2">
+            <p class="h3 mb-0">{{ substr($post->time,0,2) }}時間 {{ substr($post->time,3,2)}}分</p>
+          </div>
+        </div>
+        <div class="card-text mt-3">
+          {{$post->body}}
+       </div>
+      </div>
+      <div class="tags">
+        @foreach($post->tags as $tag)
+          <a href="{{ route('posts.index', ['tag_name'=>$tag->tag_name]) }}">
+            #{{ $tag->tag_name }}
+          </a>
+        @endforeach
+      </div>
+<div class="row justify-content-end">
+  <!--コメント機能-->
+  <div class="mt-4">
+    <a href="{{ route('posts.show',['post'=> $post->id]) }}" class='comments mr-3'>
+   <div class="btn btn-primary py-1">
+      <i class="far fa-comment-alt fa-lg mr-2"></i>{{ $post->comments()->count() }}
   </div>
+    </a>
+</div>
+<div class="mt-4">
+ @if($post->likes()->where('user_id', Auth::id())->exists())
+  <div class="col-md-3">
+    <form method="POST" action="{{ route('unlikes',$post) }}">
+      @csrf
+      <input type="submit" class="fas btn btn-danger mr-2 py-2" value="&#xf004;{{ $post->likes()->count() }}">
+    </form>
+  </div>
+@else
+  <div class="col-md-3">
+    <form method="POST" action="{{ route('likes',$post) }}">
+      @csrf
+      <input type="submit" class="fas btn border-dark py-2" value="&#xf004;{{ $post->likes()->count() }}">
+    </form>
+  </div>
+ @endif
+</div>
+</div>
+</div>
+</div>
+</div>

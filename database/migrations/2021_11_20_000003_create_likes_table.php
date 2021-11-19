@@ -17,6 +17,7 @@ class CreateLikesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('post_id');
+            $table->timestamps();
             
             $table->foreign('user_id')
                   ->references('id')
@@ -28,7 +29,7 @@ class CreateLikesTable extends Migration
                   ->on('posts')
                   ->onDelete('cascade');
             
-            $table->timestamps();
+            $table->unique(['user_id','post_id']);
         });
     }
 
@@ -40,6 +41,5 @@ class CreateLikesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('likes');
-        
     }
 }

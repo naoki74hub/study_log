@@ -12,9 +12,10 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-   .js('resources/js/clock.js','public/js')
-   .js('resources/js/like.js', 'public/js')
+   .js('resources/js/stopwatch.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css')
-   .sass('resources/sass/clock.scss', 'public/css')
-   .sass('resources/sass/liked.scss', 'public/css')
+   .sass('resources/sass/stopwatch.scss', 'public/css');
+   
+ 
+   
    
