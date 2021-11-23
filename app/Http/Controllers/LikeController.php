@@ -90,3 +90,4 @@ class LikeController extends Controller
         return redirect()->route('posts.index');
     }
 }
+

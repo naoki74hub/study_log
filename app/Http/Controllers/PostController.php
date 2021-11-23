@@ -12,12 +12,14 @@ use App\Models\Tag;
 
 use App\Models\Comment;
 
+use App\User;
+
 class PostController extends Controller
 {
    
    //index
-   public function index(Request $request, Comment $comment, Post $post)
-    {
+   public function index(Request $request, Comment $comment, Post $post,User $user)
+   {
         $q = $request->query();
         
         if(isset($q['tag_name'])) {
@@ -29,7 +31,7 @@ class PostController extends Controller
                 
        } else {
         $posts = Post::latest()->get();
-        return view('posts.index',compact('posts'));
+        return view('posts/index',compact('posts','user'));
         }
     }
     
@@ -101,6 +103,12 @@ class PostController extends Controller
         return redirect('posts/index');
     }
     
+    //show
+    public function show(Post $post)
+    {
+        return view('posts/show',['post'=>$post]);
+        
+    }
     
     //destroy
     public function destroy(Post $post)
@@ -109,13 +117,7 @@ class PostController extends Controller
         return redirect('posts/index');
     }
     
-    //show
-    public function show(Post $post)
-    {
-        return view('posts/show',['post'=>$post]);
-    }
-    
-    
+   
     //search
     public function search(Request $request)
     {
@@ -132,6 +134,32 @@ class PostController extends Controller
             ]);
     }
     
+    
+    //フォロー
+    public function follow(Post $post)
+    {
+        $follower = auth()->user();
+        //フォローしているか
+        $is_following = $follower->isFollowing($post->user->id);
+        if(!$is_following) {
+            //フォローしていなければフォローする
+            $follower->follow($post->user->id);
+            return back();
+        }
+    }  
+    
+    
+    public function unfollow(Post $post)
+    {
+        $follower = auth()->user();
+        //フォローしているか
+        $is_following = $follower->isFollowing($post->user->id);
+        if($is_following) {
+            //フォローしていればフォロー解除する
+            $follower->unfollow($post->user->id);
+            return back();
+        }
+    }
 }
 
         

@@ -79,7 +79,7 @@
                     {{ $task->title }}を削除します。よろしいですか？
                   </div>
                   <div class="modal-footer justify-content-between">
-                    <a class="btn btn-outline-grey" data-dismiss="modal">キャンセル</a>
+                    <a class="btn border" data-dismiss="modal">キャンセル</a>
                     <button type="submit" class="btn btn-danger">削除する</button>
                   </div>
                 </form>

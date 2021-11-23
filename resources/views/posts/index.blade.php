@@ -7,7 +7,7 @@
 <div class="container">
   @isset($search_result)
     <div class="text-center">
-     <div class="search-title h3 mt-3">{{ $search_result }}</div>
+     <div class="search-title h3 mt-5">{{ $search_result }}</div>
     </div>
     @endisset
     

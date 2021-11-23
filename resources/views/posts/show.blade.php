@@ -28,7 +28,7 @@
       </div>
       </div>
      <p class="card-text ml-5">{{ $comment->comment }}</p>
-      @if( Auth::id() === $post->user_id )
+      @if( Auth::id() === $comment->user_id )
         <!-- dropdown -->
           <div class="ml-auto card-text">
             <div class="dropdown">
@@ -66,7 +66,7 @@
                     {{ $comment->comment }}を削除します。よろしいですか？
                   </div>
                   <div class="modal-footer justify-content-between">
-                    <a class="btn btn-outline-grey" data-dismiss="modal">キャンセル</a>
+                    <a class="btn border" data-dismiss="modal">キャンセル</a>
                     <button type="submit" class="btn btn-danger">削除する</button>
                   </div>
                 </form>

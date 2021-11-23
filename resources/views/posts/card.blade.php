@@ -10,6 +10,22 @@
           <div class="font-weight-lighter">
             {{ $post->created_at->format('Y/m/d H:i')}} 
           </div>
+          @if(auth()->user()->isFollowed($post->user->id))
+          <span class="bg-secondary text-white">フォローされています</span>
+          @endif
+          @if(auth()->user()->isFollowing($post->user->id))
+           <form method="POST" action="{{ route('posts.unfollow',['post'=>$post]) }}">
+             @csrf
+             @method('DELETE')
+             <button type="submit" class="btn btn-danger py-1 px-2"><i class="fas fa-user-minus"></i>フォロー解除</button>
+           </form>
+           @else
+           <form method="POST" action="{{ route('posts.follow',['post'=>$post]) }}">
+             @csrf
+             <button type="submit" class="btn btn-primary py-1 px-2"><i class="fas fa-user-plus mr-2"></i>フォローする</button>
+           </form>
+           @endif
+          
           <div class="card-image mt-2">
             <img src="/storage/{{ $post->image_url }}" width="200px" height="180px">
           </div>
@@ -17,10 +33,8 @@
     <div class="card-body">
     <div class="d-flex justify-content-between">
       <h3 class="h4 card-title">
-          <a class="text-dark" href="{{ route('posts.show' , ['post' => $post->id]) }}">
-           {{$post->title}}
-           </a>
-        </h3>
+        {{$post->title}}
+      </h3>
          @if( Auth::id() === $post->user_id )
         <!-- dropdown -->
           <div class="ml-auto card-text">
@@ -97,7 +111,7 @@
     </a>
 </div>
 <div class="mt-4">
- @if($post->likes()->where('user_id', Auth::id())->exists())
+   @if($post->likes()->where('user_id', Auth::id())->exists())
   <div class="col-md-3">
     <form method="POST" action="{{ route('unlikes',$post) }}">
       @csrf

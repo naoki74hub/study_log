@@ -19,10 +19,12 @@ Route::group(['prefix'=>'posts','as'=>'posts.','middleware'=>'auth'],function() 
     Route::post('{post}/destroy','PostController@destroy')->name('destroy');
     Route::get('{post}/','PostController@show')->name('show');
     Route::post('search','PostController@search')->name('search');
+    Route::post('{post}/follow','PostController@follow')->name('follow');
+    Route::delete('{post}/unfollow','PostController@unfollow')->name('unfollow');
 });
 
 Route::group(['middleware' => 'auth'], function(){
-    Route::resource('/users','UserController');
+    Route::resource('users','UserController');
     Route::resource('comments','CommentController');
 });
 

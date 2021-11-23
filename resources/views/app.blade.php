@@ -13,6 +13,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
+    
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -25,13 +26,13 @@
 </head>
 
  <body>
-　<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow" style="position:fixed; top:0; left:0; width:100%; height:50px;>
-  <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">スタマネ</a>
+　<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow" style="position:fixed; top:0; left:0; width:100%; height:50px;">
+    <i class="fas fa-pencil-alt ml-2" style="color:white;"><a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 text-white" href="#">スタマネ</a></i>
   <form  method="POST" action="{{route('posts.search')}}">
     @csrf
     <input type="text" class="form-control input-lg mx-auto" name="search" placeholder="検索" style="position:relative;top:20px;">
     <span class="input-group-btn">
-      <button class="btn btn-info" type="submit" style="position:relative;top:-17px;right:-200px;">
+      <button class="btn btn-info" type="submit" style="position:relative;top:-17px;right:-200px;height:37px;">
         <i class="fas fa-search"></i>
       </button>
     </span>
@@ -39,7 +40,7 @@
   <ul class="navbar-nav px-3">
     <li class="nav-item text-nowrap">
       <!-- <a class="nav-link" href="#">Sign out</a> -->
-      <a class="nav-link" href="{{ route('logout') }}"
+      <a class="nav-link text-white" href="{{ route('logout') }}"
         onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();">
         {{ __('ログアウト') }}
@@ -61,7 +62,11 @@
           </div>
           <div class="sum-time mt-3 border border-white text-center py-2">
             <i class="far fa-clock text-white">総学習時間</i><br><br>
-            <span class="h3 text-white">98時間40分</span>
+            <span class="h3 text-white"></span>
+          </div>
+          <div class="continuation-days text-center border border-white mt-5 py-2">
+               <i class="fas fa-pencil-alt text-white">活動日数</i><br><br>
+              <span class="h3 text-white">657日</span>
           </div>
           <div class="continuation-days text-center border border-white mt-5 py-2">
               <i class="fas fa-running text-white">継続日数</i><br><br>
@@ -85,15 +90,16 @@
             <span data-feather="report">レポート</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link text-white h5" href="#">
-            <i class="fas fa-user-circle"></i>
+         
+         <li class="nav-item">
+          <a class="nav-link text-white h5" href="">
+          <i class="fas fa-user-circle"></i>
               <span data-feather="profile text-white">プロフィール</span>
             </a>
           </li>
-          <li class="nav-item border border-light text-center">
+          <li class="nav-item border border-light text-center py-3">
             <a class="post-link text-white" href="{{route('posts.create')}}">
-            <span data-feather="post rounded-circle">投稿する</span>
+            <span data-feather="post">投稿する</span>
             </a>
           </li>
         </ul>

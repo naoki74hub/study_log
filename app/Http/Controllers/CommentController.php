@@ -47,7 +47,7 @@ class CommentController extends Controller
         $input = $request->only($comment->getfillable());
         $comment = $comment->create($input);
         
-        return redirect('posts/index');
+        return redirect()->route('posts.show',['post'=>$comment->post->id]);
     }
 
     /**

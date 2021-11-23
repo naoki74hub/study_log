@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-
 class Post extends Model
 {
     protected $fillable = [
@@ -38,5 +37,15 @@ class Post extends Model
    {
        return $this->hasMany('App\Models\Comment','post_id','id');
    }
-
-}
+   
+   
+   public function getUserTimeLine(Int $user_id)
+   {
+       return $this->where('user_id',$user_id)->orderBy('created_at','DESC')->get();
+   }
+   
+   public function getPostCount(Int $user_id)
+   {
+       return $this->where('user_id',$user_id)->count();
+   }
+ }
