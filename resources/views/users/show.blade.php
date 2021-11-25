@@ -9,48 +9,51 @@
             <div class="card">
                 <div>
                   <div class="d-flex justify-content-center">
-                    <div>
+                    <div class="ml-5">
                      <i class="fas fa-user-circle fa-3x mt-3 "></i>
                      <div class="font-weight-bold mt-2 mr-3">
                       {{$user->name}}
                      </div>
-                    <div class="mt-3 align-items-center">
-                     <i class="fab fa-2x fa-font-awesome" style="color:red; margin-right:70px"><span class="font-weight-bold h4">目標</span></i>
-                     {{ $user->profile->goal ?? 'エラー' }}
                      </div>
-                    </div>
-                    dd($user->profile);
-                   @if( Auth::id() === $user->id )
-                    <div class="mt-3">
-                      <textarea name="self_introduction" cols="70" row="6" class="form-control textarea" placeholder="自己紹介" style="height:100px;resize:none;">{{ $user->profile->self_introduction ?? 'エラー' }}</textarea>
+                    @if( Auth::id() === $user->id )
+                    <div style="max-width:720px; width:100%; height:120px;">
+                    <div class="border mt-3 ml-3" style="max-width:700px; width:100%; height:120px;">
+                      <p class="p-2">{{ $user->self_introduction ?? old('self_introduction') }}</p>
                     </div>
                     @else
-                     <div class="mt-3">
-                      <textarea name="self_introduction" cols="90" row="6" class="form-control textarea" placeholder="自己紹介" style="height:100px;resize:none;"></textarea>
+                     <div class="border mt-3 mr-2" style="max-width:720px; width:100%; height:120px;">
+                      <p class="p-2">{{ $user->self_introduction ?? old('self_introduction') }}</p>
                     </div>
                     @endif
-                    @if ($user->id === Auth::user()->id && ($user->profile->self_introduction && $user->profile->goal == null))
-                    <div>
-                      <a href="{{ route('users.create') }}" class="btn btn-primary ml-5 mt-3">プロフィールを設定する</a>
+                    </div>
+                     @if ($user->id === Auth::user()->id && empty($user->self_introduction && $user->goal))
+                    <div class="ml-2">
+                      <a href="{{ route('users.create') }}" class="btn btn-primary ml-2 mt-3">プロフィールを設定する</a>
                     </div>
                     @endif
-                    @if ($user->id === Auth::user()->id && ($user->profile->self_introduction || $user->profile->goal !== null))
+                    @if ($user->id === Auth::user()->id && !empty($user->self_introduction || $user->goal))
                     <div>
-                      <a href="{{ route('users.edit',['user'=>$user->profile->user_id]) }}" class="btn btn-primary ml-5 mt-3">プロフィールを編集する</a>
+                      <a href="{{ route('users.edit',['user'=>$user]) }}" class="btn btn-primary ml-2 mt-3">プロフィールを編集する</a>
                     </div>
                     @endif
-                  </div>
+                    </div>
+                     <div class="mt-3 mb-2">
+                      <div class="mt-4 border mx-auto text-center" style="max-width:500px;height:150px;width:100%;">
+                         <i class="far fa-flag fa-2x py-2 pr-2" style="color:red;"></i><span class="font-weight-bold h4 mb-0 py-2">達成目標</span><hr class="m-0">
+                      <p class="p-2 text-left">{{ $user->goal ?? old('goal') }}</p>
+                      </div>
+                    </div>
                     <div>
-                      <div class="d-flex justify-content-center h5">
+                      <div class="d-flex justify-content-center align-items-center h5 ">
                         <div class="p-2 d-flex flex-column align-items-center">
                           <p class="font-weight-bold">ツイート数</p>
                           <span>{{ $post_count }}</span>
                         </div>
-                          <div class="p-2 d-flex flex-column align-items-center">
+                          <div class="p-2 d-flex flex-column align-items-center ml-2">
                             <p class="font-weight-bold">フォロー数</p>
                             <span>{{ $follow_count }}</span>
                           </div>
-                        <div class="p-2 d-flex flex-column align-items-center">
+                        <div class="p-2 d-flex flex-column align-items-center ml-2">
                             <p class="font-weight-bold">フォロワー数</p>
                             <span>{{ $follower_count }}</span>
                         </div>

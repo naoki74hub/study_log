@@ -1,20 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
-use App\Http\Requests\ProfileRequest;
-
+use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Auth;
-
 use App\User;
-
 use App\Models\Post;
-
 use App\Models\Follower;
-
-use App\Models\Profile;
 
 class UserController extends Controller
 {
@@ -35,8 +27,7 @@ class UserController extends Controller
      */
     public function create(User $user)
     {
-          $user_profile = $user;
-          return view('users/create',compact('user_profile'));
+        return view('users/create');
     }
 
     /**
@@ -45,14 +36,14 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ProfileRequest $request, Profile $profile)
+    public function store(UserRequest $request, User $user)
     {
-        $profile->self_introduction = $request->input('self_introduction');
-        $profile->goal = $request->input('goal');
-        $profile->user_id = $request->user()->id;
-        $profile->save();
+        $user = Auth::user();
+        $user->self_introduction = $request->input('self_introduction');
+        $user->goal = $request->input('goal');
+        $user->save();
         
-        return redirect()->route('users.show',['user'=>$profile->user_id]);
+        return redirect()->route('users.show',['user'=>$user]);
     }
 
     /**
@@ -61,9 +52,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(ProfileRequest $request, User $user,Post $post,Follower $follower)
+    public function show(User $user,Post $post,Follower $follower)
     {
-        $user = Auth::user();
+     
         $login_user = auth()->user();
         $is_following = $login_user->isFollowing($user->id);
         $is_followed = $login_user->isFollowed($user->id);
@@ -103,12 +94,10 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(ProfileRequest $request, User $user,Profile $profile)
+    public function update(UserRequest $request, User $user)
     {
-         $profile->user_id = $request->user()->id;
-         $profile->fill($request->all())->save();
-         
-         return redirect('users.show',['user'=>$user->profile->user_id]);
+         $user->fill($request->all())->save();
+        return redirect()->route('users.show',['user'=>$user]);
     }
 
     /**

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProfileRequest extends FormRequest
+class UserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,7 @@ class ProfileRequest extends FormRequest
     {
         return [
             'self_introduction'=>'max:160 | nullable',
-            'goal'=>'max:110 | nullable',
+            'goal'=>'max:120 | nullable',
         ];
     }
     

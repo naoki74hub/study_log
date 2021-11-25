@@ -10,4 +10,5 @@ class Folder extends Model
     {
         return $this->hasMany('App\Models\Task');
     }
+    
 }

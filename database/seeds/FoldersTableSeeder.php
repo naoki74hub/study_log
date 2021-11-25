@@ -24,5 +24,6 @@ class FoldersTableSeeder extends seeder
                 'updated_at' => now(),
             ]);
         }
+
     }
 }

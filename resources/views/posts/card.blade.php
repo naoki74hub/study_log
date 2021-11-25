@@ -25,8 +25,7 @@
              <button type="submit" class="btn btn-primary py-1 px-2"><i class="fas fa-user-plus mr-2"></i>フォローする</button>
            </form>
            @endif
-          
-          <div class="card-image mt-2">
+        　<div class="card-image mt-2">
             <img src="/storage/{{ $post->image_url }}" width="200px" height="180px">
           </div>
         </div>
