@@ -14,7 +14,7 @@
                 @csrf
                 <div class="form-group">
                   <label for="title">フォルダ名</label>
-                  <input type="text" class="form-control" name="title" id="title" value="{{ old('title') }}}">
+                  <input type="text" class="form-control" name="title" id="title" value="{{ old('title') }}">
                 </div>
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary">送信</button>
@@ -25,4 +25,5 @@
         </div>
       </div>
     </div>
+  
 @endsection

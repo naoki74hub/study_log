@@ -10,7 +10,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title')</title>
-
+    @yield('script')
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     
@@ -66,7 +66,7 @@
           </div>
           <div class="continuation-days text-center border border-white mt-5 py-2">
                <i class="fas fa-pencil-alt text-white">活動日数</i><br><br>
-              <span class="h3 text-white">{{ $post_day }}</span>
+              <span class="h3 text-white"></span>
           </div>
           <div class="continuation-days text-center border border-white mt-5 py-2">
               <i class="fas fa-running text-white">継続日数</i><br><br>
@@ -98,7 +98,7 @@
             </a>
           </li>
           <li class="nav-item border border-light text-center py-3">
-            <a class="post-link text-white" href="{{route('posts.create')}}">
+            <a class="post-link text-white text-decoration-none" href="{{route('posts.create')}}">
             <span data-feather="post">投稿する</span>
             </a>
           </li>
@@ -108,11 +108,9 @@
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     @yield('content')
-      
     </main>
   </div>
 </div>
-
 </body>
 
 

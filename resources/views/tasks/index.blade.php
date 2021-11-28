@@ -1,18 +1,23 @@
 @extends('app')
-
 @section('title', '管理')
- <link href="{{ asset('css/stopwatch.css')}}" rel="stylesheet">
- <script src="{{ asset('js/stopwatch.js') }}"></script>
 @section('content')
 <main>
  <div class="time-container">
     <div id="timer" class="mt-5">00:00.000</div>
     <div class="controls">
-      <div id="start" class="time-btn">Start</div>
-      <div id="stop" class="time-btn">Stop</div>
-      <div id="reset" class="time-btn">Reset</div>
+      <div id="start" class="time-btn border border-dark">スタート</div>
+      <div id="stop" class="time-btn border border-dark">ストップ</div>
+      <div id="reset" class="time-btn border border-dark">リセット</div>
     </div>
   </div>
+  <div class="text-center">
+  <form name="timer">
+    <input type="text" class="set-timer" value="">分
+    <input type="text" class="set-timer" value="">秒<br>
+    <input type="button" class="timer-start border border-dark bg-white" value="スタート" onclick="oncntStart()">
+    <input type="button" class="timer-stop border border-dark bg-white" value="ストップ" onclick="oncntStop()">
+</form>
+</div>
   <div class="container">
     <div class="row mt-5">
       <div class="col-md-4 card mt-5 px-0">
@@ -25,7 +30,7 @@
           </div>
           <div class="list-group">
             @foreach($folders as $folder)
-              <a href="{{ route('folders.tasks.index', ['id' => $folder->id]) }}" class="list-group-item  {{ $current_folder_id === $folder->id ? 'active' : '' }}">
+              <a href="{{ route('folders.tasks.index', ['id' => $folder->id]) }}" class="list-group-item text-decoration-none {{ $current_folder_id === $folder->id ? 'active' : ''}} ">
                 {{ $folder->title }}
               </a>
             @endforeach

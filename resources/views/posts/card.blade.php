@@ -3,7 +3,7 @@
       <i class="fas fa-user-circle fa-3x mr-1"></i>
         <div>
           <div class="font-weight-bold">
-            <a href="{{ route('users.show',[$post->user_id]) }}">
+            <a href="{{ route('users.show',[$post->user_id]) }}" class="text-decoration-none">
               {{$post->user->name}}
             </a>
           </div>
@@ -11,24 +11,25 @@
             {{ $post->created_at->format('Y/m/d H:i')}} 
           </div>
           @if(auth()->user()->isFollowed($post->user->id))
-          <span class="bg-secondary text-white">フォローされています</span>
+          <span class="bg-secondary text-white" style="width:145px;">フォローされています</span>
           @endif
           @if(auth()->user()->isFollowing($post->user->id))
            <form method="POST" action="{{ route('posts.unfollow',['post'=>$post]) }}">
              @csrf
              @method('DELETE')
-             <button type="submit" class="btn btn-danger py-1 px-2"><i class="fas fa-user-minus"></i>フォロー解除</button>
+             <button type="submit" class="btn btn-danger py-1 px-2" style="width:130px;"><i class="fas fa-user-minus"></i>フォロー解除</button>
            </form>
            @else
            <form method="POST" action="{{ route('posts.follow',['post'=>$post]) }}">
              @csrf
-             <button type="submit" class="btn btn-primary py-1 px-2"><i class="fas fa-user-plus mr-2"></i>フォローする</button>
+             <button type="submit" class="btn btn-primary py-1 px-2" style="width:140px;"><i class="fas fa-user-plus mr-2"></i>フォローする</button>
            </form>
            @endif
-        　<div class="card-image mt-2">
-            <img src="/storage/{{ $post->image_url }}" width="200px" height="180px">
-          </div>
-        </div>
+        　@if (!empty($url))
+          <!-- 画像を表示 -->
+          <img src="{{ $url }}">
+          @endif
+      </div>
     <div class="card-body">
     <div class="d-flex justify-content-between">
       <h3 class="h4 card-title">
@@ -114,14 +115,14 @@
   <div class="col-md-3">
     <form method="POST" action="{{ route('unlikes',$post) }}">
       @csrf
-      <input type="submit" class="fas btn btn-danger mr-2 py-2" value="&#xf004;{{ $post->likes()->count() }}">
+      <input type="submit" class="fas btn btn-danger mr-2 py-2 js-like-toggle" data-postid="{{ $post->id }}" value="&#xf004;{{ $post->likes()->count() }}">
     </form>
   </div>
 @else
   <div class="col-md-3">
     <form method="POST" action="{{ route('likes',$post) }}">
       @csrf
-      <input type="submit" class="fas btn border-dark py-2" value="&#xf004;{{ $post->likes()->count() }}">
+      <input type="submit" class="fas btn border-dark py-2 js-like-toggle" data-postid="{{ $post->id }}" value="&#xf004;{{ $post->likes()->count() }}">
     </form>
   </div>
  @endif

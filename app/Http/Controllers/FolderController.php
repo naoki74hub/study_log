@@ -21,4 +21,16 @@ class FolderController extends Controller
         $folder->save();
         return redirect()->route('folders.tasks.index', [$folder->id,]);
     }
+    
+    public function edit()
+    {
+        return view('folders/edit');
+    }
+    
+    public function update(FolderRequest $request, Folder $folder)
+    {
+        $folder->title = $request->input('title');
+        $folder->save();
+        return redirect()->route('folders.tasks.index', [$folder->id,]);
+    }
 }

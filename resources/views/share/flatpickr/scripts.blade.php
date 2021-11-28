@@ -5,5 +5,13 @@
     locale: 'ja',
     dateFormat: "Y/m/d",
     minDate: new Date()
-  });
-</script>
+  })
+  </script>
+  
+  <script>
+   flatpickr(document.getElementById('important_day'), {
+    locale: 'ja',
+    dateFormat: "Y/m/d",
+    minDate: new Date()
+    });
+    </script>

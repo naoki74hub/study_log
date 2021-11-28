@@ -4,6 +4,8 @@
 
 // Variables
 @import 'variables';
+@import 'stopwatch';
+@import 'timer';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
@@ -14,6 +16,3 @@
 @import '~@fortawesome/fontawesome-free/scss/solid';
 @import '~@fortawesome/fontawesome-free/scss/brands';
 
-.liked {
-    color:pink;
-}

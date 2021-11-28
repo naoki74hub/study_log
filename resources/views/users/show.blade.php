@@ -3,6 +3,7 @@
 @section('title', 'ユーザー詳細')
 
 @section('content')
+<main>
 <div class="container">
    <div class="card mt-3">
         <div class="card-body">
@@ -16,12 +17,12 @@
                      </div>
                      </div>
                     @if( Auth::id() === $user->id )
-                    <div style="max-width:720px; width:100%; height:120px;">
-                    <div class="border mt-3 ml-3" style="max-width:700px; width:100%; height:120px;">
+                    <div style="max-width:720px; width:100%; max-height:100%; height:120px;">
+                    <div class="border mt-3 ml-3 rounded" style="max-width:700px; width:100%; max-header:100%;">
                       <p class="p-2">{{ $user->self_introduction ?? old('self_introduction') }}</p>
                     </div>
                     @else
-                     <div class="border mt-3 mr-2" style="max-width:720px; width:100%; height:120px;">
+                     <div class="border mt-3 mr-2" style="max-width:720px; width:100%; max-height:100%;">
                       <p class="p-2">{{ $user->self_introduction ?? old('self_introduction') }}</p>
                     </div>
                     @endif
@@ -37,11 +38,23 @@
                     </div>
                     @endif
                     </div>
-                     <div class="mt-3 mb-2">
-                      <div class="mt-4 border mx-auto text-center" style="max-width:500px;height:150px;width:100%;">
-                         <i class="far fa-flag fa-2x py-2 pr-2" style="color:red;"></i><span class="font-weight-bold h4 mb-0 py-2">達成目標</span><hr class="m-0">
+                    <div class="text-center">
+                     <div class="d-inline-block mt-4 border text-center rounded  bg-success" style="max-width:235px;height:180px;width:100%;display:teble-cell;vertical-align:middle;">
+                       @if(Auth::user()->id === $user->id && empty($important_day_title))
+                       <p class="p-2 text-left">イベントタイトルを設定しよう!</p><hr>
+                       @else
+                      <p class="p-2 text-left">{{ $important_day_title }}</p><hr>
+                      @endif
+                      @if( Auth::user()->id === $user->id && empty($important_day))
+                      <p>あと<span class="display-3">000</span>日</p>
+                      @else
+                      <p>あと<span class="display-3">{{ $count_down }}</span>日</p>
+                      @endif
+                     </div>
+                    <div class="d-inline-block mt-4 border text-center rounded mb-3 ml-4" style="max-width:500px;height:150px;width:100%;display:teble-cel;vertical-align: middle;">
+                      <i class="far fa-flag fa-2x py-2 pr-2" style="color:red;"></i><span class="font-weight-bold h4 mb-0 py-2">達成目標</span><hr class="m-0">
                       <p class="p-2 text-left">{{ $user->goal ?? old('goal') }}</p>
-                      </div>
+                   </div>
                     </div>
                     <div>
                       <div class="d-flex justify-content-center align-items-center h5 ">
@@ -184,4 +197,5 @@
         @endif
      </div>
   </div>
+</main>
 @endsection

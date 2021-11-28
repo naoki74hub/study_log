@@ -1,8 +1,9 @@
 @extends('app')
 
 @section('title', 'プロフィール更新')
-
+@include('share.flatpickr.styles')
 @section('content')
+<main>
   <div class="container pt-5">
     <div class="row">
       <div class="col-12">
@@ -15,16 +16,25 @@
                   <div class="form-image_url mt-4">
                     <input type="file" name="image_url">
                   </div>
-                  <div class="md-form mt-3">
-                    <label></label>
+                  <div class="md-form mt-4">
+                    <label class="font-weight-bold">自己紹介</label>
                     <textarea name="self_introduction" class="form-control textarea" placeholder="自己紹介" style="height:80px;">{{ $user->self_introduction ?? old('self_introduction') }}</textarea>
                     <p>現在<span class="string_num">0</span>文字入力中です。(160字以内)</p>
                   </div>  
-                  <div class="form-group">
-                    <label></label>
+                  <div class="form-group mt-4">
+                    <label class="font-weight-bold">目標</label>
                     <textarea name="goal" class="form-control textarea" rows="4" placeholder="達成目標" style="height:80px;">{{ $user->goal ?? old('goal') }}</textarea>
                     <p>現在<span class="string_num">0</span>文字入力中です。(120字以内)</p>
                   </div>
+                  <div class="from-group mt-4">
+                    <label class="font-weight-bold">イベントタイトル（試験名など）→カウントダウンの上に表示されるよ！！</label>
+                    <input type="text" name="important_day_title" class="form-control text" placeholder="イベントタイトル" value="{{$user->important_day_title ?? old('important_day_title') }}">
+                    <p>現在<span class="string_num">0</span>文字入力中です。(30字以内)</p>
+                  </div> 
+                   <div class="form-group mt-4">
+                     <label class="font-weight-bold">大切な日の日付（試験日など）→今日から大切な日までのカウントダウンを実行できるよ！！</label>
+                    <input type="text" class="form-control" name="important_day" id="important_day" placeholder="日付" value="{{ old('important_day') }}" />
+                   </div>
                  <button type="submit" class="btn btn-block shadow p-3 mb-5 w-25 mx-auto btn-primary text-white">編集完了</button>
               </form>
               </div>
@@ -33,4 +43,6 @@
         </div>
       </div>
     </div>
+  </main>
+  @include('share.flatpickr.scripts')
 @endsection

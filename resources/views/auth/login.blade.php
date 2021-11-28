@@ -48,20 +48,22 @@
                                         {{ __('Remember Me') }}
                                     </label>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-success">
-                                    {{ __('ログイン') }}
-                                </button>
-
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('パスワードをお忘れですか?') }}
                                     </a>
                                 @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-8 offset-md-4">
+                                <button type="submit" class="btn btn-success mr-">
+                                    {{ __('ログイン') }}
+                                </button>
+                                <button type="submit" class="btn btn-danger">
+                                  <a href="/login/google" class="text-white text-decoration-none"><i class="fab fa-google mr-2"></i>Googleでログイン</a>
+                                </button>
                             </div>
                         </div>
                     </form>

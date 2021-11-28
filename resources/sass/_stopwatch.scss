@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+.time-container {
+  margin:30px auto;
+  max-width:1140px;
+  padding-bottom:20px;
+  width:100%;
+  background: #fff;
+  text-align: center;
+}
+
+.time-btn {
+  width: 100px;
+  background: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+#timer {
+  background: #fff;
+  height: 100px;
+  line-height: 100px;
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+.controls {
+  display: flex;
+  /* ボタン横並び */
+  justify-content: space-around;
+}
+
+/* 活性・非活性 */
+
+.inactive {
+  opacity: 0.6;
+}
+

@@ -6,6 +6,7 @@ use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Models\Post;
+use DateTime;
 use App\Models\Follower;
 
 class UserController extends Controller
@@ -41,8 +42,9 @@ class UserController extends Controller
         $user = Auth::user();
         $user->self_introduction = $request->input('self_introduction');
         $user->goal = $request->input('goal');
+        $user->important_day_title = $request->input('important_day_title');
+        $user->important_day = $request->input('important_day');
         $user->save();
-        
         return redirect()->route('users.show',['user'=>$user]);
     }
 
@@ -63,6 +65,14 @@ class UserController extends Controller
         $follow_count = $follower->getFollowCount($user->id);
         $follower_count = $follower->getFollowerCount($user->id);
         
+        $important_day_title = $user->important_day_title;
+        //カウントダウン
+        $important_day = new DateTime($user->important_day);
+        $today = new DateTime('now');
+        //差分を求める
+        $diff = $today->diff($important_day);
+        //日
+        $count_down = $diff->days;
         
         return view('users.show',compact([
             'user',
@@ -72,6 +82,8 @@ class UserController extends Controller
             'post_count', 
             'follow_count',
             'follower_count',
+            'count_down',
+            'important_day_title',
             ])
        );
     }
@@ -96,7 +108,12 @@ class UserController extends Controller
      */
     public function update(UserRequest $request, User $user)
     {
-         $user->fill($request->all())->save();
+        $user = Auth::user();
+        $user->self_introduction = $request->input('self_introduction');
+        $user->goal = $request->input('goal');
+        $user->important_day_title = $request->input('important_day_title');
+        $user->important_day = $request->input('important_day');
+        $user->save();
         return redirect()->route('users.show',['user'=>$user]);
     }
 

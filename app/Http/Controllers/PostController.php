@@ -1,18 +1,14 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
 use App\Http\Requests\PostRequest;
-
 use App\Models\Post;
-
 use App\Models\Tag;
-
 use App\Models\Comment;
-
 use App\User;
+use Storage;
+use Abraham\TwitterOAuth\TwitterOAuth;
 
 class PostController extends Controller
 {
@@ -48,7 +44,12 @@ class PostController extends Controller
         $post->time = $request->input('time');
         $post->body = $request->input('body');
         $post->user_id = auth()->user()->id;
-          
+        //s3アップロード開始
+        $image = $request->file('image_url');
+        // バケットの`image_url`フォルダへアップロード
+        $path = Storage::disk('s3')->putFileAs('image_url', $image, 'public');
+        // アップロードした画像のフルパスを取得
+        $url = Storage::disk('s3')->url($path);
         //bodyからtagを抽出
         preg_match_all('/#([a-zA-Z0-9０-９ぁ-んァ-ヶー一-龠]+)/u',$request->body,$match);
         
@@ -66,10 +67,8 @@ class PostController extends Controller
         
         $post->save();
         $post->tags()->attach($tag_ids);
-    
         
-    
-        return redirect('posts/index');
+        return redirect()->route('posts.index')->with('url',$url);
     }
     
     
