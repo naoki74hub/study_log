@@ -58,7 +58,7 @@
       <div class="sidebar-sticky sticky-top">
         <ul class="nav flex-column">
           <div class="level mt-5">
-              <span class="display-3 text-white">{{ $level }}</span>
+             <span class="display-3 text-white" id="level">{{ $level }}</span>
           </div>
           <div class="sum-time mt-3 border border-white text-center py-2">
             <i class="far fa-clock text-white">総学習時間</i><br><br>
@@ -66,11 +66,11 @@
           </div>
           <div class="continuation-days text-center border border-white mt-5 py-2">
                <i class="fas fa-pencil-alt text-white">活動日数</i><br><br>
-              <span class="h3 text-white"></span>
+              <span class="h3 text-white">{{ $post_day }}</span>
           </div>
           <div class="continuation-days text-center border border-white mt-5 py-2">
               <i class="fas fa-running text-white">継続日数</i><br><br>
-              <span class="h3 text-white"></span>
+              <span class="h3 text-white">{{ $result }}</span>
           </div>
           <li class="nav-item mt-5">
             <a class="nav-link text-white h5" href=" {{route('posts.index')}}">

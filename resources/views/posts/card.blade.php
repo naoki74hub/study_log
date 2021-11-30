@@ -25,11 +25,10 @@
              <button type="submit" class="btn btn-primary py-1 px-2" style="width:140px;"><i class="fas fa-user-plus mr-2"></i>フォローする</button>
            </form>
            @endif
-        　@if (!empty($url))
-          <!-- 画像を表示 -->
-          <img src="{{ $url }}">
-          @endif
-      </div>
+          <div class="card-image mt-2">
+          //画像が入る
+          </div>
+       </div>
     <div class="card-body">
     <div class="d-flex justify-content-between">
       <h3 class="h4 card-title">

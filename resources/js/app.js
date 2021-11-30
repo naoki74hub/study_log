@@ -5,10 +5,9 @@
 //  */
 
 require('./bootstrap');
-require('./string_num');
 require('./stopwatch');
 require('./timer');
-require('./ajaxlike');
+require('./string_num');
 
 // window.Vue = require('vue');
 

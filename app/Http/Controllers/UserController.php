@@ -56,7 +56,6 @@ class UserController extends Controller
      */
     public function show(User $user,Post $post,Follower $follower)
     {
-     
         $login_user = auth()->user();
         $is_following = $login_user->isFollowing($user->id);
         $is_followed = $login_user->isFollowed($user->id);
@@ -74,7 +73,7 @@ class UserController extends Controller
         //日
         $count_down = $diff->days;
         
-        return view('users.show',compact([
+        return view('users/show',compact([
             'user',
             'is_following',
             'is_followed',
@@ -82,8 +81,9 @@ class UserController extends Controller
             'post_count', 
             'follow_count',
             'follower_count',
-            'count_down',
             'important_day_title',
+            'important_day',
+            'count_down',
             ])
        );
     }
@@ -127,4 +127,55 @@ class UserController extends Controller
     {
         //
     }
+    
+    public function followings(string $name)
+    {
+        $user = User::where('name', $name)->first();
+        $post = $user->id;
+        $followings = $user->follows->sortByDesc('created_at');
+        $self_introdunction = $user->self_introduction;
+        return view('users.followings', [
+            'user' => $user,
+            'followings' => $followings,
+            'post'=>$post,
+            'self_introduction'=>$self_introdunction,
+        ]);
+    }
+    
+    public function followers(string $name)
+    {
+        $user = User::where('name', $name)->first();
+        $followers = $user->followers->sortByDesc('created_at');
+        return view('users.followers', [
+            'user' => $user,
+            'followers' => $followers,
+        ]);
+    }
+    
+    //フォロー
+    public function follow(User $user)
+    {
+        $follower = auth()->user();
+        //フォローしているか
+        $is_following = $follower->isFollowing($user->id);
+        if(!$is_following) {
+            //フォローしていなければフォローする
+            $follower->follow($user->id);
+            return back();
+        }
+    }  
+    
+    
+    public function unfollow(User $user)
+    {
+        $follower = auth()->user();
+        //フォローしているか
+        $is_following = $follower->isFollowing($user->id);
+        if($is_following) {
+            //フォローしていればフォロー解除する
+            $follower->unfollow($user->id);
+            return back();
+        }
+    }
+    
 }

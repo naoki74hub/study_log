@@ -61,7 +61,7 @@
                                 <button type="submit" class="btn btn-success mr-">
                                     {{ __('ログイン') }}
                                 </button>
-                                <button type="submit" class="btn btn-danger">
+                                <button class="btn btn-danger">
                                   <a href="/login/google" class="text-white text-decoration-none"><i class="fab fa-google mr-2"></i>Googleでログイン</a>
                                 </button>
                             </div>

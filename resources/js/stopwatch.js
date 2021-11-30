@@ -10,7 +10,7 @@
   let timeoutid;       // ID
   let elapsedTime = 0; // StartからStopまでの経過時間
 
-  window.onload = function countUp() {
+  function countUp() {
     const d = new Date(Date.now() - startTime + elapsedTime);
     /* padStart()で二桁または三桁固定表示とする */
     const m = String(d.getMinutes()).padStart(2, '0');
@@ -26,28 +26,27 @@
   }
 
   // 状態:初期 または Reset直後
-  window.onload =function setButtonStateInitial() {
+  function setButtonStateInitial() {
     start.classList.remove('inactive'); // 活性
-    stop.classList.add('inactive');    // 非活性
-    reset.classList.add('inactive');   // 非活性
+    stop.classList.add('inactive')    // 非活性
+    reset.classList.add('inactive')   // 非活性
   }
 
   // 状態:タイマー動作中
-   window.onload =function setButtonStateRunning() {
-    start.classList.add('inactive');  // 非活性
+  function setButtonStateRunning() {
+    start.classList.add('inactive')   // 非活性
     stop.classList.remove('inactive');  // 活性
-    reset.classList.add('inactive');   // 非活性
+    reset.classList.add('inactive')   // 非活性
   }
 
   // 状態:タイマー停止中
-   window.onload =function setButtonStateStopped() {
+  function setButtonStateStopped() {
     start.classList.remove('inactive'); // 活性
-    stop.classList.add('inactive');    // 非活性
+    stop.classList.add('inactive')    // 非活性
     reset.classList.remove('inactive'); // 活性
   }
 
   // ボタンを'初期'状態とする
-  /*global  setButtonStateInitial*/
   setButtonStateInitial()
 
   // Startボタンクリック
@@ -57,10 +56,8 @@
       return;
     }
     // ボタンをタイマー'動作中'状態とする
-     /*global  setButtonStateRunning*/
     setButtonStateRunning();
     startTime = Date.now();
-    /*global countUp*/
     countUp();
   });
 
@@ -71,7 +68,6 @@
       return;
     }
     // タイマーを'停止中'状態とする
-    /*global setButtonStateStopped*/
     setButtonStateStopped();
     clearTimeout(timeoutid);
     elapsedTime += Date.now() - startTime;

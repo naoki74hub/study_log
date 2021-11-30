@@ -8,6 +8,7 @@ use App\Models\Tag;
 use App\Models\Comment;
 use App\User;
 use Storage;
+use Illuminate\Support\Facades\Auth;
 use Abraham\TwitterOAuth\TwitterOAuth;
 
 class PostController extends Controller
@@ -16,9 +17,9 @@ class PostController extends Controller
    //index
    public function index(Request $request, Comment $comment, Post $post,User $user)
    {
+        $image = $post->image_url;
         $q = $request->query();
-        
-        if(isset($q['tag_name'])) {
+       if(isset($q['tag_name'])) {
             $posts = Post::latest()->where('body','like',"%{$q['tag_name']}%")->get();
             return view('posts.index', [
                 'posts'=> $posts,
@@ -27,7 +28,8 @@ class PostController extends Controller
                 
        } else {
         $posts = Post::latest()->get();
-        return view('posts/index',compact('posts','user'));
+       
+        return view('posts/index',compact('posts','user','image'));
         }
     }
     
@@ -44,12 +46,12 @@ class PostController extends Controller
         $post->time = $request->input('time');
         $post->body = $request->input('body');
         $post->user_id = auth()->user()->id;
-        //s3アップロード開始
-        $image = $request->file('image_url');
-        // バケットの`image_url`フォルダへアップロード
-        $path = Storage::disk('s3')->putFileAs('image_url', $image, 'public');
-        // アップロードした画像のフルパスを取得
-        $url = Storage::disk('s3')->url($path);
+        // //s3アップロード開始
+        // $post->image_url = $request->file('image_url');
+        // // バケットの`image_url`フォルダへアップロード
+        // $path = Storage::disk('s3')->putFile('image', $request->file('image_url'), 'public');
+        // // アップロードした画像のフルパスを取得
+        // $url = Storage::disk('s3')->url($path);
         //bodyからtagを抽出
         preg_match_all('/#([a-zA-Z0-9０-９ぁ-んァ-ヶー一-龠]+)/u',$request->body,$match);
         
@@ -68,7 +70,7 @@ class PostController extends Controller
         $post->save();
         $post->tags()->attach($tag_ids);
         
-        return redirect()->route('posts.index')->with('url',$url);
+        return redirect()->route('posts.index');
     }
     
     
@@ -159,6 +161,15 @@ class PostController extends Controller
             return back();
         }
     }
+    
+    //フォローしているユーザーの投稿を取得
+    public function timeline(User $user) {
+        $posts = Post::query()->whereIn('user_id', Auth::user()->follows()->pluck('followed_id'))->latest()->get();
+        return view('posts.timeline')->with([
+            'posts' => $posts,
+            ]);
+    }
+    
 }
 
         

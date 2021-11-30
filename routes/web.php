@@ -19,19 +19,25 @@ Route::group(['prefix'=>'posts','as'=>'posts.','middleware'=>'auth'],function() 
     Route::get('{post}/edit','PostController@edit')->name('edit');
     Route::post('{post}/update','PostController@update')->name('update');
     Route::post('{post}/destroy','PostController@destroy')->name('destroy');
-    //ユーザー詳細
     Route::get('{post}/','PostController@show')->name('show');
-    //検索機能
     Route::post('search','PostController@search')->name('search');
-    //フォロー機能
     Route::post('{post}/follow','PostController@follow')->name('follow');
     Route::delete('{post}/unfollow','PostController@unfollow')->name('unfollow');
+    Route::get('followings/timeline','PostController@timeline')->name('followings.timeline');
 });
 
 Route::group(['middleware' => 'auth'], function(){
     Route::resource('users','UserController');
-    Route::resource('comments','CommentController');
 });
+
+Route::group(['prefix'=>'users','as'=>'users.','middleware'=>'auth'],function() {
+    Route::get('{name}/followings', 'UserController@followings')->name('followings');
+    Route::get('{name}/followers', 'UserController@followers')->name('followers');
+    Route::post('{user}/follow','UserController@follow')->name('follow');
+    Route::delete('{user}/unfollow','UserController@unfollow')->name('unfollow');
+});
+
+    Route::resource('comments','CommentController');
 //フォルダーとタスク
 Route::group(['prefix'=>'folders','as'=>'folders.','middleware'=>'auth'],function() {
 Route::get('{id}/tasks','TaskController@index')->name('tasks.index');

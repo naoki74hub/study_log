@@ -3,7 +3,6 @@
 @section('title', 'ユーザー詳細')
 
 @section('content')
-<main>
 <div class="container">
    <div class="card mt-3">
         <div class="card-body">
@@ -19,7 +18,11 @@
                     @if( Auth::id() === $user->id )
                     <div style="max-width:720px; width:100%; max-height:100%; height:120px;">
                     <div class="border mt-3 ml-3 rounded" style="max-width:700px; width:100%; max-header:100%;">
+                      @if($user->id === Auth::user()->id && empty($user->self_introduction))
+                      <p>自己紹介を設定し、自分を表現しよう!!
+                      @elseif(!empty($user->self_introduction))
                       <p class="p-2">{{ $user->self_introduction ?? old('self_introduction') }}</p>
+                      @endif
                     </div>
                     @else
                      <div class="border mt-3 mr-2" style="max-width:720px; width:100%; max-height:100%;">
@@ -27,12 +30,11 @@
                     </div>
                     @endif
                     </div>
-                     @if ($user->id === Auth::user()->id && empty($user->self_introduction && $user->goal))
+                     @if ($user->id === Auth::user()->id && empty($user->self_introduction && $user->goal && $user->important_day_title && $user->important_day))
                     <div class="ml-2">
                       <a href="{{ route('users.create') }}" class="btn btn-primary ml-2 mt-3">プロフィールを設定する</a>
                     </div>
-                    @endif
-                    @if ($user->id === Auth::user()->id && !empty($user->self_introduction || $user->goal))
+                    @elseif($user->id === Auth::user()->id && !empty($user->self_introduction || $user->goal || $user->important_day_title || $user->important_day))
                     <div>
                       <a href="{{ route('users.edit',['user'=>$user]) }}" class="btn btn-primary ml-2 mt-3">プロフィールを編集する</a>
                     </div>
@@ -40,40 +42,47 @@
                     </div>
                     <div class="text-center">
                      <div class="d-inline-block mt-4 border text-center rounded  bg-success" style="max-width:235px;height:180px;width:100%;display:teble-cell;vertical-align:middle;">
-                       @if(Auth::user()->id === $user->id && empty($important_day_title))
-                       <p class="p-2 text-left">イベントタイトルを設定しよう!</p><hr>
-                       @else
-                      <p class="p-2 text-left">{{ $important_day_title }}</p><hr>
+                       @if($user->id === Auth::user()->id && empty($user->important_day_title))
+                       <p class="p-2 text-left mb-0">イベントタイトルとその日までのカウントダウンを設定しよう!</p><hr style="margin:0 0 10px 0;">
+                       @elseif(!empty($user->important_day_title))
+                       <p class="p-2 text-left">{{ $user->important_day_title }}</p><hr>
                       @endif
-                      @if( Auth::user()->id === $user->id && empty($important_day))
+                      @if( Auth::user()->id === $user->id && empty($user->important_day))
                       <p>あと<span class="display-3">000</span>日</p>
-                      @else
+                      @elseif(!empty($user->important_day))
                       <p>あと<span class="display-3">{{ $count_down }}</span>日</p>
                       @endif
                      </div>
                     <div class="d-inline-block mt-4 border text-center rounded mb-3 ml-4" style="max-width:500px;height:150px;width:100%;display:teble-cel;vertical-align: middle;">
                       <i class="far fa-flag fa-2x py-2 pr-2" style="color:red;"></i><span class="font-weight-bold h4 mb-0 py-2">達成目標</span><hr class="m-0">
+                      @if($user->id === Auth::user()->id && empty($user->goal))
+                      <p style="padding-top:40px;">達成したい目標を視覚化すると効果的!! ぜひ設定しよう</p>
+                      @elseif(!empty($user->goal))
                       <p class="p-2 text-left">{{ $user->goal ?? old('goal') }}</p>
+                      @endif
                    </div>
                     </div>
                     <div>
-                      <div class="d-flex justify-content-center align-items-center h5 ">
+                      <div class="d-flex justify-content-center align-items-center h5 mt-4">
                         <div class="p-2 d-flex flex-column align-items-center">
                           <p class="font-weight-bold">ツイート数</p>
                           <span>{{ $post_count }}</span>
                         </div>
                           <div class="p-2 d-flex flex-column align-items-center ml-2">
                             <p class="font-weight-bold">フォロー数</p>
-                            <span>{{ $follow_count }}</span>
+                            <a href ="{{ route('users.followings',['name'=>$user->name])  }}" class="text-decoration-none">{{ $follow_count }}</a>
                           </div>
                         <div class="p-2 d-flex flex-column align-items-center ml-2">
                             <p class="font-weight-bold">フォロワー数</p>
-                            <span>{{ $follower_count }}</span>
+                            <a href="{{ route('users.followers',['name'=>$user->name])  }}" class="text-decoration-none">{{ $follower_count }}</a>
                         </div>
                       </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="w-30 text-center mt-3">
+          <a href="{{ route('posts.followings.timeline') }}" class="text-decoration-none text-white bg-primary rounded p-2"><i class="fas fa-eye pr-2"></i>フォロー中の投稿一覧を見る</a>
         </div>
         @if (isset($timelines))
             @foreach ($timelines as $timeline)
@@ -197,5 +206,4 @@
         @endif
      </div>
   </div>
-</main>
 @endsection
