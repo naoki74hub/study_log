@@ -1,7 +1,13 @@
    <div class="card mt-3 border-light">
      <div class="card-body d-flex flex-row border-top border-bottom">
-      <i class="fas fa-user-circle fa-3x mr-1"></i>
-        <div>
+        <div class="avatar mr-3" style="width:70px;height:70px;border-radius:50%;">
+          @if(empty($post->user->avatar))
+            <i class="fas fa-user-circle fa-4x"></i>
+            @elseif(!empty($post->user->avatar))
+            <img src="{{ $post->user->avatar }}" style="width:70px;height:70px;border-radius:50%;">
+            @endif
+          </div>
+          <div>
           <div class="font-weight-bold">
             <a href="{{ route('users.show',[$post->user_id]) }}" class="text-decoration-none">
               {{$post->user->name}}
@@ -17,7 +23,7 @@
            <form method="POST" action="{{ route('posts.unfollow',['post'=>$post]) }}">
              @csrf
              @method('DELETE')
-             <button type="submit" class="btn btn-danger py-1 px-2" style="width:130px;"><i class="fas fa-user-minus"></i>フォロー解除</button>
+             <button type="submit" class="btn btn-danger py-1 px-2" style="width:145px;"><i class="fas fa-user-minus"></i>フォロー解除</button>
            </form>
            @else
            <form method="POST" action="{{ route('posts.follow',['post'=>$post]) }}">
@@ -25,11 +31,13 @@
              <button type="submit" class="btn btn-primary py-1 px-2" style="width:140px;"><i class="fas fa-user-plus mr-2"></i>フォローする</button>
            </form>
            @endif
+           @if(!empty($post->image_url))
           <div class="card-image mt-2">
-          //画像が入る
+            <img src="{{ $post->image_url }}" style="width:110px;height:145px;">        
           </div>
+          @endif
        </div>
-    <div class="card-body">
+    <div class="card-body ml-3">
     <div class="d-flex justify-content-between">
       <h3 class="h4 card-title">
         {{$post->title}}

@@ -8,6 +8,7 @@ use App\User;
 use App\Models\Post;
 use DateTime;
 use App\Models\Follower;
+use Storage;
 
 class UserController extends Controller
 {
@@ -44,6 +45,14 @@ class UserController extends Controller
         $user->goal = $request->input('goal');
         $user->important_day_title = $request->input('important_day_title');
         $user->important_day = $request->input('important_day');
+          //s3アップロード開始
+        if(!empty($request->file('avatar'))) {
+        $image = $request->file('avatar');
+        // バケットの`image_url`フォルダへアップロード
+        $path = Storage::disk('s3')->putFile('image', $image, 'public');
+        // アップロードした画像のフルパスを取得
+        $user->avatar = Storage::disk('s3')->url($path);
+        }
         $user->save();
         return redirect()->route('users.show',['user'=>$user]);
     }
@@ -113,6 +122,14 @@ class UserController extends Controller
         $user->goal = $request->input('goal');
         $user->important_day_title = $request->input('important_day_title');
         $user->important_day = $request->input('important_day');
+          //s3アップロード開始
+        if(!empty($request->file('avatar'))) {
+        $image = $request->file('avatar');
+        // バケットの`image_url`フォルダへアップロード
+        $path = Storage::disk('s3')->putFile('image', $image, 'public');
+        // アップロードした画像のフルパスを取得
+        $user->avatar = Storage::disk('s3')->url($path);
+        }
         $user->save();
         return redirect()->route('users.show',['user'=>$user]);
     }

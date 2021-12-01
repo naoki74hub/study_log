@@ -10,8 +10,14 @@
     <div class="card-body border-top border-bottom d-flex">
      <div>
       <div class="follower-name">
-       <i class="fas fa-user-circle fa-3x mr-1"></i>
-       <a href="{{ route('users.show',['user'=>$follower->id]) }}" class="text-decoration-none">
+        <div class="avatar mr-3">
+        @if(empty($follower->avatar))
+           <i class="fas fa-user-circle fa-3x"></i>
+           @elseif(!empty($follower->avatar))
+           <img src="{{ $follower->avatar }}" style="width:70px;height:70px;border-radius:50%;">
+           @endif
+         </div>
+         <a href="{{ route('users.show',['user'=>$follower->id]) }}" class="text-decoration-none">
          {{$follower->name}}
       </a>
       </div>

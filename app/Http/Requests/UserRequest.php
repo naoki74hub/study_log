@@ -28,6 +28,7 @@ class UserRequest extends FormRequest
             'goal'=>'max:120 | nullable',
             'important_day_title'=>'max:30 | nullable',
             'important_day'=> 'nullable',
+            'avatar'=>'file|mimes:jpeg,png,jpg,bmb|max:2048 | nullable'
         ];
     }
     
@@ -38,6 +39,7 @@ class UserRequest extends FormRequest
             'goal'=>'達成目標',
             'important_day_title'=>'目標タイトル',
             'important_day'=>'日付',
+            'avatar'=>'アバター画像'
         ];
     }
 }

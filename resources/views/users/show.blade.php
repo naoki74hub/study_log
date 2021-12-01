@@ -3,21 +3,30 @@
 @section('title', 'ユーザー詳細')
 
 @section('content')
-<div class="container">
-   <div class="card mt-3">
-        <div class="card-body">
+<div class="container mt-5">
+   <div class="mt-3">
+        <div>
             <div class="card">
                 <div>
                   <div class="d-flex justify-content-center">
-                    <div class="ml-5">
-                     <i class="fas fa-user-circle fa-3x mt-3 "></i>
-                     <div class="font-weight-bold mt-2 mr-3">
+                    <div class="border" style="width:70px;height:70px;border-radius:50%;position:relative;">
+                      <span style="position:absolute;top:25%;left:10%;">{{ $level }}</span>
+                    </div>
+                    <div class="ml-2">
+                      <div class="avatar mt-3 mr-3" style="width:110px;height:110px;border-radius:50%;">
+                      @if(empty($user->avatar))
+                        <i class="fas fa-user-circle fa-8x"></i>
+                        @elseif(!empty($user->avatar))
+                        <img src="{{ $user->avatar }}" style="width:110px;height:110px;border-radius:50%;">
+                        @endif
+                      </div>
+                     <div class="font-weight-bold text-center mt-2 mr-3">
                       {{$user->name}}
                      </div>
                      </div>
                     @if( Auth::id() === $user->id )
-                    <div style="max-width:720px; width:100%; max-height:100%; height:120px;">
-                    <div class="border mt-3 ml-3 rounded" style="max-width:700px; width:100%; max-header:100%;">
+                   <div class="mr-5" style="max-width:600px;width:100%;">
+                    <div class="border mt-3 ml-3 rounded" style="max-width:600px; width:100%;height:130px;">
                       @if($user->id === Auth::user()->id && empty($user->self_introduction))
                       <p>自己紹介を設定し、自分を表現しよう!!
                       @elseif(!empty($user->self_introduction))
@@ -25,18 +34,18 @@
                       @endif
                     </div>
                     @else
-                     <div class="border mt-3 mr-2" style="max-width:720px; width:100%; max-height:100%;">
+                     <div class="border mt-3 mr-2" style="max-width:600px; width:100%; height:130px;">
                       <p class="p-2">{{ $user->self_introduction ?? old('self_introduction') }}</p>
                     </div>
                     @endif
                     </div>
                      @if ($user->id === Auth::user()->id && empty($user->self_introduction && $user->goal && $user->important_day_title && $user->important_day))
                     <div class="ml-2">
-                      <a href="{{ route('users.create') }}" class="btn btn-primary ml-2 mt-3">プロフィールを設定する</a>
+                      <a href="{{ route('users.create') }}" class="btn btn-primary mt-3">プロフィールを設定する</a>
                     </div>
                     @elseif($user->id === Auth::user()->id && !empty($user->self_introduction || $user->goal || $user->important_day_title || $user->important_day))
                     <div>
-                      <a href="{{ route('users.edit',['user'=>$user]) }}" class="btn btn-primary ml-2 mt-3">プロフィールを編集する</a>
+                      <a href="{{ route('users.edit',['user'=>$user]) }}" class="btn btn-primary mt-3">プロフィールを編集する</a>
                     </div>
                     @endif
                     </div>
@@ -87,10 +96,16 @@
         @if (isset($timelines))
             @foreach ($timelines as $timeline)
                 <div class="container">
-                    <div class="card mt-3">
+                    <div class="card mt-3 border-light">
                         <div class="card-body d-flex flex-row border-top border-bottom">
-                          <i class="fas fa-user-circle fa-3x mr-1"></i>
-                           <div>
+                             <div class="avatar mr-3" style="width:70px;height:70px;border-radius:50%;">
+                                @if(empty($user->avatar))
+                                  <i class="fas fa-user-circle fa-4x"></i>
+                                  @elseif(!empty($user->avatar))
+                                  <img src="{{ $user->avatar }}" style="width:70px;height:70px;border-radius:50%;">
+                                  @endif
+                                </div>
+                              <div>
                             <div class="font-weight-bold">
                                 <p class="mb-0">{{ $timeline->user->name }}</p>
                             </div>
@@ -98,10 +113,10 @@
                                 <p class="mb-0 text-secondary">{{ $timeline->created_at->format('Y-m-d H:i') }}</p>
                             </div>
                             <div class="card-image mt-2">
-                                 <img src="/storage/{{ $timeline->image_url }}" width="200px" height="180px">
+                                 <img src="{{ $timeline->image_url }}" width="110px" height="145px">
                             </div>
                            </div>
-                            <div class="card-body">
+                            <div class="card-body ml-3">
                                 <div class="d-flex justify-content-between">
                                   <h3 class="h4 card-title">
                                     {{$timeline->title}}

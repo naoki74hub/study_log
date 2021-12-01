@@ -14,7 +14,7 @@
               <form method="POST" enctype="multipart/form-data" action="{{ route('users.store') }}">
                 @csrf
                   <div class="form-image_url mt-4">
-                    <input type="file" name="image_url">
+                    <input type="file" name="avatar">
                   </div>
                   <div class="md-form mt-4">
                     <label class="font-weight-bold">自己紹介</label>

@@ -46,12 +46,14 @@ class PostController extends Controller
         $post->time = $request->input('time');
         $post->body = $request->input('body');
         $post->user_id = auth()->user()->id;
-        // //s3アップロード開始
-        // $post->image_url = $request->file('image_url');
-        // // バケットの`image_url`フォルダへアップロード
-        // $path = Storage::disk('s3')->putFile('image', $request->file('image_url'), 'public');
-        // // アップロードした画像のフルパスを取得
-        // $url = Storage::disk('s3')->url($path);
+        //s3アップロード開始
+        if(!empty($request->file('image_url'))) {
+        $image = $request->file('image_url');
+        // バケットの`image_url`フォルダへアップロード
+        $path = Storage::disk('s3')->putFile('image', $image, 'public');
+        // アップロードした画像のフルパスを取得
+        $post->image_url = Storage::disk('s3')->url($path);
+        }
         //bodyからtagを抽出
         preg_match_all('/#([a-zA-Z0-9０-９ぁ-んァ-ヶー一-龠]+)/u',$request->body,$match);
         
