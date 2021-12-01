@@ -6,6 +6,7 @@
 
 require('./bootstrap');
 require('./stopwatch');
+require('./pomodoro_timer');
 require('./timer');
 require('./string_num');
 

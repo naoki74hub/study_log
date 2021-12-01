@@ -9,9 +9,9 @@
             <div class="card">
                 <div>
                   <div class="d-flex justify-content-center">
-                    <div class="border" style="width:70px;height:70px;border-radius:50%;position:relative;">
-                      <span style="position:absolute;top:25%;left:10%;">{{ $level }}</span>
-                    </div>
+                    <!--<div class="border" style="width:70px;height:70px;border-radius:50%;position:relative;">-->
+                    <!--  <span style="position:absolute;top:25%;left:10%;">{{ $level }}</span>-->
+                    <!--</div>-->
                     <div class="ml-2">
                       <div class="avatar mt-3 mr-3" style="width:110px;height:110px;border-radius:50%;">
                       @if(empty($user->avatar))

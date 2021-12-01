@@ -15,9 +15,11 @@ mix.js('resources/js/app.js', 'public/js')
    .js('resources/js/stopwatch.js', 'public/js')
    .js('resources/js/timer.js', 'public/js')
    .js('resources/js/string_num.js','public/js')
+   .js('resources/js/pomodoro_timer.js','public/js')
    .sass('resources/sass/app.scss', 'public/css')
    .sass('resources/sass/_stopwatch.scss', 'public/css')
    .sass('resources/sass/_timer.scss', 'public/css')
+   .sass('resources/sass/_pomodoro_timer.scss', 'public/css')
  
    
    

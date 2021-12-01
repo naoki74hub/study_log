@@ -89,6 +89,7 @@ class AppServiceProvider extends ServiceProvider
         $total_time = $total_hour.'時間'.$total_minutes.'分';
         //活動日数
         $post_day = $post_day.'日';
+        
         $view->with([
              'total_time'=>$total_time,
              'level'=>$level,

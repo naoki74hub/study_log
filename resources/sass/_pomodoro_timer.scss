@@ -1,0 +1,57 @@
+.title {
+  font-weight: bold;
+  color:red;
+  margin-top:32px;
+}
+
+.textStyle1 {
+  font-weight: bold;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+button#startBtn {
+  width: 120px;
+  padding: 10px;
+}
+
+
+.mContainer {
+  height: 180px;
+}
+
+.areaStyle1 {
+  width: 20%;
+}
+
+#container {
+  max-width: 1024px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+button#dropdownMenu1,
+button#dropdownMenu2 {
+  width: 100%;
+  background-color:#1b253c;
+}
+
+.displayNone {
+  display: none;
+}
+
+p#work {
+  font-size: 32px;
+}
+p#pomodoro-timer {
+  font-size:40px;
+}
+
+button#stopBtn,
+button#cancelBtn {
+  width:130px;
+}
+
+h3 span {
+  font-size:32px ;
+}

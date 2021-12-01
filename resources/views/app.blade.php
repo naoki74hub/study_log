@@ -79,7 +79,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white h5" href="">
+            <a class="nav-link text-white h5" href="{{ route('folders.tasks.index',['id'=>1]) }}">
             <i class="far fa-clock"></i>
               <span data-feather="record">管理</span>
             </a>
