@@ -34,10 +34,10 @@ class AppServiceProvider extends ServiceProvider
         if(Auth::check()) {
         $user = Auth::user();
         $posts = $user->posts;
-        } else {
-            return view('auth/login');
         }
-        
+        else {
+        return redirect()->route('login');    
+        }
         //総学習時間の処理
         $total_hour = 0;
         $total_minutes = 0;
@@ -81,23 +81,25 @@ class AppServiceProvider extends ServiceProvider
              return $r;
         });
     }
+        
+        
         //継続日数
-        $result = $result->count().'日';
         //レベル
         $level = 'Lv.'.floor($total_hour / 10 );
         //勉強合計時間
         $total_time = $total_hour.'時間'.$total_minutes.'分';
-        //活動日数
-        $post_day = $post_day.'日';
-        
+        // $result = $result->count().'日';
+        // //活動日数
+        // $post_day = $post_day.'日';
         $view->with([
              'total_time'=>$total_time,
              'level'=>$level,
-             'post_day'=>$post_day,
-             'result'=>$result,
+            //  'post_day'=>$post_day,
+            //  'result'=>$result,
              
              ]);
         });
-            
-   }
+      
+        
+    }
 }

@@ -16,6 +16,8 @@ Route::group(['prefix'=>'posts','as'=>'posts.','middleware'=>'auth'],function() 
     Route::get('index','PostController@index')->name('index');
     Route::get('create','PostController@create')->name('create');
     Route::post('store','PostController@store')->name('store');
+    Route::get('twitter/create','TwitterController@create')->name('twitter.create');
+    Route::post('twitter/store','TwitterController@store')->name('twitter.store');
     Route::get('{post}/edit','PostController@edit')->name('edit');
     Route::post('{post}/update','PostController@update')->name('update');
     Route::post('{post}/destroy','PostController@destroy')->name('destroy');
@@ -40,10 +42,12 @@ Route::group(['prefix'=>'users','as'=>'users.','middleware'=>'auth'],function() 
     Route::resource('comments','CommentController');
 //フォルダーとタスク
 Route::group(['prefix'=>'folders','as'=>'folders.','middleware'=>'auth'],function() {
-Route::get('{id}/tasks','TaskController@index')->name('tasks.index');
+Route::get('{id}/tasks','TaskController@index')->name('index');
 Route::get('create','FolderController@create')->name('create');
 Route::post('store','FolderController@store')->name('store');
+Route::post('{id}/destroy','FolderController@destroy')->name('destroy');
 Route::get('{id}/edit','FolderController@edit')->name('edit');
+Route::post('{id}/update','FolderController@update')->name('update');
 Route::get('{id}/tasks/create','TaskController@create')->name('tasks.create');
 Route::post('{id}/tasks/store','TaskController@store')->name('tasks.store');
 Route::get('{id}/tasks/{task_id}/edit','TaskController@edit')->name('tasks.edit');

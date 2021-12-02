@@ -1,15 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
-
 use App\Http\Requests\CreateTaskRequest;
-
 use App\Http\Requests\EditTaskRequest;
-
 use App\Models\Folder;
-
 use App\Models\Task;
 
 class TaskController extends Controller
@@ -44,7 +39,7 @@ class TaskController extends Controller
         $task->due_date = $request->due_date;
         $current_folder->tasks()->save($task);
         
-         return redirect()->route('folders.tasks.index', [
+         return redirect()->route('folders.index', [
         'id' => $current_folder->id,
       ]);
     }
@@ -70,7 +65,7 @@ class TaskController extends Controller
         
         $task->save();
         
-        return redirect()->route('folders.tasks.index',[
+        return redirect()->route('folders.index',[
             'id'=>$task->folder_id,
             'task_id'=>$task->id,
         ]);
@@ -82,7 +77,7 @@ class TaskController extends Controller
         $task = Task::find($task_id);
         $task->delete();
         
-        return redirect()->route('folders.tasks.index',[
+        return redirect()->route('folders.index',[
             'id'=>$task->folder_id,
             'task_id'=>$task->id,
             ]);

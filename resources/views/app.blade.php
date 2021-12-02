@@ -64,22 +64,22 @@
             <i class="far fa-clock text-white">総学習時間</i><br><br>
             <span class="h3 text-white">{{ $total_time }}</span>
           </div>
-          <div class="continuation-days text-center border border-white mt-5 py-2">
+          <div class="continuation-days text-center border border-white mt-3 py-2">
                <i class="fas fa-pencil-alt text-white">活動日数</i><br><br>
-              <span class="h3 text-white">{{ $post_day }}</span>
+              <span class="h3 text-white"></span>
           </div>
-          <div class="continuation-days text-center border border-white mt-5 py-2">
+          <div class="continuation-days text-center border border-white mt-3 py-2">
               <i class="fas fa-running text-white">継続日数</i><br><br>
-              <span class="h3 text-white">{{ $result }}</span>
+              <span class="h3 text-white"></span>
           </div>
-          <li class="nav-item mt-5">
+          <li class="nav-item mt-3">
             <a class="nav-link text-white h5" href=" {{route('posts.index')}}">
             <i class="fas fa-home"></i>
               <span data-feather="home">ホーム</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white h5" href="{{ route('folders.tasks.index',['id'=>1]) }}">
+            <a class="nav-link text-white h5" href="{{ route('folders.index',['id'=>1]) }}">
             <i class="far fa-clock"></i>
               <span data-feather="record">管理</span>
             </a>
@@ -102,16 +102,19 @@
             <span data-feather="post">投稿する</span>
             </a>
           </li>
+          <li class="nav-item border border-light text-center py-3 mt-2">
+            <a class="post-link text-white text-decoration-none" href="{{route('posts.twitter.create')}}">
+            <span data-feather="post"><i class="fab fa-twitter mr-2"></i>Twitterで投稿する</span>
+            </a>
+          </li>
         </ul>
       </div>
     </nav>
-
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     @yield('content')
     </main>
   </div>
 </div>
 </body>
-
 
 </html>

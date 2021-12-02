@@ -9,7 +9,6 @@ use App\Models\Comment;
 use App\User;
 use Storage;
 use Illuminate\Support\Facades\Auth;
-use Abraham\TwitterOAuth\TwitterOAuth;
 
 class PostController extends Controller
 {
@@ -54,6 +53,7 @@ class PostController extends Controller
         // アップロードした画像のフルパスを取得
         $post->image_url = Storage::disk('s3')->url($path);
         }
+        
         //bodyからtagを抽出
         preg_match_all('/#([a-zA-Z0-9０-９ぁ-んァ-ヶー一-龠]+)/u',$request->body,$match);
         
@@ -73,8 +73,9 @@ class PostController extends Controller
         $post->tags()->attach($tag_ids);
         
         return redirect()->route('posts.index');
+        
+       
     }
-    
     
     //edit
     public function edit(Post $post)

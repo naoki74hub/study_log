@@ -1,12 +1,10 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
-class FoldersTableSeeder extends seeder
-
-
+class FoldersTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,15 +13,14 @@ class FoldersTableSeeder extends seeder
      */
     public function run()
     {
-         $titles = ['英語', '仕事', 'プログラミング'];
-
-        foreach ($titles as $title) {
-            DB::table('folders')->insert([
+        $titles = ['プライベート','仕事','旅行'];
+        
+        foreach($titles as $title) {
+         DB::table('folders')->insert([
                 'title' => $title,
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
-        }
-
+       }
     }
 }

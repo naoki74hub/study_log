@@ -10,7 +10,6 @@
      <div class="search-title h3 mt-5">{{ $search_result }}</div>
     </div>
     @endisset
-    
     @foreach($posts as $post)
       @include('posts.card')
     @endforeach

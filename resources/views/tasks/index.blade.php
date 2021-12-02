@@ -24,7 +24,7 @@
               <!-- flex -->
               <div class="d-flex justify-content-center">
                 <div class="p-2">
-                  <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu1"
+                  <button class="btn text-white btn-size dropdown-toggle" style="width:100px;height:60px; font-size:32px;" type="button" id="dropdownMenu1"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     25
                   </button>
@@ -57,7 +57,7 @@
               <!-- flex -->
               <div class="d-flex justify-content-center">
                 <div class="p-2">
-                  <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu2"
+                  <button class="btn dropdown-toggle text-white" style="width:100px;height:60px;font-size:32px;" type="button" id="dropdownMenu2"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     05
                   </button>
@@ -90,11 +90,11 @@
       <!-- カウントダウン -->
       <div class="mContainer">
         <div class="d-flex flex-column justify-content-center" style="height: 100%;">
-          <div class="p-2 align-self-center">
+          <div class="p-2 mt-4 align-self-center">
             <p class="mb-0 textStyle1" id="work">活動中</p>
           </div>
-          <div class="p-2 align-self-center">
-            <p id="pomodoro-timer"></p>
+          <div class="align-self-center">
+            <p id="pomodoro-timer" style="font-size:80px;"></p>
           </div>
         </div>
       </div>
@@ -106,10 +106,10 @@
       </div>
 
       <audio id="sound-file-decision1" preload="auto">
-        <source src="{{ asset('sound/pomodoro.mp3') }}" type="audio/mp3">
+        <source src="{{ asset('sound/pomodoro2.mp3') }}" type="audio/mp3">
       </audio>
       <audio id="sound-file-decision4" preload="auto">
-        <source src="{{ asset('sound/pomodoro2.mp3') }}" type="audio/mp3">
+        <source src="{{ asset('sound/pomodoro1.mp3') }}" type="audio/mp3">
       </audio>
     </div>
   </div>
@@ -125,9 +125,36 @@
           </div>
           <div class="list-group">
             @foreach($folders as $folder)
-              <a href="{{ route('folders.tasks.index', ['id' => $folder->id]) }}" class="list-group-item text-decoration-none {{ $current_folder_id === $folder->id ? 'active' : ''}} ">
+            <div class="d-flex border border">
+              <a href="{{ route('folders.index', ['id' => $folder->id]) }}" class="list-group-item text-decoration-none {{ $current_folder_id === $folder->id ? 'active' : ''}}" style="width:285px;">
                 {{ $folder->title }}
               </a>
+              <a href="{{route('folders.edit',['id'=>$folder->id])}}"><i class="fa fa-pen mt-3 ml-2"></i></a></td>
+              <span data-toggle="modal" data-target="#modal-delete-{{ $folder->id }}"><i class="fa fa-trash-alt text-danger mt-3 ml-4"></i></span>
+            </div>
+             <!-- modal -->
+          <div id="modal-delete-{{ $folder->id }}" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <form method="POST" action="{{ route('folders.destroy',['id'=>$folder]) }}">
+                  @csrf
+                 <div class="modal-body">
+                    {{ $folder->title }}を削除します。よろしいですか？
+                  </div>
+                  <div class="modal-footer justify-content-between">
+                    <a class="btn border" data-dismiss="modal">キャンセル</a>
+                    <button type="submit" class="btn btn-danger">削除する</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- modal -->
             @endforeach
           </div>
      </nav>
