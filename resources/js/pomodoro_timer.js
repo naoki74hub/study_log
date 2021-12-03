@@ -39,7 +39,7 @@
     countDown();
   });
 
-  // 一時停止ボタン押した時の処理
+  // 一時停止ボタンを押した時の処理
   stopBtn.addEventListener('click', () => {
     if (stopBtn.textContent == '一時停止') {
       clearTimeout(timeoutId);
@@ -114,8 +114,8 @@
       count2 = true;
       count3 = true;
 
-      // 終了サウンド
-      document.getElementById( 'sound-file-decision4' ).play();
+      // // 終了サウンド
+      // document.getElementById( 'sound-file-decision4' ).play();
       if (workFlg == true) {
         workFlg = false;
         workText.textContent = '休憩中';

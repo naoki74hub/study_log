@@ -58,7 +58,7 @@
       <div class="sidebar-sticky sticky-top">
         <ul class="nav flex-column">
           <div class="level mt-5">
-             <span class="display-3 text-white" id="level">{{ $level }}</span>
+             <span class="display-3 text-white">{{ $level }}</span>
           </div>
           <div class="sum-time mt-3 border border-white text-center py-2">
             <i class="far fa-clock text-white">総学習時間</i><br><br>
@@ -72,39 +72,39 @@
               <i class="fas fa-running text-white">継続日数</i><br><br>
               <span class="h3 text-white"></span>
           </div>
-          <li class="nav-item mt-3">
-            <a class="nav-link text-white h5" href=" {{route('posts.index')}}">
+          <li class="nav-item mt-3 hover-text1">
+            <a class="nav-link h5 menu-hover" href=" {{route('posts.index')}}">
             <i class="fas fa-home"></i>
-              <span data-feather="home">ホーム</span>
+              <span data-feather="home text-hover">ホーム</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white h5" href="{{ route('folders.index',['id'=>1]) }}">
+            <a class="nav-link  h5 menu-hover" href="{{ route('folders.index',['id'=>1]) }}">
             <i class="far fa-clock"></i>
-              <span data-feather="record">管理</span>
+              <span data-feather="record text-hover text-white">管理</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link text-white h5" href="#">
+            <a class="nav-link h5 menu-hover" href="#">
             <i class="far fa-calendar-alt"></i>
-            <span data-feather="report">レポート</span>
+            <span data-feather="report text-hover text-white">レポート</span>
             </a>
           </li>
          
          <li class="nav-item">
-          <a class="nav-link text-white h5" href="{{ route('users.show',['user'=>Auth::user()->id]) }}">
+          <a class="nav-link h5 menu-hover" href="{{ route('users.show',['user'=>Auth::user()->id]) }}">
           <i class="fas fa-user-circle"></i>
-              <span data-feather="profile text-white">プロフィール</span>
+              <span data-feather="profile text-white text-hover">プロフィール</span>
             </a>
           </li>
-          <li class="nav-item border border-light text-center py-3">
-            <a class="post-link text-white text-decoration-none" href="{{route('posts.create')}}">
-            <span data-feather="post">投稿する</span>
+          <li class="nav-item text-center py-3 btn btn-light rounded">
+            <a class="post-link text-decoration-none d-block" href="{{route('posts.create')}}">
+            <span data-feather="post text-primary">投稿する</span>
             </a>
           </li>
-          <li class="nav-item border border-light text-center py-3 mt-2">
-            <a class="post-link text-white text-decoration-none" href="{{route('posts.twitter.create')}}">
-            <span data-feather="post"><i class="fab fa-twitter mr-2"></i>Twitterで投稿する</span>
+          <li class="nav-item text-center py-3 mt-2 btn btn-primary rounded">
+            <a class="post-link text-white text-decoration-none d-block" href="{{route('posts.twitter.create')}}">
+            <span data-feather="post"><i class="fab fa-twitter mr-2"></i>Twitterに投稿する</span>
             </a>
           </li>
         </ul>

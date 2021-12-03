@@ -42,22 +42,24 @@ Route::group(['prefix'=>'users','as'=>'users.','middleware'=>'auth'],function() 
     Route::resource('comments','CommentController');
 //フォルダーとタスク
 Route::group(['prefix'=>'folders','as'=>'folders.','middleware'=>'auth'],function() {
-Route::get('{id}/tasks','TaskController@index')->name('index');
-Route::get('create','FolderController@create')->name('create');
-Route::post('store','FolderController@store')->name('store');
-Route::post('{id}/destroy','FolderController@destroy')->name('destroy');
-Route::get('{id}/edit','FolderController@edit')->name('edit');
-Route::post('{id}/update','FolderController@update')->name('update');
-Route::get('{id}/tasks/create','TaskController@create')->name('tasks.create');
-Route::post('{id}/tasks/store','TaskController@store')->name('tasks.store');
-Route::get('{id}/tasks/{task_id}/edit','TaskController@edit')->name('tasks.edit');
-Route::post('{id}/tasks/{task_id}/update','TaskController@update')->name('tasks.update');
-Route::post('{id}/tasks/{task_id}/destroy','TaskController@destroy')->name('tasks.destroy');
+   Route::get('{id}/tasks','TaskController@index')->name('index');
+   Route::get('create','FolderController@create')->name('create');
+   Route::post('store','FolderController@store')->name('store');
+   Route::post('{id}/destroy','FolderController@destroy')->name('destroy');
+   Route::get('{id}/edit','FolderController@edit')->name('edit');
+   Route::post('{id}/update','FolderController@update')->name('update');
+   Route::get('{id}/tasks/create','TaskController@create')->name('tasks.create');
+   Route::post('{id}/tasks/store','TaskController@store')->name('tasks.store');
+   Route::get('{id}/tasks/{task_id}/edit','TaskController@edit')->name('tasks.edit');
+   Route::post('{id}/tasks/{task_id}/update','TaskController@update')->name('tasks.update');
+   Route::post('{id}/tasks/{task_id}/destroy','TaskController@destroy')->name('tasks.destroy');
 });   
 Auth::routes();
 //Googleログイン
 Route::get('login/google', 'Auth\LoginController@redirectToGoogle');
 Route::get('login/google/callback', 'Auth\LoginController@handleGoogleCallback');
+# ゲストユーザーログイン
+Route::get('guest', 'Auth\LoginController@guestLogin')->name('login.guest');
 //いいねボタン
 Route::post('posts/{post}/likes','LikeController@store')->name('likes');
 Route::post('posts/{post}/unlikes','LikeController@destroy')->name('unlikes');

@@ -80,7 +80,7 @@
 
       <!-- button -->
       <div>
-        <button id="startBtn" type="button" class="secBtn btn btn-outline-secondary">スタート</button>
+        <button id="startBtn" type="button" class="secBtn btn btn-outline-primary">スタート</button>
       </div>
 
     </div>
@@ -101,7 +101,7 @@
 
       <!-- button -->
       <div>
-        <button id="stopBtn" type="button" class="btn btn-outline-secondary">一時停止</button>
+        <button id="stopBtn" type="button" class="btn btn-outline-danger">一時停止</button>
         <button id="cancelBtn" type="button" class="btn btn-outline-secondary">キャンセル</button>
       </div>
 

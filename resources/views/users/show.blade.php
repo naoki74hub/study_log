@@ -26,15 +26,15 @@
                      </div>
                     @if( Auth::id() === $user->id )
                    <div class="mr-5" style="max-width:600px;width:100%;">
-                    <div class="border mt-3 ml-3 rounded" style="max-width:600px; width:100%;height:130px;">
+                    <div class="border border-dark mt-3 ml-3 rounded speech-bubbles" style="max-width:600px; width:100%;height:130px;">
                       @if($user->id === Auth::user()->id && empty($user->self_introduction))
-                      <p>自己紹介を設定し、自分を表現しよう!!
+                      <p class="mt-5 ml-4" style="font-size:30px;">自己紹介を設定し、自分を表現しよう!!
                       @elseif(!empty($user->self_introduction))
                       <p class="p-2">{{ $user->self_introduction ?? old('self_introduction') }}</p>
                       @endif
                     </div>
                     @else
-                     <div class="border mt-3 mr-2" style="max-width:600px; width:100%; height:130px;">
+                     <div class="border border-dark mt-3 mr-2 speech-bubbles" style="max-width:600px; width:100%; height:130px;">
                       <p class="p-2">{{ $user->self_introduction ?? old('self_introduction') }}</p>
                     </div>
                     @endif
@@ -63,9 +63,10 @@
                       @endif
                      </div>
                     <div class="d-inline-block mt-4 border text-center rounded mb-3 ml-4" style="max-width:500px;height:150px;width:100%;display:teble-cel;vertical-align: middle;">
-                      <i class="far fa-flag fa-2x py-2 pr-2" style="color:red;"></i><span class="font-weight-bold h4 mb-0 py-2">達成目標</span><hr class="m-0">
+                      <div class="bg-success"><i class="far fa-flag fa-2x py-2 pr-2" style="color:black;"></i><span class="font-weight-bold h4 mb-0 py-2">達成目標</span>
+                      </div><hr class="m-0">
                       @if($user->id === Auth::user()->id && empty($user->goal))
-                      <p style="padding-top:40px;">達成したい目標を視覚化すると効果的!! ぜひ設定しよう</p>
+                      <p style="padding-top:40px;font-size:18px;">達成したい目標を視覚化すると効果的!! ぜひ設定しよう</p>
                       @elseif(!empty($user->goal))
                       <p class="p-2 text-left">{{ $user->goal ?? old('goal') }}</p>
                       @endif
