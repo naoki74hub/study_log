@@ -5,13 +5,16 @@
 @section('content')
 
 <div class="container">
-  @isset($search_result)
-    <div class="text-center">
-     <div class="search-title h3 mt-5">{{ $search_result }}</div>
+@isset($search_result)
+  <div class="text-center">
+    <div class="search-title h3 mt-5">{{ $search_result }}</div>
+  </div>
+@endisset
+  @foreach($posts as $post)
+    @include('posts.card')
+  @endforeach
+    <div class="top-back">
+      <a href="#"><div class="to-top"><i class="fas fa-3x fa-chevron-up"></i></div></a>
     </div>
-    @endisset
-    @foreach($posts as $post)
-      @include('posts.card')
-    @endforeach
- </div>
+</div>
 @endsection

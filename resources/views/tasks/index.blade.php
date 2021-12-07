@@ -29,7 +29,6 @@
                     25
                   </button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
-                    <a class="dropdown-item" value="1">1</a>
                   　<a class="dropdown-item" value="15">15</a>
                     <a class="dropdown-item" value="20">20</a>
                     <a class="dropdown-item" value="25">25</a>
@@ -130,7 +129,10 @@
                 {{ $folder->title }}
               </a>
               <a href="{{route('folders.edit',['id'=>$folder->id])}}"><i class="fa fa-pen mt-3 ml-2"></i></a></td>
-              <span data-toggle="modal" data-target="#modal-delete-{{ $folder->id }}"><i class="fa fa-trash-alt text-danger mt-3 ml-4"></i></span>
+              @if($folder->id === 1)
+              @else
+              <span class="folder-delete" data-toggle="modal" data-target="#modal-delete-{{ $folder->id }}"><i class="fa fa-trash-alt text-danger mt-3 ml-4"></i></span>
+              @endif
             </div>
              <!-- modal -->
           <div id="modal-delete-{{ $folder->id }}" class="modal fade" tabindex="-1" role="dialog">
@@ -223,3 +225,4 @@
 </div>
 </main>
 @endsection
+                    

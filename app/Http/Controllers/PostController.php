@@ -6,7 +6,7 @@ use App\Http\Requests\PostRequest;
 use App\Models\Post;
 use App\Models\Tag;
 use App\Models\Comment;
-use App\User;
+use App\Models\User;
 use Storage;
 use Illuminate\Support\Facades\Auth;
 

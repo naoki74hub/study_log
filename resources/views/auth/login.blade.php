@@ -59,7 +59,7 @@
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn" style="background-color:#1b253c;">
-                                    <a class="text-white">{{ __('ログイン') }}</a>
+                                    <a class="text-white text-decoration-none">{{ __('ログイン') }}</a>
                                 </button>
                                 <button class="btn btn-danger">
                                   <a href="/login/google" class="text-white text-decoration-none"><i class="fab fa-google mr-2"></i>Googleでログイン</a>

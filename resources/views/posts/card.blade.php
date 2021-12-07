@@ -125,12 +125,20 @@
       <input type="submit" class="fas btn btn-danger mr-2 py-2 js-like-toggle" data-postid="{{ $post->id }}" value="&#xf004;{{ $post->likes()->count() }}">
     </form>
   </div>
-@else
+  <a href="{{ route('likes.users',['post'=>$post]) }}">
+  <span>いいねしたユーザー一覧<i class="fas fa-users"></i></span>
+  </a>
+  @else
   <div class="col-md-3">
     <form method="POST" action="{{ route('likes',$post) }}">
       @csrf
       <input type="submit" class="fas btn border-dark py-2 js-like-toggle" data-postid="{{ $post->id }}" value="&#xf004;{{ $post->likes()->count() }}">
     </form>
+  </div>
+  <div>
+    <a href="{{ route('likes.users',['post'=>$post]) }}">
+    <span>いいねしたユーザー一覧<i class="fas fa-users"></i></span>
+    </a>
   </div>
  @endif
 </div>

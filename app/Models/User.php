@@ -1,7 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
+use App\Notifications\PasswordResetUserNotification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -50,12 +51,12 @@ class User extends Authenticatable
     
     public function followers()
     {
-       return $this->belongsToMany('App\User','followers','followed_id','following_id');   
+       return $this->belongsToMany('App\Models\User','followers','followed_id','following_id');   
     }
     
     public function follows()
     {
-        return $this->belongsToMany('App\User','followers','following_id','followed_id');
+        return $this->belongsToMany('App\Models\User','followers','following_id','followed_id');
     }
     
     // フォローする
@@ -81,6 +82,11 @@ class User extends Authenticatable
     {
         return (boolean) $this->followers()->where('following_id', $user_id)->first(['id']);
     }
+    
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new PasswordResetUserNotification($token));    
+    }   
     
 }
 

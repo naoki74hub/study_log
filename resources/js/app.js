@@ -3,8 +3,8 @@
 //  * includes Vue and other libraries. It is a great starting point when
 //  * building robust, powerful web applications using Vue and Laravel.
 //  */
-
 require('./bootstrap');
+require('./top_back');
 require('./stopwatch');
 require('./pomodoro_timer');
 require('./timer');

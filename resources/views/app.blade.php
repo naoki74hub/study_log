@@ -19,14 +19,14 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     
     <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
-
+    
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     
 </head>
 
  <body>
-　<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow" style="position:fixed; top:0; left:0; width:100%; height:50px;">
+　<header class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow" id="js-header" style="position:fixed; top:0; left:0; width:100%; height:50px;">
     <i class="fas fa-pencil-alt ml-2" style="color:white;"><a class="navbar-brand col-md-3 col-lg-2 me-0 px-3 text-white" href="#">スタマネ</a></i>
   <form  method="POST" action="{{route('posts.search')}}">
     @csrf
@@ -58,19 +58,35 @@
       <div class="sidebar-sticky sticky-top">
         <ul class="nav flex-column">
           <div class="level mt-5">
-             <span class="display-3 text-white">{{ $level }}</span>
+            @if(Auth::check()  && !$posts2->count() > 0)
+           <span class="display-3 text-white">Lv.0</span>
+  　        @elseif(Auth::check() && $posts2->count() > 0)
+           <span class="display-3 text-white">{{ $level }}</span>
+          　@endif
           </div>
           <div class="sum-time mt-3 border border-white text-center py-2">
             <i class="far fa-clock text-white">総学習時間</i><br><br>
-            <span class="h3 text-white">{{ $total_time }}</span>
+            @if(Auth::check()  && !$posts2->count() > 0)
+            <span class="h3 text-white">０時間0分</span>
+            @elseif(Auth::check() && $posts2->count() > 0)
+             <span class="h3 text-white">{{ $total_time }}</span>
+            @endif
           </div>
           <div class="continuation-days text-center border border-white mt-3 py-2">
-               <i class="fas fa-pencil-alt text-white">活動日数</i><br><br>
-              <span class="h3 text-white"></span>
+            <i class="fas fa-pencil-alt text-white">活動日数</i><br><br>
+            @if(Auth::check() && !$posts2->count() > 0)
+             <span class="h3 text-white">0日</span>
+            @elseif(Auth::check() && $posts2->count() > 0))
+             <span class="h3 text-white">{{ $post_day }}</span>
+            @endif
           </div>
           <div class="continuation-days text-center border border-white mt-3 py-2">
               <i class="fas fa-running text-white">継続日数</i><br><br>
-              <span class="h3 text-white"></span>
+            @if(Auth::check() && !$posts2->count() > 0)
+             <span class="h3 text-white">0日</span>
+             @elseif(Auth::check() && $posts2->count() > 0))
+            <span class="h3 text-white">{{ $result }}</span>
+            @endif
           </div>
           <li class="nav-item mt-3 hover-text1">
             <a class="nav-link h5 menu-hover" href=" {{route('posts.index')}}">
@@ -115,6 +131,7 @@
     </main>
   </div>
 </div>
+
 </body>
 
 </html>

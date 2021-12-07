@@ -17,7 +17,7 @@ class Post extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Models\User');
     }
     
     
@@ -29,7 +29,7 @@ class Post extends Model
     
     public function likes()
     {
-        return $this->belongsToMany('App\User','likes')->withTimestamps();
+        return $this->belongsToMany('App\Models\User','likes')->withTimestamps();
     }
     
     
