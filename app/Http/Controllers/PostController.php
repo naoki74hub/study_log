@@ -9,6 +9,7 @@ use App\Models\Comment;
 use App\Models\User;
 use Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -27,7 +28,7 @@ class PostController extends Controller
                 
        } else {
         $posts = Post::latest()->get();
-       
+        
         return view('posts/index',compact('posts','user','image'));
         }
     }
@@ -39,7 +40,7 @@ class PostController extends Controller
     }
     
     //store
-    public function store(PostRequest $request, Post $post)
+    public function store(PostRequest $request, Post $post,User $user)
     {
         $post->title = $request->input('title');
         $post->time = $request->input('time');
@@ -54,6 +55,30 @@ class PostController extends Controller
         $post->image_url = Storage::disk('s3')->url($path);
         }
         
+        $user = Auth::user();
+        $post_times = $user->posts;
+        //総学習時間の処理
+        $level = $user->level;
+        
+        $total_hour = 0;
+        $total_minutes = 0;
+        foreach($post_times as $post_time) {
+          $total_hour += substr($post_time->time,0,2);
+          $total_minutes += substr($post_time->time,3,2);
+          if($total_minutes >= 60) {
+          $total_minutes = $total_minutes - 60;  
+          $total_hour ++;
+        }
+        //レベル
+        $level = floor($total_hour / 10 );
+        $flg = false;
+        if($level > $user->level) {
+            $flg = true;
+        }
+        
+        $user->level = $level;
+    }
+        $user->save();
         //bodyからtagを抽出
         preg_match_all('/#([a-zA-Z0-9０-９ぁ-んァ-ヶー一-龠]+)/u',$request->body,$match);
         
@@ -72,9 +97,7 @@ class PostController extends Controller
         $post->save();
         $post->tags()->attach($tag_ids);
         
-        return redirect()->route('posts.index');
-        
-       
+        return redirect()->route('posts.index')->with('flg',$flg);
     }
     
     //edit
@@ -171,6 +194,12 @@ class PostController extends Controller
         return view('posts.timeline')->with([
             'posts' => $posts,
             ]);
+    }
+    
+     public function getLikesUsers(Post $post)
+    {
+      
+        return view('posts/likes_users',compact('post'));
     }
     
 }

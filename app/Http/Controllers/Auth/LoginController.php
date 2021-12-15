@@ -23,6 +23,13 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
+    /**
+     * ログアウトしたときの画面遷移先
+     */
+    protected function loggedOut(\Illuminate\Http\Request $request)
+    {
+        return redirect('login');
+    }
 
     /**
      * Where to redirect users after login.
@@ -84,5 +91,27 @@ class LoginController extends Controller
             'password' => \Hash::make(uniqid()),
         ]);
         return $user;
+    }
+    
+    public function redirectToTwitterProvider()
+   {
+       return Socialite::driver('twitter')->redirect();
+   }
+   
+    public function handleTwitterProviderCallback(){
+
+       try {
+           $user = Socialite::with("twitter")->user();
+       } 
+       catch (\Exception $e) {
+           return redirect('/login')->with('oauth_error', 'ログインに失敗しました');
+           // エラーならログイン画面へ転送
+       }
+       
+       $myinfo = User::firstOrCreate(['token' => $user->token ],
+                 ['name' => $user->nickname,'email' => $user->getEmail()]);
+                 Auth::login($myinfo);
+                 return redirect()->to('posts/index'); // homeへ転送
+    
     }
 }

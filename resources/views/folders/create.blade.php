@@ -6,7 +6,7 @@
    <div class="container mt-5">
       <div class="row">
         <div class="col-8 mx-auto">
-          <nav class="card mt-3">
+          <nav class="card mt-3 darkmode-post">
             <div class="card-text text-white bg-primary pl-2 py-2">フォルダを追加する</div>
             <div class="card-body">
                @include('error_list')

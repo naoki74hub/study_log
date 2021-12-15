@@ -57,12 +57,15 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
+                            <div style="max-width:600px; width:100%; margin:0 auto; margin-left:100px">
                                 <button type="submit" class="btn" style="background-color:#1b253c;">
                                     <a class="text-white text-decoration-none">{{ __('ログイン') }}</a>
                                 </button>
                                 <button class="btn btn-danger">
                                   <a href="/login/google" class="text-white text-decoration-none"><i class="fab fa-google mr-2"></i>Googleでログイン</a>
+                                </button>
+                                 <button class="btn btn-primary">
+                                    <a href="/login/twitter" class="text-white text-decoration-none"><i class="fab fa-twitter"></i> Twitterでログイン</a>
                                 </button>
                                 <button class="btn btn-success">
                                     <a href="{{ route('login.guest') }}" class="text-white text-decoration-none"><i class="fas fa-user mr-2"></i>ゲストログイン</a>

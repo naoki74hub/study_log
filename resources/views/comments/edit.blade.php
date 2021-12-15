@@ -8,11 +8,11 @@
       <div class="col-12">
         <div class="card mt-3">
            @include('error_list')
-          <div class="card-body pt-0">
+          <div class="card-body pt-0 darkmode-post">
             <div class="card-text">
               <form method="POST" action="{{route('comments.update',['comment' => $comment->id])}}">
                   @csrf
-                  @method('PUT');
+                  @method('PUT')
                   <div class="form-group mt-3">
                     <label for="comment">コメント:</label>
                     <textarea class="form-control" row="5" id="comment" name="comment">{{ $comment->comment ?? old('comment') }}</textarea>

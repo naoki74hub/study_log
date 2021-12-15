@@ -15,9 +15,8 @@
     /* padStart()で二桁または三桁固定表示とする */
     const m = String(d.getMinutes()).padStart(2, '0');
     const s = String(d.getSeconds()).padStart(2, '0');
-    const ms = String(d.getMilliseconds()).padStart(3, '0');
     /* 描画 */
-    timer.textContent = `${m}:${s}.${ms}`;
+    timer.textContent = `${m}:${s}`;
 
     timeoutid = setTimeout(() => {
       //再帰呼び出し
@@ -81,7 +80,7 @@
     }
     // ボタンを'初期'状態とする
     setButtonStateInitial()
-    timer.textContent = '00:00.000';
+    timer.textContent = '00:00';
     elapsedTime = 0;
   });
 }

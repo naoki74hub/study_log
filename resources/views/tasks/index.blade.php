@@ -2,12 +2,12 @@
 @section('title', '管理')
 @section('content')
 <main>
- <div class="time-container">
-    <div id="timer" class="mt-5">00:00.000</div>
+ <div class="time-container darkmode-post">
+    <div id="timer" class="mt-5 text-dark">00:00</div>
     <div class="controls">
-      <div id="start" class="time-btn border border-dark">スタート</div>
-      <div id="stop" class="time-btn border border-dark">ストップ</div>
-      <div id="reset" class="time-btn border border-dark">リセット</div>
+      <div id="start" class="time-btn border darkmode-post">スタート</div>
+      <div id="stop" class="time-btn border  darkmode-post">ストップ</div>
+      <div id="reset" class="time-btn border  darkmode-post">リセット</div>
     </div>
   </div>
    <div id="container">
@@ -114,9 +114,9 @@
   </div>
   <div class="container">
     <div class="row mt-5">
-      <div class="col-md-4 card mt-5 px-0">
+      <div class="col-md-4 mt-5 px-0">
        <div class="card-text text-white pl-2 py-2" style="background-color:#1b253c;"><i class="far fa-folder mr-2"></i>フォルダー</div>
-        <nav>
+        <nav class="darkmode-post card">
           <div class="card-body">
             <a href="{{ route('folders.create') }}" class="btn btn-default btn-block btn-primary mb-2">
               <i class="fas fa-plus mr-2"></i>フォルダを追加する
@@ -124,14 +124,14 @@
           </div>
           <div class="list-group">
             @foreach($folders as $folder)
-            <div class="d-flex border border">
+            <div class="d-flex">
               <a href="{{ route('folders.index', ['id' => $folder->id]) }}" class="list-group-item text-decoration-none {{ $current_folder_id === $folder->id ? 'active' : ''}}" style="width:285px;">
                 {{ $folder->title }}
               </a>
               <a href="{{route('folders.edit',['id'=>$folder->id])}}"><i class="fa fa-pen mt-3 ml-2"></i></a></td>
               @if($folder->id === 1)
               @else
-              <span class="folder-delete" data-toggle="modal" data-target="#modal-delete-{{ $folder->id }}"><i class="fa fa-trash-alt text-danger mt-3 ml-4"></i></span>
+              <span class="folder-delete mr-2" data-toggle="modal" data-target="#modal-delete-{{ $folder->id }}"><i class="fa fa-trash-alt text-danger mt-3 ml-4"></i></span>
               @endif
             </div>
              <!-- modal -->
@@ -145,7 +145,7 @@
                 </div>
                 <form method="POST" action="{{ route('folders.destroy',['id'=>$folder]) }}">
                   @csrf
-                 <div class="modal-body">
+                 <div class="modal-body bg-dark">
                     {{ $folder->title }}を削除します。よろしいですか？
                   </div>
                   <div class="modal-footer justify-content-between">
@@ -162,7 +162,7 @@
      </nav>
   </div>
 <div class="column col-md">
-<div class="card mt-5">
+<div class="card mt-5 darkmode-post">
  <div class="card-text text-white pl-2 py-2" style="background-color:#1b253c;"><i class="fas fa-fire mr-2"></i>タスク</div>
   <div class="card-body">
     <div class="text-center">
@@ -171,7 +171,7 @@
       </a>
     </div>
   </div>
-  <table class="table">
+  <table class="table text-primary" id="table">
     <thead>
     <tr>
       <th>タイトル</th>
@@ -204,7 +204,7 @@
                 </div>
                 <form method="POST" action="{{ route('folders.tasks.destroy',['id'=>$task->folder_id,'task_id'=>$task->id]) }}">
                   @csrf
-                 <div class="modal-body">
+                 <div class="modal-body bg-dark">
                     {{ $task->title }}を削除します。よろしいですか？
                   </div>
                   <div class="modal-footer justify-content-between">
@@ -219,10 +219,11 @@
       @endforeach
     </tbody>
   </table>
-</div>
-</div>
+ </div>
+ </div>
 </div>
 </div>
 </main>
+
 @endsection
                     

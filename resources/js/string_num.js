@@ -1,3 +1,4 @@
+'use strict';
 //投稿のテキストエリア
 const textarea = document.querySelector('.textarea');
 //入力の文字数

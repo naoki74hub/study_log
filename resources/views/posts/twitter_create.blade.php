@@ -6,7 +6,7 @@
 <div class="container pt-5">
     <div class="row">
       <div class="col-12">
-        <div class="card mt-3">
+        <div class="card mt-3 darkmode-post">
           @include('error_list')
           <div class="card-body pt-0">
             <div class="card-text">

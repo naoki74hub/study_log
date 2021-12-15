@@ -6,14 +6,14 @@
 <div class="container mt-5">
    <div class="mt-3">
         <div>
-            <div class="card">
+            <div class="card darkmode-post">
                 <div>
                   <div class="d-flex justify-content-center">
                     <!--<div class="border" style="width:70px;height:70px;border-radius:50%;position:relative;">-->
                     <!--  <span style="position:absolute;top:25%;left:10%;">{{ $level }}</span>-->
                     <!--</div>-->
                     <div class="ml-2">
-                      <div class="avatar mt-3 mr-3" style="width:110px;height:110px;border-radius:50%;">
+                      <div class="avatar mt-3 mr-4" style="width:110px;height:110px;border-radius:50%;">
                       @if(empty($user->avatar))
                         <i class="fas fa-user-circle fa-8x"></i>
                         @elseif(!empty($user->avatar))
@@ -23,43 +23,44 @@
                      <div class="font-weight-bold text-center mt-2 mr-3">
                       {{$user->name}}
                      </div>
-                     </div>
+                      <div class="user-level border bg-dark text-white text-center" style="height:30px;"><span style="font-size:20px;">Lv.{{ $user->level }}</span></div>
+                    </div>
                     @if( Auth::id() === $user->id )
                    <div class="mr-5" style="max-width:600px;width:100%;">
-                    <div class="border border-dark mt-3 ml-3 rounded speech-bubbles" style="max-width:600px; width:100%;height:130px;">
+                    <div class="border mt-3 ml-3 rounded speech-bubbles" style="max-width:600px; width:100%;height:130px;">
                       @if($user->id === Auth::user()->id && empty($user->self_introduction))
-                      <p class="mt-5 ml-4" style="font-size:30px;">自己紹介を設定し、自分を表現しよう!!
+                      <p class="mt-5 ml-4" style="font-size:18px;">自己紹介を設定し、自分を表現しよう!!
                       @elseif(!empty($user->self_introduction))
                       <p class="p-2">{{ $user->self_introduction ?? old('self_introduction') }}</p>
                       @endif
                     </div>
                     @else
-                     <div class="border border-dark mt-3 mr-2 speech-bubbles" style="max-width:600px; width:100%; height:130px;">
+                     <div class="border mt-3 mr-2 speech-bubbles" style="max-width:600px; width:100%; height:130px;">
                       <p class="p-2">{{ $user->self_introduction ?? old('self_introduction') }}</p>
                     </div>
                     @endif
                     </div>
-                     @if ($user->id === Auth::user()->id && empty($user->self_introduction && $user->goal && $user->important_day_title && $user->important_day))
+                     @if ($user->id === Auth::user()->id && empty($user->self_introduction || $user->goal || $user->important_day_title || $user->important_day))
                     <div class="ml-2">
                       <a href="{{ route('users.create') }}" class="btn btn-primary mt-3">プロフィールを設定する</a>
-                    </div>
+                      </div>
                     @elseif($user->id === Auth::user()->id && !empty($user->self_introduction || $user->goal || $user->important_day_title || $user->important_day))
                     <div>
                       <a href="{{ route('users.edit',['user'=>$user]) }}" class="btn btn-primary mt-3">プロフィールを編集する</a>
-                    </div>
+                      </div>
                     @endif
                     </div>
                     <div class="text-center">
-                     <div class="d-inline-block mt-4 border text-center rounded  bg-success" style="max-width:235px;height:180px;width:100%;display:teble-cell;vertical-align:middle;">
+                     <div class="d-inline-block mt-4 text-center rounded  bg-success" style="max-width:235px;height:180px;width:100%;display:teble-cell;vertical-align:middle;">
                        @if($user->id === Auth::user()->id && empty($user->important_day_title))
-                       <p class="p-2 text-left mb-0">イベントタイトルとその日までのカウントダウンを設定しよう!</p><hr style="margin:0 0 10px 0;">
+                       <p class="p-2 text-left mb-0">イベントタイトルとその日までのカウントダウンを設定しよう!</p><hr style="margin:0;">
                        @elseif(!empty($user->important_day_title))
-                       <p class="p-2 text-left">{{ $user->important_day_title }}</p><hr>
+                       <p class="p-2 text-left">{{ $user->important_day_title }}</p><hr class="m-0">
                       @endif
                       @if( Auth::user()->id === $user->id && empty($user->important_day))
-                      <p>あと<span class="display-3">000</span>日</p>
+                      <p class="pt-3 mb-0 bg-warning pb-4 text-dark" style="color:#333; position:relative;"><i class="far fa-3x fa-calendar-alt" style="position:absolute; top:10px; left:10px;"></i>あと<span class="display-3">000</span>日</p>
                       @elseif(!empty($user->important_day))
-                      <p>あと<span class="display-3">{{ $count_down }}</span>日</p>
+                      <p class="pt-3 mb-0 bg-warning pb-4" style="color:#333; position:relative;"><i class="far fa-3x fa-calendar-alt" style="position:absolute; top:10px; left:10px;"></i>あと<span class="display-3">{{ $count_down }}</span>日</p>
                       @endif
                      </div>
                     <div class="d-inline-block mt-4 border text-center rounded mb-3 ml-4" style="max-width:500px;height:150px;width:100%;display:teble-cel;vertical-align: middle;">
@@ -97,7 +98,7 @@
         @if (isset($timelines))
             @foreach ($timelines as $timeline)
                 <div class="container">
-                    <div class="card mt-3 border-light">
+                    <div class="card mt-3 border-light darkmode-post">
                         <div class="card-body d-flex flex-row border-top border-bottom">
                              <div class="avatar mr-3" style="width:70px;height:70px;border-radius:50%;">
                                 @if(empty($user->avatar))
@@ -113,9 +114,11 @@
                             <div class="font-weight-lighter">
                                 <p class="mb-0 text-secondary">{{ $timeline->created_at->format('Y-m-d H:i') }}</p>
                             </div>
+                            @if(!empty($timeline->image_url))
                             <div class="card-image mt-2">
                                  <img src="{{ $timeline->image_url }}" width="110px" height="145px">
                             </div>
+                            @endif
                            </div>
                             <div class="card-body ml-3">
                                 <div class="d-flex justify-content-between">
@@ -198,21 +201,26 @@
                         </div>
                         <div class="mt-4">
                          @if($timeline->likes()->where('user_id', Auth::id())->exists())
-                          <div class="col-md-3">
+                          <div class="col-md-3" style="width:70px;">
                             <form method="POST" action="{{ route('unlikes',$timeline) }}">
                               @csrf
                               <input type="submit" class="fas btn btn-danger mr-2 py-2" value="&#xf004;{{ $timeline->likes()->count() }}">
                             </form>
                           </div>
                         @else
-                          <div class="col-md-3">
+                          <div class="col-md-3" style="width:70px;">
                             <form method="POST" action="{{ route('likes',$timeline) }}">
                               @csrf
-                              <input type="submit" class="fas btn border-dark py-2" value="&#xf004;{{ $timeline->likes()->count() }}">
+                              <input type="submit" class="fas btn border py-2 darkmode-like text-secondary" value="&#xf004;{{ $timeline->likes()->count() }}">
                             </form>
                           </div>
                          @endif
                         </div>
+                         <div style="width:32px; height:32px;" class="pr-2 pt-4">
+                           <a href="{{ route('likes.users',['post'=>$timeline]) }}">
+                            <span><i class="fas fa-user fa-2x" style="height:32px; color:#E3342F;"></i></span>
+                           </a>
+                          </div>
                       </div>
                     </div>
                  </div>

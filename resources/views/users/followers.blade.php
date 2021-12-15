@@ -6,7 +6,7 @@
 
 <div class="container mt-5">
   @foreach($followers as $follower)
-   <div class="card mt-3 border-light">
+   <div class="card mt-3 border-light darkmode-post">
     <div class="card-body border-top border-bottom d-flex">
      <div>
       <div class="follower-name">

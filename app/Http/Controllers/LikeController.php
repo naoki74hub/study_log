@@ -39,7 +39,7 @@ class LikeController extends Controller
     {
         $post->likes()->attach(Auth::id());
         
-        return redirect()->route('posts.index');
+        return back();
     }
 
     /**
@@ -86,14 +86,8 @@ class LikeController extends Controller
     {
         $post->likes()->detach(Auth::id());
         
-        return redirect()->route('posts.index');
+        return back();
     }
     
-    public function getLikesUsers(User $user,Post $post)
-    {
-       
-        
-        return view('posts/likes_users',compact('users'));
-    }
 }
 

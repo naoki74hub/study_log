@@ -9,9 +9,9 @@
 <div class="pt-3">
    <a href="{{ route('comments.create',['post_id'=>$post->id]) }}" class="btn btn-primary">コメントする</a>
  @foreach($post->comments as $comment)
-  <div class="card">
-    <div class="card-body">
-     <div class="card-body d-flex flex-row border-top border-bottom">
+  <div class="card mt-2" style="position:relative;">
+    <div class="card-body darkmode-post">
+     <div class="card-body d-flex flex-row">
       <div class="d-flex flex-row">
        <div>
         <i class="fas fa-user-circle fa-3x mr-1"></i>
@@ -33,7 +33,7 @@
           <div class="ml-auto card-text">
             <div class="dropdown">
               <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <button type="button" class="btn btn-link text-muted m-0 p-2">
+                <button type="button" class="btn btn-link text-muted m-0 p-2" style="position:absolute; top:-20px; right:-20px;">
                   <i class="fas fa-ellipsis-v"></i>
                 </button>
               </a>
@@ -76,6 +76,38 @@
           <!-- modal -->
         @endif
      </div>
+       <div class="row justify-content-end">
+      <!--コメント機能-->
+      <div class="mt-4">
+        <a href="{{ route('posts.show',['post'=> $post->id]) }}" class='comments mr-3'>
+       <div class="btn btn-primary py-1">
+          <i class="far fa-comment-alt fa-lg mr-2"></i>{{ $post->comments()->count() }}
+      </div>
+        </a>
+    </div>
+    <div class="mt-4" style="width:70px;">
+       @if($post->likes()->where('user_id', Auth::id())->exists())
+      <div class="col-md-3">
+        <form method="POST" action="{{ route('unlikes',$post) }}">
+          @csrf
+          <input type="submit" class="fas btn btn-danger mr-2 py-2 js-like-toggle" data-postid="{{ $post->id }}" value="&#xf004;{{ $post->likes()->count() }}">
+        </form>
+      </div>
+     @else
+      <div class="col-md-3">
+        <form method="POST" action="{{ route('likes',$post) }}">
+          @csrf
+          <input type="submit" class="fas btn border py-2 js-like-toggle darkmode-like" data-postid="{{ $post->id }}" value="&#xf004;{{ $post->likes()->count() }}" style="color:#6c7176;">
+        </form>
+      </div>
+     @endif
+    </div> 
+    <div style="width:32px; height:32px;" class="pr-2 pt-4">
+     <a href="{{ route('likes.users',['post'=>$post]) }}">
+      <span><i class="fas fa-user fa-2x" style="height:32px; color:#E3342F;"></i></span>
+     </a>
+    </div>
+    </div>
    </div>
  </div>
  @endforeach

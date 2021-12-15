@@ -8,7 +8,7 @@
       <div class="col-12">
         <div class="card mt-3">
            @include('error_list')
-          <div class="card-body pt-0">
+          <div class="card-body pt-0 darkmode-post">
             <div class="card-text">
               <form method="POST" action="{{route('comments.store')}}">
                   @csrf

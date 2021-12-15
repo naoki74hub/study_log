@@ -8,7 +8,7 @@
   <div class="container">
     <div class="row">
       <div class="col-8 mx-auto">
-        <nav class="card mt-5">
+        <nav class="card mt-5 darkmode-post">
           <div class="card-text bg-primary text-white pl-2 py-2">タスクを追加する</div>
           <div class="card-body">
              @include('error_list')

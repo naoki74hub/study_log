@@ -58,11 +58,14 @@ Auth::routes();
 //Googleログイン
 Route::get('login/google', 'Auth\LoginController@redirectToGoogle');
 Route::get('login/google/callback', 'Auth\LoginController@handleGoogleCallback');
+//Twitterログイン
+Route::get('login/twitter', 'Auth\LoginController@redirectToTwitterProvider');
+Route::get('login/twitter/callback', 'Auth\LoginController@handleTwitterProviderCallback');
 # ゲストユーザーログイン
 Route::get('guest', 'Auth\LoginController@guestLogin')->name('login.guest');
 //いいねボタン
 Route::post('posts/{post}/likes','LikeController@store')->name('likes');
 Route::post('posts/{post}/unlikes','LikeController@destroy')->name('unlikes');
-Route::get('posts/{post}/likes/users','LikeController@getLikesUsers')->name('likes.users');
+Route::get('posts/{post}/likes/users','PostController@getLikesUsers')->name('likes.users');
 
 Route::get('/home', 'HomeController@index')->name('home');

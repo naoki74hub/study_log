@@ -4,8 +4,8 @@
 
 @section('content')
 
-<div class="container">
-@isset($search_result)
+<div class="container mt-5">
+  @isset($search_result)
   <div class="text-center">
     <div class="search-title h3 mt-5">{{ $search_result }}</div>
   </div>
@@ -13,8 +13,11 @@
   @foreach($posts as $post)
     @include('posts.card')
   @endforeach
-    <div class="top-back">
-      <a href="#"><div class="to-top"><i class="fas fa-3x fa-chevron-up"></i></div></a>
-    </div>
+<div class="top-back">
+  <a href="#"><div class="to-top"><i class="fas fa-3x fa-chevron-up"></i></div></a>
+  </div>
 </div>
+@section('script')
+
+@endsection
 @endsection

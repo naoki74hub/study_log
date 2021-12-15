@@ -4,10 +4,11 @@
 //  * building robust, powerful web applications using Vue and Laravel.
 //  */
 require('./bootstrap');
-require('./top_back');
-require('./stopwatch');
+require('./darkmode');
 require('./pomodoro_timer');
-require('./timer');
+require('./stopwatch');
+require('./level_alert');
+require('./top_back');
 require('./string_num');
 
 
