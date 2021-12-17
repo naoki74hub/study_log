@@ -10,7 +10,7 @@
          @include('error_list')
           <div class="card-body pt-0">
             <div class="card-text">
-              <form method="POST" enctype="multipart/form-data" action="{{route('posts.update',['post'=>$post->id])}}">
+              <form method="POST" enctype="multipart/form-data" action="{{ route('posts.update', ['post' => $post]) }}">
                @include('posts.form')
                 <button type="submit" class="btn btn-block shadow p-3 mb-5 w-25 mx-auto btn-primary text-white">更新する</button>
               </form>

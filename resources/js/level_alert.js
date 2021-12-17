@@ -1,6 +1,6 @@
 'use strict';
 /*global flg*/
-if(flg === true) {
+if(level === true) {
 /*global swal*/
   swal ({
   title: 'レベルアップ🎉',

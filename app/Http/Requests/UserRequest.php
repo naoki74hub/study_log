@@ -24,22 +24,22 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'self_introduction'=>'max:160 | nullable',
-            'goal'=>'max:120 | nullable',
-            'important_day_title'=>'max:30 | nullable',
-            'important_day'=> 'nullable',
-            'avatar'=>'file|mimes:jpeg,png,jpg,bmb|max:2048 | nullable'
+            'self_introduction' => 'max:160 | nullable',
+            'goal' => 'max:120 | nullable',
+            'important_day_title' => 'max:30 | nullable',
+            'important_day' => 'nullable',
+            'avatar' => 'file | mimes:jpeg, png, jpg, bmb | max:2048 | nullable'
         ];
     }
     
     public function attributes()
     {
         return [
-            'self_introduction'=>'自己紹介',
-            'goal'=>'達成目標',
-            'important_day_title'=>'目標タイトル',
-            'important_day'=>'日付',
-            'avatar'=>'アバター画像'
+            'self_introduction' => '自己紹介',
+            'goal' => '達成目標',
+            'important_day_title' => '目標タイトル',
+            'important_day' => '日付',
+            'avatar' => 'アバター画像'
         ];
     }
 }

@@ -24,20 +24,20 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'=> 'required | max:40',
-            'time'=>'required',
-            'body'=>'max:210 | nullable',
-            'image_url'=>'file|mimes:jpeg,png,jpg,bmb|max:2048 | nullable'
+            'title' => 'required | max:40',
+            'time' => 'required',
+            'body' => 'max:210 | nullable',
+            'image_url' => 'file | mimes:jpeg, png, jpg, bmb | max:2048 | nullable'
         ];
     }
     
     public function attributes()
     {
         return [
-            'title'=>'タイトル',
-            'time'=>'時間',
-            'body'=>'本文',
-            'image_url'=>'画像'
-            ];
+            'title' => 'タイトル',
+            'time' => '時間',
+            'body' => '本文',
+            'image_url' => '画像'
+        ];
     }
 }

@@ -12,7 +12,7 @@
           <div class="card-text text-white pl-2 py-2" style="background-color:#1b253c;">タスクを編集する</div>
           <div class="card-body">
            @include('error_list')
-            <form method="POST" action="{{ route('folders.tasks.update', ['id' => $task->folder_id, 'task_id' => $task->id]) }}">
+            <form method="POST" action="{{ route('folders.tasks.update', ['folder' => $task->folder_id, 'task' => $task->id]) }}">
               @csrf
               <div class="form-group">
                 <label for="title">タイトル</label>

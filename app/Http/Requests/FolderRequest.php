@@ -24,7 +24,7 @@ class FolderRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'=>'required | max:30',
+            'title' => 'required | max:30',
         ];
     }
 }

@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateTaskRequest;
-use App\Http\Requests\EditTaskRequest;
 use App\Models\Folder;
 use App\Models\Task;
 use Illuminate\Support\Facades\Auth;
@@ -23,40 +23,32 @@ class TaskController extends Controller
         ]);
     }
     
-    
-    public function create(int $id)
+    public function create(Folder $folder)
     {
-        return view('tasks/create',['folder_id'=>$id]); 
+        return view('tasks/create', ['folder' => $folder]); 
     }
     
-    
-    public function store(int $id,CreateTaskRequest $request, Task $task)
+    public function store(int $id, Task $task, CreateTaskRequest $request)
     {
         $current_folder = Folder::find($id); 
-        
         $task->title = $request->input('title');
         $task->estimate_hour = $request->input('estimate_hour');
-    
-        $task->due_date = $request->due_date;
+        $task->due_date = $request->input('due_date');
+        
         $current_folder->tasks()->save($task);
         
-         return redirect()->route('folders.index', [
-        'id' => $current_folder->id,
-      ]);
+         return redirect()->route('folders.index', ['folder' => $current_folder]);
     }
     
-   
     public function edit(int $id, int $task_id)
     {
         $task = Task::find($task_id);
         
-        return view('tasks/edit',[
-            'task'=>$task
-        ]);
+        return view('tasks/edit', ['task' => $task]);
     }
     
     
-    public function update(int $id,int $task_id, EditTaskRequest $request)
+    public function update(int $id, int $task_id, CreateTaskRequest $request)
     {
         $task = Task::find($task_id);
         $task->title = $request->input('title');
@@ -66,21 +58,21 @@ class TaskController extends Controller
         
         $task->save();
         
-        return redirect()->route('folders.index',[
-            'id'=>$task->folder_id,
-            'task_id'=>$task->id,
+        return redirect()->route('folders.index', [
+            'folder' => $task->folder_id,
+            'task' => $task,
         ]);
     }
     
     
-    public function destroy(int $id, int $task_id)
+    public function destroy(Folder $folder, int $task_id)
     {
         $task = Task::find($task_id);
         $task->delete();
         
-        return redirect()->route('folders.index',[
-            'id'=>$task->folder_id,
-            'task_id'=>$task->id,
+        return redirect()->route('folders.index', [
+            'folder' => $task->folder_id,
+            'task' => $task,
             ]);
     }
 }

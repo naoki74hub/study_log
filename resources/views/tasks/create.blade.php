@@ -12,7 +12,7 @@
           <div class="card-text bg-primary text-white pl-2 py-2">タスクを追加する</div>
           <div class="card-body">
              @include('error_list')
-            <form action="{{ route('folders.tasks.store', ['id' => $folder_id]) }}" method="POST">
+            <form action="{{ route('folders.tasks.store', ['folder' => $folder]) }}" method="POST">
               @csrf
               <div class="form-group">
                 <label for="title">タイトル</label>

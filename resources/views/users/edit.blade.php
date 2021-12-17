@@ -11,7 +11,7 @@
          @include('error_list')
           <div class="card-body pt-0">
             <div class="card-text">
-              <form method="POST" enctype="multipart/form-data" action="{{route('users.update',['user'=>$user]) }}">
+              <form method="POST" enctype="multipart/form-data" action="{{ route('users.update', ['user' => $user]) }}">
                 @csrf
                 @method('PUT')
                   <div class="form-image_url mt-4">

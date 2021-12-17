@@ -104,7 +104,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link  h5 menu-hover" href="{{ route('folders.index',['id'=>1]) }}">
+            <a class="nav-link  h5 menu-hover" href="{{ route('folders.index',['folder'=>1]) }}">
             <i class="far fa-clock"></i>
               <span data-feather="record text-hover text-white">管理</span>
             </a>

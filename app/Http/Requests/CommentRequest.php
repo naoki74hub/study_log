@@ -25,8 +25,8 @@ class CommentRequest extends FormRequest
     {
         return [
             'comment'=> 'required | max:210',
-            'user_id'=>'required | numeric',
-            'post_id'=>'required | numeric',
+            // 'user_id'=>'required | numeric',
+            // 'post_id'=>'required | numeric',
         ];
     }
 }

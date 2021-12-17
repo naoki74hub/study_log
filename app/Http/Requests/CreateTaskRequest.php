@@ -24,9 +24,9 @@ class CreateTaskRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'=>'required | max:40',
-            'estimate_hour'=>'nullable | max:10',
-            'due_date'=>' nullable | date | after_or_equal:today',
+            'title' => 'required | max:40',
+            'estimate_hour' => 'nullable | max:10',
+            'due_date' => 'nullable | date | after_or_equal:today',
         ];
     }
     
@@ -34,12 +34,12 @@ class CreateTaskRequest extends FormRequest
     {
         return [
             'title' => 'タイトル',
-            'estimate_hour'=>'見積もり時間',
-            'due_date'=>'期限日'
-            ];
+            'estimate_hour' => '見積もり時間',
+            'due_date' => '期限日'
+        ];
     }
     
-     public function messages()
+    public function messages()
     {
         return [
             'due_date.after_or_equal' => ':attribute には今日以降の日付を入力してください。',

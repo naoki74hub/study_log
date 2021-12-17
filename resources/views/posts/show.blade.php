@@ -79,9 +79,9 @@
        <div class="row justify-content-end">
       <!--コメント機能-->
       <div class="mt-4">
-        <a href="{{ route('posts.show',['post'=> $post->id]) }}" class='comments mr-3'>
+        <a href="{{ route('replies.create',['comment'=> $comment]) }}" class='comments mr-3'>
        <div class="btn btn-primary py-1">
-          <i class="far fa-comment-alt fa-lg mr-2"></i>{{ $post->comments()->count() }}
+          <i class="far fa-comment-alt fa-lg mr-2"></i>{{ $comment->replies()->count() }}
       </div>
         </a>
     </div>

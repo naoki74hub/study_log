@@ -125,10 +125,10 @@
           <div class="list-group">
             @foreach($folders as $folder)
             <div class="d-flex">
-              <a href="{{ route('folders.index', ['id' => $folder->id]) }}" class="list-group-item text-decoration-none {{ $current_folder_id === $folder->id ? 'active' : ''}}" style="width:285px;">
+              <a href="{{ route('folders.index', ['folder' => $folder]) }}" class="list-group-item text-decoration-none {{ $current_folder_id === $folder->id ? 'active' : ''}}" style="width:285px;">
                 {{ $folder->title }}
               </a>
-              <a href="{{route('folders.edit',['id'=>$folder->id])}}"><i class="fa fa-pen mt-3 ml-2"></i></a></td>
+              <a href="{{route('folders.edit',['folder' => $folder])}}"><i class="fa fa-pen mt-3 ml-2"></i></a></td>
               @if($folder->id === 1)
               @else
               <span class="folder-delete mr-2" data-toggle="modal" data-target="#modal-delete-{{ $folder->id }}"><i class="fa fa-trash-alt text-danger mt-3 ml-4"></i></span>
@@ -143,9 +143,9 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <form method="POST" action="{{ route('folders.destroy',['id'=>$folder]) }}">
+                <form method="POST" action="{{ route('folders.destroy',['folder'=>$folder]) }}">
                   @csrf
-                 <div class="modal-body bg-dark">
+                 <div class="modal-body bg-dark text-white">
                     {{ $folder->title }}を削除します。よろしいですか？
                   </div>
                   <div class="modal-footer justify-content-between">
@@ -166,7 +166,7 @@
  <div class="card-text text-white pl-2 py-2" style="background-color:#1b253c;"><i class="fas fa-fire mr-2"></i>タスク</div>
   <div class="card-body">
     <div class="text-center">
-      <a href="{{ route('folders.tasks.create',['id'=>$current_folder_id]) }}" class="btn btn-default btn-block bg-primary text-white">
+      <a href="{{ route('folders.tasks.create',['folder'=>$current_folder_id]) }}" class="btn btn-default btn-block bg-primary text-white">
         <i class="fas fa-plus mr-2"></i>タスクを追加する
       </a>
     </div>
@@ -190,7 +190,7 @@
           </td>
           <td>{{ $task->estimate_hour }}</td>
           <td>{{ $task->due_date }}</td>
-          <td><a href="{{ route('folders.tasks.edit',['id'=>$task->folder_id,'task_id'=>$task->id]) }}"><i class="fa fa-pen"></i></a></td>
+          <td><a href="{{ route('folders.tasks.edit',['folder' => $task->folder_id,'task' => $task]) }}"><i class="fa fa-pen"></i></a></td>
           <td><a data-toggle="modal" data-target="#modal-delete-{{ $task->id }}"><i class="fa fa-trash-alt text-danger"></i></a></td>
        </tr>
       <!-- modal -->
@@ -202,9 +202,9 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <form method="POST" action="{{ route('folders.tasks.destroy',['id'=>$task->folder_id,'task_id'=>$task->id]) }}">
+                <form method="POST" action="{{ route('folders.tasks.destroy',['folder' => $task->folder_id,'task' => $task]) }}">
                   @csrf
-                 <div class="modal-body bg-dark">
+                 <div class="modal-body bg-dark text-white">
                     {{ $task->title }}を削除します。よろしいですか？
                   </div>
                   <div class="modal-footer justify-content-between">

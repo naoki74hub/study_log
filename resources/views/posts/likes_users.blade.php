@@ -5,17 +5,17 @@
 @section('content')
 
 <div class="container mt-5">
-@foreach($post->likes as $user )
-<div class="card mt-3 border-light darkmode-post">
-    <div class="card-body border-top border-bottom d-flex">
-     <div>
-      <div class="following-name">
-        <div class="avatar mr-3">
-        @if(empty($user->avatar))
-           <i class="fas fa-user-circle fa-3x"></i>
-           @elseif(!empty($user->avatar))
-           <img src="{{ $user->avatar }}" style="width:70px;height:70px;border-radius:50%;">
-           @endif
+    @foreach($post->likes as $user )
+        <div class="card mt-3 border-light darkmode-post">
+            <div class="card-body border-top border-bottom d-flex">
+        <div>
+        <div class="following-name">
+            <div class="avatar mr-3">
+            @if (empty($user->avatar))
+                <i class="fas fa-user-circle fa-3x"></i>
+            @elseif(!empty($user->avatar))
+                <img src="{{ $user->avatar }}" style="width:70px; height:70px; border-radius:50%;">
+            @endif
          </div>
          <a href="{{ route('users.show',['user'=>$user->id]) }}" class="text-decoration-none">
          {{$user->name}}

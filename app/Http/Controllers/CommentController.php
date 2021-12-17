@@ -9,88 +9,42 @@ use App\Models\Post;
 
 class CommentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index(Comment $comment)
-    {
-        
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create(Request $request)
     {
         $q = $request->query();
         
-        return view('comments.create',[
-           'post_id'=>$q['post_id'],
+        return view('comments.create', [
+           'post_id' => $q['post_id'],
             ]);
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(CommentRequest $request,Comment $comment)
+    
+    public function store(CommentRequest $request, Comment $comment)
     {
+        //コメント送信時に、コメントモデル内の$fillableの値を取得し、$inputに代入
         $input = $request->only($comment->getfillable());
-        $comment = $comment->create($input);
+        $comment->fill($input);
+        $comment->save();
         
-        return redirect()->route('posts.show',['post'=>$comment->post->id]);
+        return redirect()->route('posts.show', ['post' => $comment->post->id]);
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function edit(Comment $comment)
     {
-        return view('comments/edit',['comment'=>$comment]);
+        return view('comments/edit', compact('comment'));
     } 
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Comment $comment,Post $post)
+    
+    public function update(CommentRequest $request, Comment $comment, Post $post)
     {
-        $comment->fill($request->all())->save();
-        return redirect('posts/index');
+        $comment->comment = $request->input('comment');
+        $comment->save();
+        
+        return redirect()->route('posts.show', ['post' => $comment->post->id]);
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Comment $comment,Post $post)
+    
+    public function destroy(Comment $comment)
     {
         $comment->delete();
-       return redirect('posts/index'); 
+        
+        return redirect()->route('posts.show', ['post' => $comment->post->id]); 
     }
 }

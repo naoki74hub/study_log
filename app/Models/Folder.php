@@ -6,9 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Folder extends Model
 {
+    /**
+     * タスクへのリレーション
+     */
     public function tasks()
     {
         return $this->hasMany('App\Models\Task');
     }
-    
 }

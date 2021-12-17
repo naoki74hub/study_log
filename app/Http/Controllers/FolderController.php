@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Http\Requests\FolderRequest;
 use App\Models\Folder;
@@ -17,28 +18,27 @@ class FolderController extends Controller
     {
         $folder->title = $request->input('title');
         $folder->save();
-        return redirect()->route('folders.index', [$folder->id,]);
+        
+        return redirect()->route('folders.index', ['folder' => $folder]);
     }
     
-    public function edit(int $id)
+    public function edit(Folder $folder)
     {
-        $folder = Folder::find($id);
-        return view('folders/edit',compact('folder'));
+        return view('folders/edit', compact('folder'));
     }
     
-    public function update(FolderRequest $request,int $id)
+    public function update(FolderRequest $request, Folder $folder)
     {
-        $folder = Folder::find($id);
         $folder->title = $request->input('title');
         $folder->save();
-        return redirect()->route('folders.index', ['id'=>1,]);
+        
+        return redirect()->route('folders.index', ['folder' => 1]);
     }
     
-    public function destroy($id)
+    public function destroy(Folder $folder)
     {
-      $folder = Folder::find($id);
       $folder->delete();
        
-      return redirect()->route('folders.index',['id'=>1]);
+      return redirect()->route('folders.index', ['folder' => 1]);
     }
 }

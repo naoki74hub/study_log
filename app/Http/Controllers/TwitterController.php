@@ -8,7 +8,6 @@ use App\Models\Post;
 
 class TwitterController extends Controller
 {
-    
     public function create()
     {
         return view('posts/twitter_create');
@@ -24,8 +23,7 @@ class TwitterController extends Controller
         $twitter->post("statuses/update", [
             "status" =>'あ'
         ]);
-            
         
-        return redirect('posts/index');
+        return redirect()->route('posts.index');
     }
 }

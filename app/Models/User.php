@@ -17,7 +17,15 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','self_introduction','goal','important_day_title','important_day','avatar','token'
+        'name',
+        'email', 
+        'password',
+        'self_introduction',
+        'goal',
+        'important_day_title',
+        'important_day',
+        'avatar',
+        'token',
     ];
 
     /**
@@ -26,7 +34,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password', 
+        'remember_token',
     ];
 
     /**
@@ -38,55 +47,76 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
     
+    /**
+     * 投稿へのリレーション
+     */
     public function posts()
     {
         return $this->hasMany('App\Models\Post');
     }
     
+    /**
+     * 投稿へのリレーション
+     */
     public function likes()
     {
-        return $this->belongsToMany('App\Models\Post','likes')->withTimestamps();
+        return $this->belongsToMany('App\Models\Post', 'likes')->withTimestamps();
     }
     
-    
+    /**
+     * ユーザーへのリレーション
+     */
     public function followers()
     {
-       return $this->belongsToMany('App\Models\User','followers','followed_id','following_id');   
+       return $this->belongsToMany('App\Models\User', 'followers', 'followed_id', 'following_id');   
     }
     
+    /**
+     * ユーザーへのリレーション
+     */
     public function follows()
     {
-        return $this->belongsToMany('App\Models\User','followers','following_id','followed_id');
+        return $this->belongsToMany('App\Models\User', 'followers', 'following_id', 'followed_id');
     }
     
-    // フォローする
+    /**
+     * フォローする
+     */
     public function follow(Int $user_id) 
     {
         return $this->follows()->attach($user_id);
     }
 
-    // フォロー解除する
+    /**
+     * フォロー解除する
+     */
     public function unfollow(Int $user_id)
     {
         return $this->follows()->detach($user_id);
     }
 
-    // フォローしているか
+    /**
+     * フォローしているかの判定
+     */
     public function isFollowing(Int $user_id) 
     {
         return (boolean) $this->follows()->where('followed_id', $user_id)->first(['id']);
     }
 
-    // フォローされているか
+    /**
+     * フォローされているかの判定
+     */
     public function isFollowed(Int $user_id) 
     {
         return (boolean) $this->followers()->where('following_id', $user_id)->first(['id']);
     }
     
+    /**
+     * パスワード再設定メール
+     */
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new PasswordResetUserNotification($token));    
     }   
-    
 }
 

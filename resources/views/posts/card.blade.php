@@ -1,48 +1,46 @@
    <div class="card mt-3 border-light darkmode-post">
      <div class="card-body d-flex flex-row border-top border-bottom">
-        <div class="avatar mr-3" style="width:70px;height:70px;border-radius:50%;">
-          @if(empty($post->user->avatar))
+        <div class="avatar mr-3" style="width:70px; height:70px; border-radius:50%;">
+          @if (empty($post->user->avatar))
             <i class="fas fa-user-circle fa-4x"></i>
-            @elseif(!empty($post->user->avatar))
-            <img src="{{ $post->user->avatar }}" style="width:70px;height:70px;border-radius:50%;">
-            @endif
-          </div>
-          <div>
-          <div class="font-weight-bold">
-            <a href="{{ route('users.show',[$post->user_id]) }}" class="text-decoration-none">
-              {{$post->user->name}}
-            </a>
-          </div>
+          @elseif (!empty($post->user->avatar))
+            <img src="{{ $post->user->avatar }}" style="width:70px; height:70px; border-radius:50%;">
+          @endif
+        </div>
+        <div>
+         <div class="font-weight-bold">
+          <a href="{{ route('users.show', [$post->user_id]) }}" class="text-decoration-none">
+            {{ $post->user->name }}
+          </a>
+         </div>
          <div class="font-weight-lighter">
-            {{ $post->created_at->format('Y/m/d H:i')}} 
-          </div>
-          @if(auth()->user()->isFollowed($post->user->id))
+            {{ $post->created_at->format('Y/m/d H:i') }} 
+         </div>
+        @if (auth()->user()->isFollowed($post->user->id))
           <span class="bg-secondary text-white" style="width:145px;">フォローされています</span>
-          @endif
-          @if(auth()->user()->isFollowing($post->user->id))
-           <form method="POST" action="{{ route('posts.unfollow',['post'=>$post]) }}">
-             @csrf
-             @method('DELETE')
-             <button type="submit" class="btn btn-danger py-1 px-2" style="width:145px;"><i class="fas fa-user-minus"></i>フォロー解除</button>
-           </form>
-           @else
-           <form method="POST" action="{{ route('posts.follow',['post'=>$post]) }}">
-             @csrf
-             <button type="submit" class="btn btn-primary py-1 px-2" style="width:140px;"><i class="fas fa-user-plus mr-2"></i>フォローする</button>
-           </form>
-           @endif
-           @if(!empty($post->image_url))
+        @endif
+        @if (auth()->user()->isFollowing($post->user->id))
+          <form method="POST" action="{{ route('posts.unfollow', ['post'=>$post]) }}">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger py-1 px-2" style="width:145px;"><i class="fas fa-user-minus"></i>フォロー解除</button>
+          </form>
+        @else
+          <form method="POST" action="{{ route('posts.follow',['post'=>$post]) }}">
+            @csrf
+            <button type="submit" class="btn btn-primary py-1 px-2" style="width:140px;"><i class="fas fa-user-plus mr-2"></i>フォローする</button>
+          </form>
+        @endif
+        @if (!empty($post->image_url))
           <div class="card-image mt-2">
-            <img src="{{ $post->image_url }}" style="width:110px;height:145px;">        
+            <img src="{{ $post->image_url }}" style="width:110px; height:145px;">        
           </div>
-          @endif
+        @endif
        </div>
-    <div class="card-body ml-3">
-    <div class="d-flex justify-content-between">
-      <h3 class="h4 card-title">
-        {{$post->title}}
-      </h3>
-         @if( Auth::id() === $post->user_id )
+       <div class="card-body ml-3">
+        <div class="d-flex justify-content-between">
+          <h3 class="h4 card-title">{{ $post->title }}</h3>
+        @if ( Auth::id() === $post->user_id )
         <!-- dropdown -->
           <div class="ml-auto card-text">
             <div class="dropdown">
@@ -51,15 +49,15 @@
                   <i class="fas fa-ellipsis-v"></i>
                 </button>
               </a>
-              <div class="dropdown-menu dropdown-menu-right">
-                <a class="dropdown-item" href="{{ route("posts.edit", ['post' => $post]) }}">
-                  <i class="fas fa-pen mr-1"></i>記事を更新する
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item text-danger" data-toggle="modal" data-target="#modal-delete-{{ $post->id }}">
-                  <i class="fas fa-trash-alt mr-1"></i>記事を削除する
-                </a>
-              </div>
+              　<div class="dropdown-menu dropdown-menu-right">
+                　<a class="dropdown-item" href="{{ route("posts.edit", ['post' => $post]) }}">
+                  　<i class="fas fa-pen mr-1"></i>記事を更新する
+                　</a>
+                　<div class="dropdown-divider"></div>
+                　<a class="dropdown-item text-danger" data-toggle="modal" data-target="#modal-delete-{{ $post->id }}">
+                  　<i class="fas fa-trash-alt mr-1"></i>記事を削除する
+               　  </a>
+              　</div>
             </div>
           </div>
           <!-- dropdown -->
@@ -75,7 +73,6 @@
                 </div>
                 <form method="POST" action="{{ route('posts.destroy', ['post' => $post]) }}">
                   @csrf
-                  
                   <div class="modal-body bg-dark text-white">
                     {{ $post->title }}を削除します。よろしいですか？
                   </div>
@@ -89,57 +86,57 @@
           </div>
           <!-- modal -->
         @endif
-      </div>
-         <div class="post-card">
-         <div class="d-flex flex-row pt-2" >
-          <i class="far fa-clock fa-2x text-success"></i>
-          <div class="study-time ml-2">
-            <p class="h3 mb-0">{{ substr($post->time,0,2) }}時間 {{ substr($post->time,3,2)}}分</p>
+          </div>
+            <div class="post-card">
+              <div class="d-flex flex-row pt-2" >
+                <i class="far fa-clock fa-2x text-success"></i>
+                <div class="study-time ml-2">
+                  <p class="h3 mb-0">{{ substr($post->time, 0,2) }}時間 {{ substr($post->time, 3,2) }}分</p>
+                </div>
+              </div>
+              <div class="card-text mt-3">
+                {{$post->body}}
+              </div>
+            </div>
+            <div class="tags">
+            @foreach ($post->tags as $tag)
+              <a href="{{ route('posts.index', [ 'tag_name' => $tag->tag_name]) }}">
+                #{{ $tag->tag_name }}
+              </a>
+            @endforeach
+           </div>
+        <div class="row justify-content-end">
+          <!--コメント機能-->
+          <div class="mt-4">
+            <a href="{{ route('posts.show',['post'=> $post->id]) }}" class='comments mr-3'>
+            <div class="btn btn-primary py-1">
+              <i class="far fa-comment-alt fa-lg mr-2"></i>{{ $post->comments()->count() }}
+            </div>
+            </a>
+          </div>
+         <div class="mt-4" style="width:70px;">
+          @if ($post->likes()->where('user_id', Auth::id())->exists())
+            <div class="col-md-3">
+              <form method="POST" action="{{ route('unlikes',$post) }}">
+                @csrf
+                <input type="submit" class="fas btn btn-danger mr-2 py-2 js-like-toggle" data-postid="{{ $post->id }}" value="&#xf004; {{ $post->likes()->count() }}">
+              </form>
+            </div>
+          @else
+          <div class="col-md-3">
+            <form method="POST" action="{{ route('likes',$post) }}">
+              @csrf
+              <input type="submit" class="fas btn border py-2 js-like-toggle darkmode-like" data-postid="{{ $post->id }}" value="&#xf004; {{ $post->likes()->count() }}" style="color:#6c7176;">
+            </form>
+          </div>
+          @endif
+         </div> 
+          <div style="width:32px; height:32px;" class="pr-2 pt-4">
+            <a href="{{ route('likes.users', ['post' => $post]) }}">
+              <span><i class="fas fa-user fa-2x" style="height:32px; color:#E3342F;"></i></span>
+            </a>
           </div>
         </div>
-        <div class="card-text mt-3">
-          {{$post->body}}
-       </div>
-      </div>
-      <div class="tags">
-        @foreach($post->tags as $tag)
-          <a href="{{ route('posts.index', ['tag_name'=>$tag->tag_name]) }}">
-            #{{ $tag->tag_name }}
-          </a>
-        @endforeach
-      </div>
-      <div class="row justify-content-end">
-        <!--コメント機能-->
-        <div class="mt-4">
-          <a href="{{ route('posts.show',['post'=> $post->id]) }}" class='comments mr-3'>
-         <div class="btn btn-primary py-1">
-            <i class="far fa-comment-alt fa-lg mr-2"></i>{{ $post->comments()->count() }}
-        </div>
-          </a>
-      </div>
-      <div class="mt-4" style="width:70px;">
-         @if($post->likes()->where('user_id', Auth::id())->exists())
-        <div class="col-md-3">
-          <form method="POST" action="{{ route('unlikes',$post) }}">
-            @csrf
-            <input type="submit" class="fas btn btn-danger mr-2 py-2 js-like-toggle" data-postid="{{ $post->id }}" value="&#xf004;{{ $post->likes()->count() }}">
-          </form>
-        </div>
-       @else
-        <div class="col-md-3">
-          <form method="POST" action="{{ route('likes',$post) }}">
-            @csrf
-            <input type="submit" class="fas btn border py-2 js-like-toggle darkmode-like" data-postid="{{ $post->id }}" value="&#xf004;{{ $post->likes()->count() }}" style="color:#6c7176;">
-          </form>
-        </div>
-       @endif
       </div> 
-      <div style="width:32px; height:32px;" class="pr-2 pt-4">
-       <a href="{{ route('likes.users',['post'=>$post]) }}">
-        <span><i class="fas fa-user fa-2x" style="height:32px; color:#E3342F;"></i></span>
-       </a>
-      </div>
     </div>
-   </div> 
- </div>
-</div>
+  </div>

@@ -1,7 +1,9 @@
 @extends('app')
 
 @section('title', 'プロフィール更新')
+
 @include('share.flatpickr.styles')
+
 @section('content')
 <main>
   <div class="container pt-5">
@@ -28,7 +30,7 @@
                   </div>
                   <div class="from-group mt-4">
                     <label class="font-weight-bold">イベントタイトル（試験名など）→カウントダウンの上に表示されるよ！！</label>
-                    <input type="text" name="important_day_title" class="form-control text" placeholder="イベントタイトル" value="{{$user->important_day_title ?? old('important_day_title') }}">
+                    <input type="text" name="important_day_title" class="form-control text" placeholder="イベントタイトル" value="{{ $user->important_day_title ?? old('important_day_title') }}">
                     <p class="text-muted">現在<span id="inputlength5">0</span>文字入力中です。(30字以内)</p>
                   </div> 
                    <div class="form-group mt-4">
@@ -44,5 +46,5 @@
       </div>
     </div>
   </main>
-  @include('share.flatpickr.scripts')
+ @include('share.flatpickr.scripts')
 @endsection
