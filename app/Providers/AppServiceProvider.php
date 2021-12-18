@@ -28,7 +28,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(UrlGenerator $url)
     {
-        $url->forceScheme('https');
+        \URL::forceScheme('https');
         //全ページで使う共通変数を定義（サイドバー）
         view()->composer('*', function ($view) 
         {
