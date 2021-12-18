@@ -32,6 +32,14 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('comments', 'CommentController');
 });
 
+Route::group(['prefix' => 'comments', 'as' => 'replies.', 'middleware' => 'auth'], function() {
+    Route::get('{comment}/reply/create', 'ReplyController@create')->name('create');
+    Route::post('{comment}/reply/store', 'ReplyController@store')->name('store');
+    Route::get('{comment}/reply/{reply}/edit', 'ReplyController@edit')->name('edit');
+    Route::post('{comment}/reply/{reply}/update', 'ReplyController@update')->name('update');
+    Route::get('{comment}/reply/{reply}/destroy', 'ReplyController@destroy')->name('destroy');
+});
+
 Route::group(['prefix' => 'users', 'as' => 'users.', 'middleware' => 'auth'], function() {
     Route::get('{name}/followings', 'UserController@followings')->name('followings');
     Route::get('{name}/followers', 'UserController@followers')->name('followers');
@@ -59,11 +67,9 @@ Auth::routes();
 Route::get('login/google', 'Auth\LoginController@redirectToGoogle');
 //GoogleコールバックURL
 Route::get('login/google/callback', 'Auth\LoginController@handleGoogleCallback');
-
 //Twitterログイン
 Route::get('login/twitter', 'Auth\LoginController@redirectToTwitterProvider');
 //TwitterコールバックURL
-
 Route::get('login/twitter/callback', 'Auth\LoginController@handleTwitterProviderCallback');
 //ゲストユーザーログイン
 Route::get('guest', 'Auth\LoginController@guestLogin')->name('login.guest');

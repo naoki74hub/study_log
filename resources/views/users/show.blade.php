@@ -58,9 +58,9 @@
                        <p class="p-2 text-left">{{ $user->important_day_title }}</p><hr class="m-0">
                       @endif
                       @if( Auth::user()->id === $user->id && empty($user->important_day))
-                      <p class="pt-3 mb-0 bg-warning pb-4 text-dark" style="color:#333; position:relative;"><i class="far fa-3x fa-calendar-alt" style="position:absolute; top:10px; left:10px;"></i>あと<span class="display-3">000</span>日</p>
+                      <p class="pt-3 mb-0 bg-warning pb-3 text-dark" style="color:#333; position:relative;"><i class="far fa-3x fa-calendar-alt" style="position:absolute; top:10px; left:10px;"></i>あと<span class="display-3">000</span>日</p>
                       @elseif(!empty($user->important_day))
-                      <p class="pt-3 mb-0 bg-warning pb-4" style="color:#333; position:relative;"><i class="far fa-3x fa-calendar-alt" style="position:absolute; top:10px; left:10px;"></i>あと<span class="display-3">{{ $count_down }}</span>日</p>
+                      <p class="pt-3 mb-0 bg-warning pb-3" style="color:#333; position:relative;"><i class="far fa-3x fa-calendar-alt" style="position:absolute; top:10px; left:10px;"></i>あと<span class="display-3">{{ $count_down }}</span>日</p>
                       @endif
                      </div>
                     <div class="d-inline-block mt-4 border text-center rounded mb-3 ml-4" style="max-width:500px;height:150px;width:100%;display:teble-cel;vertical-align: middle;">
