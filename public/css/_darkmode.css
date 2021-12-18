@@ -1,0 +1,67 @@
+body.darkTheme {
+  color: #fff;
+  background: #000;
+}
+
+body .darkTheme2 {
+  background: #333;
+}
+
+.cp_ipcheck input {
+  display: none;
+}
+
+.cp_ipcheck label {
+  width: 100px;
+  position: relative;
+  display: inline-block;
+  padding: 15px 0;
+  cursor: pointer;
+}
+
+.cp_ipcheck input[type=checkbox] {
+  position: absolute;
+  visibility: hidden !important;
+}
+
+.cp_ipcheck input[type=checkbox] + label:before,
+.cp_ipcheck input[type=checkbox] + label:after {
+  position: absolute;
+  top: 33%;
+  box-sizing: border-box;
+  margin-top: -7.5px;
+  content: "";
+}
+
+.cp_ipcheck input[type=checkbox] + label:before {
+  right: 0;
+  width: 60px;
+  height: 30px;
+  border: 1px solid #e4e3e1;
+  border-radius: 30px;
+  background: #ffffff;
+}
+
+.cp_ipcheck input[type=checkbox] + label:after {
+  right: 29px;
+  width: 30px;
+  height: 30px;
+  transition: all 200ms ease-out;
+  border-radius: 50%;
+  background: #bdbdbd;
+}
+
+.cp_ipcheck input[type=checkbox]:checked + label:after {
+  right: 0;
+  background: #000066;
+  content: "\F186";
+  font-family: "Font Awesome 5 Free";
+  padding: 4px 0 0 8px;
+  color: #ffff00;
+}
+
+.like-border {
+  border: 1px solid #fff;
+  color: #fff;
+}
+
