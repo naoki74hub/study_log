@@ -1,15 +1,14 @@
 # STUDY MANAGEMENT
 
-***
-勉強内容や勉強時間を記録できるという意味で、 **「STUDY MANAGEMENT」** という名前にしました。略して **「スタログ」** です。
+勉強内容や勉強時間を記録できるという意味で、**「STUDY MANAGEMENT」**という名前にしました。
+略して **「スタログ」** です。
 
 **勉強時間を記録でき、継続にもつながるSNSアプリです。**
 
-**URL:**https://whispering-dusk-09126.herokuapp.com
+**URL:** https://whispering-dusk-09126.herokuapp.com
 
 # アプリの概要
 
-***
 こちらのアプリのコンセプトは以下の4点です。
 
 1. 勉強中間を作り、コツコツ継続できる。
