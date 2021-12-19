@@ -43,12 +43,12 @@ Twitterのような、いいねやフォロー、コメントなどの機能に�
   
   **ログイン・新規登録画面**
   
-  <img src="https://user-images.githubusercontent.com/90256385/146677284-df2142e1-5554-4003-8c0c-305b9f8cd983.jpeg">
+  <img src="https://user-images.githubusercontent.com/90256385/146677284-df2142e1-5554-4003-8c0c-305b9f8cd983.jpeg" width=50%>
  </div>
  <div>
   
   **トップページ（投稿一覧・サイドメニューなど)**
  
-  <img src="https://user-images.githubusercontent.com/90256385/146677364-3efa9532-73e3-4385-a185-af9fe54dd234.jpeg">
+  <img src="https://user-images.githubusercontent.com/90256385/146677364-3efa9532-73e3-4385-a185-af9fe54dd234.jpeg" width=50%>
  </div>
 </div>
