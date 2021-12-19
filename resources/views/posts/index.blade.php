@@ -13,12 +13,11 @@
   @foreach ($posts as $post)
     @include('posts.card')
   @endforeach
-  <div class="top-back">
+  @if($flg === true)
+  <script src="{{ asset('js/level_alert.js') }}"></script>
+  @endif
+<div class="top-back">
     <a href="#"><div class="to-top"><i class="fas fa-3x fa-chevron-up"></i></div></a>
   </div>
   </div>
-@section('script')
-<script>
-</script>
-@endsection
 @endsection

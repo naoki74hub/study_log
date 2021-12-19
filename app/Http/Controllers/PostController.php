@@ -16,6 +16,7 @@ class PostController extends Controller
 {
     public function index(Request $request, Comment $comment, Post $post, User $user)
     {
+        $flg = false;
         $image = $post->image_url;
         $q = $request->query();
         if (isset($q['tag_name'])) {
@@ -29,7 +30,7 @@ class PostController extends Controller
        } else {
         $posts = Post::latest()->get();
         
-        return view('posts/index', compact('posts', 'user', 'image'));
+        return view('posts/index', compact('posts', 'user', 'image', 'flg'));
         }
     }
     
@@ -76,10 +77,10 @@ class PostController extends Controller
         //レベルを算出
         $level = floor($total_hour / 10 );
         
-        $flg = false;
+        $flg = 'false';
         //レベルが上がれば、＄flgにtrueを代入
         if ($level > $user->level) {
-            $flg = true;
+            $flg = 'true';
         }
         
         $user->level = $level;

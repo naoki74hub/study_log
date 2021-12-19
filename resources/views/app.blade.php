@@ -65,37 +65,20 @@
       <div class="sidebar-sticky sticky-top">
         <ul class="nav flex-column">
           <div class="level mt-5 tooltip2">
-            @if(Auth::check()  && !$posts2->count() > 0)
-           <span class="display-3 text-white">Lv.0</span>
-           <div class="description">10時間勉強するごとにレベルが1上がります！！</div>
-  　        @elseif(Auth::check() && $posts2->count() > 0)
            <p class="level-shadow"><span class="display-3 text-white">Lv.</span><span class="display-3 text-white" id="level">{{ $level }}</span></p>
            <div class="description">10時間勉強するごとにレベルが1上がります！！</div>
-          　@endif
           </div>
           <div class="sum-time mt-3 border border-white text-center py-2">
             <i class="far fa-clock text-white">総学習時間</i><br><br>
-            @if(Auth::check()  && !$posts2->count() > 0)
-            <span class="h3 text-white">０時間0分</span>
-            @elseif(Auth::check() && $posts2->count() > 0)
-             <span class="h3 text-white">{{ $total_time }}</span>
-            @endif
+            <span class="h3 text-white">{{ $total_time }}</span>
           </div>
           <div class="continuation-days text-center border border-white mt-3 py-2">
             <i class="fas fa-pencil-alt text-white">活動日数</i><br><br>
-            @if(Auth::check() && !$posts2->count() > 0)
-             <span class="h3 text-white">0日</span>
-            @elseif(Auth::check() && $posts2->count() > 0)
-             <span class="h3 text-white">{{ $post_day }}</span>
-            @endif
+            <span class="h3 text-white">{{ $post_day }}</span>
           </div>
           <div class="continuation-days text-center border border-white mt-3 py-2">
-              <i class="fas fa-running text-white">継続日数</i><br><br>
-            @if(Auth::check() && !$posts2->count() > 0)
-             <span class="h3 text-white">0日</span>
-             @elseif(Auth::check() && $posts2->count() > 0)
+            <i class="fas fa-running text-white">継続日数</i><br><br>
             <span class="h3 text-white">{{ $result }}</span>
-            @endif
           </div>
           <li class="nav-item mt-3 hover-text1">
             <a class="nav-link h5 menu-hover" href=" {{route('posts.index')}}">
