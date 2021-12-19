@@ -8,7 +8,6 @@
   @foreach($followers as $follower)
    <div class="card mt-3 border-light darkmode-post">
     <div class="card-body border-top border-bottom d-flex">
-     <div>
       <div class="follower-name">
         <div class="avatar mr-3">
         @if(empty($follower->avatar))
@@ -23,7 +22,8 @@
       </div>
       @if(auth()->user()->isFollowed($follower->id))
       <span class="bg-secondary text-white" style="width:145px;">フォローされています</span>
-      @en
+      @endif
+     <div>
       @if(auth()->user()->isFollowing($follower->id))
        <form method="POST" action="{{ route('users.unfollow',['user'=>$follower->id]) }}"  style="width:150px;">
          @csrf
