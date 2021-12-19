@@ -23,7 +23,7 @@
       </div>
       @if(auth()->user()->isFollowed($follower->id))
       <span class="bg-secondary text-white" style="width:145px;">フォローされています</span>
-      @endif
+      @en
       @if(auth()->user()->isFollowing($follower->id))
        <form method="POST" action="{{ route('users.unfollow',['user'=>$follower->id]) }}"  style="width:150px;">
          @csrf
