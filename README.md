@@ -35,26 +35,9 @@ Twitterのような、いいねやフォロー、コメントなどの機能に�
 私も、勉強のモチベーションアップにつながるアプリを作ってみたいと考えたことが背景にあります。
 
 # 使用画面のイメージ
-
-ログイン・新規登録画面　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　
-
-<div class="d-flex">
- <div class="img">
-  
-  
-  
-  <div style="display:flex;">
-   <div>
    
-   **ログイン・新規登録画面**
+   **ログイン・新規登録画面**.                                                     **トップページ（投稿一覧・サイドメニューなど）**
    
-  ![BBA0D723-E7FB-408A-93F7-C7C1A95B587F](https://user-images.githubusercontent.com/90256385/146677284-df2142e1-5554-4003-8c0c-305b9f8cd983.jpeg)
-  </div>
-  <div>
-  
-  **トップページ（投稿一覧・サイドメニューなど）**
-  
-  ![F94D6EDD-72C1-44F8-BB7A-5051B8FC8D7C](https://user-images.githubusercontent.com/90256385/146677364-3efa9532-73e3-4385-a185-af9fe54dd234.jpeg)
-  </div>
- </div>
-
+ ![59CE6698-A0E9-426A-81B0-0224125ACD59](https://user-images.githubusercontent.com/90256385/146679549-3222ffb4-3834-43c9-8860-20789c0ada13.jpeg) 
+ 
+  ****
