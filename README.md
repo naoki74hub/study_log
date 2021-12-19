@@ -89,16 +89,19 @@ Twitterのような、いいねやフォロー、コメントなどの機能に�
   
   * フロントエンド
    
-    **jQuery 3.2**
-   
-    **HTML/CSS/Sass/JavaScript/Bootstrap**
+    ❶ **jQuery 3.2**
+  
+    ❷ **HTML/CSS/Sass/JavaScript/Bootstrap**
 
  * バックエンド
    
-    **PHP 8.0.12**
+    ❶ **PHP 8.0.12**
     
-    **Laravel 6 **
-  
+    ❷ **Laravel 6**
+    
+    ❸ **Twitter API**
+
+    ❹ **Google API**
   
 
 
