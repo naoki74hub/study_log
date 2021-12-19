@@ -36,12 +36,25 @@ Twitterのような、いいねやフォロー、コメントなどの機能に�
 
 # 使用画面のイメージ
 
-ログイン・新規登録画面　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　トップページ（投稿一覧・サイドメニューなど）
+ログイン・新規登録画面　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　
 
 <div class="d-flex">
  <div class="img">
   
-  **ログイン・新規登録画面**
   
-  ![BBA0D723-E7FB-408A-93F7-C7C1A95B587F](https://user-images.githubusercontent.com/90256385/146677284-df2142e1-5554-4003-8c0c-305b9f8cd983.jpeg)![F94D6EDD-72C1-44F8-BB7A-5051B8FC8D7C](https://user-images.githubusercontent.com/90256385/146677364-3efa9532-73e3-4385-a185-af9fe54dd234.jpeg)
+  
+  <div style="display:flex;">
+   <div>
+   
+   **ログイン・新規登録画面**
+   
+  ![BBA0D723-E7FB-408A-93F7-C7C1A95B587F](https://user-images.githubusercontent.com/90256385/146677284-df2142e1-5554-4003-8c0c-305b9f8cd983.jpeg)
+  </div>
+  <div>
+  
+  **トップページ（投稿一覧・サイドメニューなど）**
+  
+  ![F94D6EDD-72C1-44F8-BB7A-5051B8FC8D7C](https://user-images.githubusercontent.com/90256385/146677364-3efa9532-73e3-4385-a185-af9fe54dd234.jpeg)
+  </div>
+ </div>
 
