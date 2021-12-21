@@ -16,7 +16,6 @@ class PostController extends Controller
 {
     public function index(Request $request, Comment $comment, Post $post, User $user)
     {
-        $flg = false;
         $image = $post->image_url;
         $q = $request->query();
         if (isset($q['tag_name'])) {
@@ -30,7 +29,7 @@ class PostController extends Controller
        } else {
         $posts = Post::latest()->get();
         
-        return view('posts/index', compact('posts', 'user', 'image', 'flg'));
+        return view('posts/index', compact('posts', 'user', 'image'));
         }
     }
     
