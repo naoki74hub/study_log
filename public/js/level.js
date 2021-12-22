@@ -86,10 +86,10 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/level_alert.js":
-/*!*************************************!*\
-  !*** ./resources/js/level_alert.js ***!
-  \*************************************/
+/***/ "./resources/js/level.js":
+/*!*******************************!*\
+  !*** ./resources/js/level.js ***!
+  \*******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -108,13 +108,13 @@ swal({
 /***/ }),
 
 /***/ 3:
-/*!*******************************************!*\
-  !*** multi ./resources/js/level_alert.js ***!
-  \*******************************************/
+/*!*************************************!*\
+  !*** multi ./resources/js/level.js ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/ec2-user/environment/study_log/resources/js/level_alert.js */"./resources/js/level_alert.js");
+module.exports = __webpack_require__(/*! /home/ec2-user/environment/study_log/resources/js/level.js */"./resources/js/level.js");
 
 
 /***/ })

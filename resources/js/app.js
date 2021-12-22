@@ -6,7 +6,7 @@
 require('./bootstrap');
 require('./darkmode');
 require('./pomodoro_timer');
-require('./level_alert');
+require('./level');
 require('./stopwatch');
 require('./top_back');
 require('./string_num');
