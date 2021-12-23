@@ -40,6 +40,7 @@ Twitterのような、いいねやフォロー、コメントなどの機能に�
    
   ![BBA0D723-E7FB-408A-93F7-C7C1A95B587F](https://user-images.githubusercontent.com/90256385/146677284-df2142e1-5554-4003-8c0c-305b9f8cd983.jpeg)
   
+  ![image](https://user-images.githubusercontent.com/90256385/147172872-886f49cc-9bd7-4532-ab71-272cececec6c.jpeg)
   
   **トップページ（投稿一覧・サイドメニューなど）↓**
   
