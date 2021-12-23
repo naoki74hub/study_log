@@ -43,14 +43,10 @@ Twitterのような、いいねやフォロー、コメントなどの機能に�
  
    
    ![728FDDAB-DE4E-46C9-B881-0958D1273B90](https://user-images.githubusercontent.com/90256385/147175401-727a0427-4bcf-41fd-b411-b3bff26ef32b.jpeg)
+   
+   
+   ![90867828-A2CF-4452-B95F-BE484F675811](https://user-images.githubusercontent.com/90256385/147175872-f499bbcd-9c13-4a5b-ab57-e7b60fbbae57.jpeg)
 
-  
- 
-  
-  **投稿詳細コメント一覧↓**
-  
-  ![A4C05ED8-6FDB-4518-AD3D-442ACDB64CAB](https://user-images.githubusercontent.com/90256385/146680850-baf862ef-14b3-4d20-9ac1-0dca02369b7b.jpeg)
-  
   
   **ユーザー詳細画面↓**
   
