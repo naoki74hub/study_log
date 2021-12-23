@@ -36,7 +36,7 @@ Twitterのような、いいねやフォロー、コメントなどの機能に�
 
 # 使用画面のイメージ
    
-   ![1064CD41-7BA1-4D86-A0CE-7E923031CDEF](https://user-images.githubusercontent.com/90256385/147174255-3fbd9dfa-3292-488a-afd8-01b056131e58.jpeg)
+   ![E4CBBF6B-7041-4A84-A5B4-DBA195595C4C](https://user-images.githubusercontent.com/90256385/147176501-c92cff79-8ba7-4a90-b20a-38b95373a720.jpeg)
 
    ![5A2513F3-16DC-4DA6-B4F8-2DAB8231CC87](https://user-images.githubusercontent.com/90256385/147175020-037b1bc3-51a1-478e-8623-ae35ac32f42f.jpeg)
  
