@@ -38,9 +38,12 @@ Twitterのような、いいねやフォロー、コメントなどの機能に�
    
    ![1064CD41-7BA1-4D86-A0CE-7E923031CDEF](https://user-images.githubusercontent.com/90256385/147174255-3fbd9dfa-3292-488a-afd8-01b056131e58.jpeg)
 
+   
    ![5A2513F3-16DC-4DA6-B4F8-2DAB8231CC87](https://user-images.githubusercontent.com/90256385/147175020-037b1bc3-51a1-478e-8623-ae35ac32f42f.jpeg)
  
- 
+   
+   ![728FDDAB-DE4E-46C9-B881-0958D1273B90](https://user-images.githubusercontent.com/90256385/147175401-727a0427-4bcf-41fd-b411-b3bff26ef32b.jpeg)
+
   
  
   
