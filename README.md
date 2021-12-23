@@ -36,11 +36,10 @@ Twitterのような、いいねやフォロー、コメントなどの機能に�
 
 # 使用画面のイメージ
    
-   **ログイン・新規登録画面↓**
+   ![image](https://user-images.githubusercontent.com/90256385/147172872-886f49cc-9bd7-4532-ab71-272cececec6c.jpeg)
    
-  ![BBA0D723-E7FB-408A-93F7-C7C1A95B587F](https://user-images.githubusercontent.com/90256385/146677284-df2142e1-5554-4003-8c0c-305b9f8cd983.jpeg)
-  
-  ![image](https://user-images.githubusercontent.com/90256385/147172872-886f49cc-9bd7-4532-ab71-272cececec6c.jpeg)
+   ![1064CD41-7BA1-4D86-A0CE-7E923031CDEF](https://user-images.githubusercontent.com/90256385/147174255-3fbd9dfa-3292-488a-afd8-01b056131e58.jpeg)
+
   
   **トップページ（投稿一覧・サイドメニューなど）↓**
   
