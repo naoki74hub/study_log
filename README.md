@@ -38,40 +38,14 @@ Twitterのような、いいねやフォロー、コメントなどの機能に�
    
    ![1064CD41-7BA1-4D86-A0CE-7E923031CDEF](https://user-images.githubusercontent.com/90256385/147174255-3fbd9dfa-3292-488a-afd8-01b056131e58.jpeg)
 
-   
    ![5A2513F3-16DC-4DA6-B4F8-2DAB8231CC87](https://user-images.githubusercontent.com/90256385/147175020-037b1bc3-51a1-478e-8623-ae35ac32f42f.jpeg)
  
-   
    ![728FDDAB-DE4E-46C9-B881-0958D1273B90](https://user-images.githubusercontent.com/90256385/147175401-727a0427-4bcf-41fd-b411-b3bff26ef32b.jpeg)
    
-   
    ![90867828-A2CF-4452-B95F-BE484F675811](https://user-images.githubusercontent.com/90256385/147175872-f499bbcd-9c13-4a5b-ab57-e7b60fbbae57.jpeg)
+   
+   ![08BFC6B5-47DD-4704-B040-BB2529744F31](https://user-images.githubusercontent.com/90256385/147176181-72b0d703-ce70-4c29-9130-a4a148c25fa8.jpeg)
 
-  
-  **ユーザー詳細画面↓**
-  
-  ![75DC836A-96A8-4D59-9822-0FC68BB5567F](https://user-images.githubusercontent.com/90256385/146680914-eee64845-8c31-4802-8b8e-f35ad6b4a70d.jpeg)
-  
-  
-  **プロフィール編集画面↓**
-  
-  ![6D90EBF0-3DAD-47F7-876D-3A9AE2CF679F](https://user-images.githubusercontent.com/90256385/146680977-4377bc19-8267-44ba-a48c-ff56b1bf7ab3.jpeg)
-  
-  
-  **時間、タスク管理画面↓**
-  
-  ![E40B9E6D-544E-4508-8810-29ABE9055038](https://user-images.githubusercontent.com/90256385/146681062-6ca44906-433d-4816-86fc-3018b309cb0c.jpeg)
-  
-  
-  **レベルが上がった時↓**
-  
-  ![347A4A55-9852-45EC-969E-A8DB4D610D5E](https://user-images.githubusercontent.com/90256385/146681225-5e4934e9-1199-4491-a56c-224e849f32c3.jpeg)
-  
-  
-  **ダークモード↓**
-  
-  ![59E266B1-5868-4AB5-BB15-AD91D9AEB67F](https://user-images.githubusercontent.com/90256385/146681238-06753e9a-ebcb-4d8e-9285-b19f2239b83e.jpeg)
-  
   # 使用技術
   
  * フロントエンド
