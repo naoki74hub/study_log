@@ -36,25 +36,13 @@ Twitterのような、いいねやフォロー、コメントなどの機能に�
 
 # 使用画面のイメージ
    
-   ![image](https://user-images.githubusercontent.com/90256385/147172872-886f49cc-9bd7-4532-ab71-272cececec6c.jpeg)
-   
    ![1064CD41-7BA1-4D86-A0CE-7E923031CDEF](https://user-images.githubusercontent.com/90256385/147174255-3fbd9dfa-3292-488a-afd8-01b056131e58.jpeg)
 
+   ![5A2513F3-16DC-4DA6-B4F8-2DAB8231CC87](https://user-images.githubusercontent.com/90256385/147175020-037b1bc3-51a1-478e-8623-ae35ac32f42f.jpeg)
+ 
+ 
   
-  **トップページ（投稿一覧・サイドメニューなど）↓**
-  
-  ![F94D6EDD-72C1-44F8-BB7A-5051B8FC8D7C](https://user-images.githubusercontent.com/90256385/146677364-3efa9532-73e3-4385-a185-af9fe54dd234.jpeg)
-  
-  
-  **投稿画面↓**
-  
-  ![C4B9A04D-3B87-4966-BA70-3CD82C24B685](https://user-images.githubusercontent.com/90256385/146680723-034d671e-42e1-40de-98e8-bc5d168dcaf6.jpeg)
-  
-  
-  **タグ投稿一覧↓**
-  
-  ![934E6A52-D22F-4FC0-8C45-B7C6F2BCD863](https://user-images.githubusercontent.com/90256385/146680783-5f456344-6da8-42a0-8901-a9287c95fb3f.jpeg)
-  
+ 
   
   **投稿詳細コメント一覧↓**
   
