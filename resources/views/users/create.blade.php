@@ -5,7 +5,6 @@
 @include('share.flatpickr.styles')
 
 @section('content')
-<main>
   <div class="container pt-5">
     <div class="row">
       <div class="col-12">
@@ -45,6 +44,5 @@
         </div>
       </div>
     </div>
-  </main>
  @include('share.flatpickr.scripts')
 @endsection

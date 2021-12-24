@@ -20,13 +20,13 @@
           <span class="bg-secondary text-white" style="width:145px;">フォローされています</span>
         @endif
         @if (auth()->user()->isFollowing($post->user->id))
-          <form method="POST" action="{{ route('posts.unfollow', ['post'=>$post]) }}">
+          <form method="POST" action="{{ route('posts.unfollow', ['post' => $post]) }}">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-danger py-1 px-2" style="width:145px;"><i class="fas fa-user-minus"></i>フォロー解除</button>
           </form>
         @else
-          <form method="POST" action="{{ route('posts.follow',['post'=>$post]) }}">
+          <form method="POST" action="{{ route('posts.follow', ['post' => $post]) }}">
             @csrf
             <button type="submit" class="btn btn-primary py-1 px-2" style="width:140px;"><i class="fas fa-user-plus mr-2"></i>フォローする</button>
           </form>
@@ -108,7 +108,7 @@
         <div class="row justify-content-end">
           <!--コメント機能-->
           <div class="mt-4">
-            <a href="{{ route('posts.show',['post'=> $post->id]) }}" class='comments mr-3'>
+            <a href="{{ route('posts.show', ['post'=> $post->id]) }}" class='comments mr-3'>
             <div class="btn btn-primary py-1">
               <i class="far fa-comment-alt fa-lg mr-2"></i>{{ $post->comments()->count() }}
             </div>
@@ -117,14 +117,14 @@
          <div class="mt-4" style="width:70px;">
           @if ($post->likes()->where('user_id', Auth::id())->exists())
             <div class="col-md-3">
-              <form method="POST" action="{{ route('unlikes',$post) }}">
+              <form method="POST" action="{{ route('unlikes', $post) }}">
                 @csrf
                 <input type="submit" class="fas btn btn-danger mr-2 py-2 js-like-toggle" data-postid="{{ $post->id }}" value="&#xf004; {{ $post->likes()->count() }}">
               </form>
             </div>
           @else
           <div class="col-md-3">
-            <form method="POST" action="{{ route('likes',$post) }}">
+            <form method="POST" action="{{ route('likes', $post) }}">
               @csrf
               <input type="submit" class="fas btn border py-2 js-like-toggle darkmode-like" data-postid="{{ $post->id }}" value="&#xf004; {{ $post->likes()->count() }}" style="color:#6c7176;">
             </form>

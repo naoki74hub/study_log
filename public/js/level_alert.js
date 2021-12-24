@@ -81,23 +81,20 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/level.js":
-/*!*******************************!*\
-  !*** ./resources/js/level.js ***!
-  \*******************************/
+/***/ "./resources/js/level_alert.js":
+/*!*************************************!*\
+  !*** ./resources/js/level_alert.js ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-/*global flg*/
-
-/*global swal*/
 
 swal({
   title: 'レベルアップ🎉',
@@ -107,14 +104,14 @@ swal({
 
 /***/ }),
 
-/***/ 3:
-/*!*************************************!*\
-  !*** multi ./resources/js/level.js ***!
-  \*************************************/
+/***/ 2:
+/*!*******************************************!*\
+  !*** multi ./resources/js/level_alert.js ***!
+  \*******************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/ec2-user/environment/study_log/resources/js/level.js */"./resources/js/level.js");
+module.exports = __webpack_require__(/*! /home/ec2-user/environment/study_log/resources/js/level_alert.js */"./resources/js/level_alert.js");
 
 
 /***/ })

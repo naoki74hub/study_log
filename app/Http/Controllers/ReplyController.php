@@ -3,23 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CommentRequest;
 use App\Models\Comment;
+use App\Models\Reply;
 
 class ReplyController extends Controller
 {
-    public function index(Reply $reply)
-    {
-        return view('posts/show', compact('reply')) ;  
-    }
-    
     public function create(Comment $comment)
     {
-        return view('replies/create', ['comment'=>$comment]);
+        return view('replies/create', compact('comment'));
     }
     
-    public function store()
+    public function store(CommentRequest $request, Comment $comment, Reply $reply)
     {
-        $reply->reply = $request->input('reply');
-        $reply->save();
+       $reply->reply = $request->input('reply');
+       $reply->user_id = auth()->user()->id;
+       $reply->save();
+       
+       return redirect()->route('posts.show');
     }
 }

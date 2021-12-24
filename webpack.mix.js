@@ -13,9 +13,9 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
    .js('resources/js/darkmode.js','public/js')
-   .js('resources/js/pomodoro_timer.js','public/js')
-   .js('resources/js/level.js','public/js')
+   .js('resources/js/level_alert.js','public/js')
    .js('resources/js/stopwatch.js', 'public/js')
+   .js('resources/js/pomodoro_timer.js','public/js')
    .js('resources/js/top_back','public/js')
    .js('resources/js/string_num.js','public/js')
    .sass('resources/sass/app.scss', 'public/css')

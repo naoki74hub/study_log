@@ -37277,11 +37277,11 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! ./darkmode */ "./resources/js/darkmode.js");
 
+__webpack_require__(/*! ./stopwatch */ "./resources/js/stopwatch.js");
+
 __webpack_require__(/*! ./pomodoro_timer */ "./resources/js/pomodoro_timer.js");
 
-__webpack_require__(/*! ./level */ "./resources/js/level.js");
-
-__webpack_require__(/*! ./stopwatch */ "./resources/js/stopwatch.js");
+__webpack_require__(/*! ./level_alert */ "./resources/js/level_alert.js");
 
 __webpack_require__(/*! ./top_back */ "./resources/js/top_back.js");
 
@@ -37412,18 +37412,15 @@ window.addEventListener('DOMContentLoaded', function () {
 
 /***/ }),
 
-/***/ "./resources/js/level.js":
-/*!*******************************!*\
-  !*** ./resources/js/level.js ***!
-  \*******************************/
+/***/ "./resources/js/level_alert.js":
+/*!*************************************!*\
+  !*** ./resources/js/level_alert.js ***!
+  \*************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-/*global flg*/
-
-/*global swal*/
 
 swal({
   title: 'レベルアップ🎉',

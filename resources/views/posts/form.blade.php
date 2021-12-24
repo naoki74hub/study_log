@@ -1,5 +1,5 @@
 @csrf
- <div class="form-image_url mt-4">
+<div class="form-image_url mt-4">
   <input type="file" name="image_url">
 </div>
 <div class="md-form mt-3">

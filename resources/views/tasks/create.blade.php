@@ -3,8 +3,8 @@
 @section('title', 'ToDo')
 
 @include('share.flatpickr.styles')
+
 @section('content')
-<main>
   <div class="container">
     <div class="row">
       <div class="col-8 mx-auto">
@@ -35,6 +35,6 @@
       </div>
     </div>
   </div>
-</main>
 @include('share.flatpickr.scripts')
+
 @endsection

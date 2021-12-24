@@ -3,14 +3,14 @@
 @section('title', 'コメント')
 
 @section('content')
-<div class="container pt-5">
+  <div class="container pt-5">
     <div class="row">
       <div class="col-12">
         <div class="card mt-3">
            @include('error_list')
             <div class="card-body pt-0 darkmode-post">
              <div class="card-text">
-               <form method="POST" action="{{ route('comments.store') }}">
+               <form method="POST" action="{{ route('comments.store', ['comment' => $comment]) }}">
                   @csrf
                   <div class="form-group mt-3">
                     <label for="comment">コメント:</label>
@@ -26,5 +26,5 @@
         </div>
       </div>
     </div>
-</div>
+  </div>
 @endsection

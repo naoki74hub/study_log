@@ -56,6 +56,14 @@ class User extends Authenticatable
     }
     
     /**
+     * リプライへのリレーション
+     */
+     public function replies()
+     {
+         return $this->hasMany('App\Models\Reply');
+     }
+    
+    /**
      * 投稿へのリレーション
      */
     public function likes()

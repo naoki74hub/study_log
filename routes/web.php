@@ -10,7 +10,6 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::group(['prefix' => 'posts', 'as' => 'posts.', 'middleware' => 'auth'], function() {
     Route::get('index', 'PostController@index')->name('index');
     Route::get('create', 'PostController@create')->name('create');
@@ -26,7 +25,7 @@ Route::group(['prefix' => 'posts', 'as' => 'posts.', 'middleware' => 'auth'], fu
     Route::delete('{post}/unfollow', 'PostController@unfollow')->name('unfollow');
     Route::get('followings/timeline', 'PostController@timeline')->name('followings.timeline');
 });
-
+Route::get('/', 'Auth\LoginController@showLoginForm');
 Route::group(['middleware' => 'auth'], function(){
     Route::resource('users', 'UserController');
     Route::resource('comments', 'CommentController');

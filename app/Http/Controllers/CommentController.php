@@ -13,7 +13,7 @@ class CommentController extends Controller
     {
         $q = $request->query();
         
-        return view('comments.create', [
+        return view('comments/create', [
            'post_id' => $q['post_id'],
             ]);
     }

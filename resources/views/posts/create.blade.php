@@ -3,7 +3,7 @@
 @section('title', '記事投稿')
 
 @section('content')
-<div class="container pt-5">
+  <div class="container pt-5">
     <div class="row">
       <div class="col-12">
         <div class="card mt-3 darkmode-post">
@@ -23,5 +23,5 @@
         </div>
       </div>
     </div>
-</div>
+  </div>
 @endsection
