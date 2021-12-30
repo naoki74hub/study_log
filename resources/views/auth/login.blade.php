@@ -63,7 +63,7 @@
                                   <a href="/login/google" class="text-white text-decoration-none"><i class="fab fa-google mr-2"></i>Googleでログイン</a>
                                 </button>
                                  <button class="btn btn-primary">
-                                    <a href="/login/twitter" class="text-white text-decoration-none"><i class="fab fa-twitter"></i> Twitterでログイン</a>
+                                    <a href="{{ route('twitter.login') }}" class="text-white text-decoration-none"><i class="fab fa-twitter"></i> Twitterでログイン</a>
                                 </button>
                                 <button class="btn btn-success">
                                     <a href="{{ route('login.guest') }}" class="text-white text-decoration-none"><i class="fas fa-user mr-2"></i>ゲストログイン</a>

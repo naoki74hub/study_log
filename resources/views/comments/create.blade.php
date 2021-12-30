@@ -10,7 +10,7 @@
            @include('error_list')
             <div class="card-body pt-0 darkmode-post">
              <div class="card-text">
-               <form method="POST" action="{{ route('comments.store', ['comment' => $comment]) }}">
+               <form method="POST" action="{{ route('comments.store') }}">
                   @csrf
                   <div class="form-group mt-3">
                     <label for="comment">コメント:</label>

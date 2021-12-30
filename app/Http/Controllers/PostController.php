@@ -75,13 +75,12 @@ class PostController extends Controller
         
         //レベルを算出
         $level = floor($total_hour / 10 );
-        
         $flg = 'false';
         //レベルが上がれば、＄flgにtrueを代入
         if ($level > $user->level) {
             $flg = 'true';
         }
-        
+    
         $user->total_hour = $total_hour;
         $user->level = $level;
         $user->save();

@@ -40,7 +40,7 @@
        <div class="card-body ml-3">
         <div class="d-flex justify-content-between">
           <h3 class="h4 card-title">{{ $post->title }}</h3>
-        @if ( Auth::id() === $post->user_id )
+          @if( Auth::id() === $post->user_id )
         <!-- dropdown -->
           <div class="ml-auto card-text">
             <div class="dropdown">
@@ -49,19 +49,19 @@
                   <i class="fas fa-ellipsis-v"></i>
                 </button>
               </a>
-              　<div class="dropdown-menu dropdown-menu-right">
-                　<a class="dropdown-item" href="{{ route("posts.edit", ['post' => $post]) }}">
-                  　<i class="fas fa-pen mr-1"></i>記事を更新する
-                　</a>
-                　<div class="dropdown-divider"></div>
-                　<a class="dropdown-item text-danger" data-toggle="modal" data-target="#modal-delete-{{ $post->id }}">
-                  　<i class="fas fa-trash-alt mr-1"></i>記事を削除する
-               　  </a>
-              　</div>
+              <div class="dropdown-menu dropdown-menu-right">
+                <a class="dropdown-item" href="{{ route("posts.edit", ['post' => $post]) }}">
+                  <i class="fas fa-pen mr-1"></i>記事を更新する
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item text-danger" data-toggle="modal" data-target="#modal-delete-{{ $post->id }}">
+                  <i class="fas fa-trash-alt mr-1"></i>記事を削除する
+                </a>
+              </div>
             </div>
           </div>
           <!-- dropdown -->
-       
+
           <!-- modal -->
           <div id="modal-delete-{{ $post->id }}" class="modal fade" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
@@ -73,11 +73,12 @@
                 </div>
                 <form method="POST" action="{{ route('posts.destroy', ['post' => $post]) }}">
                   @csrf
+
                   <div class="modal-body bg-dark text-white">
                     {{ $post->title }}を削除します。よろしいですか？
                   </div>
                   <div class="modal-footer justify-content-between">
-                    <a class="btn border" data-dismiss="modal">キャンセル</a>
+                    <a class="btn btn-outline-grey border" data-dismiss="modal">キャンセル</a>
                     <button type="submit" class="btn btn-danger">削除する</button>
                   </div>
                 </form>

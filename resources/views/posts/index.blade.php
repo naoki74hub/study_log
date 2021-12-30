@@ -17,7 +17,7 @@
      <a href="#"><div class="to-top"><i class="fas fa-3x fa-chevron-up"></i></div></a>
    </div>
 </div>
- @if (session('status'))
+ @if (session('status') === 'true')
      <script src="{{ mix('js/level_alert.js') }}"></script>
    @endif
 @endsection
