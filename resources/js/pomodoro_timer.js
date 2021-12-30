@@ -22,7 +22,7 @@
 
 
   // ドロップダウンの項目を変更
-  $(function () {
+  window.addEventListener('DOMContentLoaded', function () {
     $('.dropdown-menu .dropdown-item').click(function () {
       let visibleItem = $('.dropdown-toggle', $(this).closest('.dropdown'));
       visibleItem.text($(this).attr('value'));

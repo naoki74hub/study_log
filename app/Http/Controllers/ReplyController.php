@@ -18,6 +18,7 @@ class ReplyController extends Controller
     {
        $reply->reply = $request->input('reply');
        $reply->user_id = auth()->user()->id;
+       $reply->comment_id = $comment->id;
        $reply->save();
        
        return redirect()->route('posts.show');

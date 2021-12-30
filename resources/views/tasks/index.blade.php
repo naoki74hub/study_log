@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('title', '管理')
-
+ 
 @section('content')
   <div class="time-container darkmode-post">
     <div id="timer" class="mt-5 text-dark">00:00</div>
@@ -210,5 +210,9 @@
       </div>
     </div>
   </div>
+ @section('script')
+ <script src="{{ mix('js/pomodoro_timer.js') }}"></script>
+ <script src="{{ mix('js/stopwatch.js') }}"></script>
+ @endsection
 @endsection
-                    
+ 

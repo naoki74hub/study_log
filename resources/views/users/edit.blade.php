@@ -1,8 +1,10 @@
 @extends('app')
 
 @section('title', 'プロフィール更新')
+
 @include('share.flatpickr.styles')
-@section('content')z
+
+@section('content')
   <div class="container pt-5">
     <div class="row">
       <div class="col-12">

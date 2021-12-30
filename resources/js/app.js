@@ -4,13 +4,6 @@
 //  * building robust, powerful web applications using Vue and Laravel.
 //  */
 require('./bootstrap');
-require('./darkmode');
-require('./stopwatch');
-require('./pomodoro_timer');
-require('./level_alert');
-require('./top_back');
-require('./string_num');
-
 
 // window.Vue = require('vue');
 

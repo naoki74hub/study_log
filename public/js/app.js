@@ -37273,19 +37273,7 @@ module.exports = function(module) {
 //  * includes Vue and other libraries. It is a great starting point when
 //  * building robust, powerful web applications using Vue and Laravel.
 //  */
-__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
-
-__webpack_require__(/*! ./darkmode */ "./resources/js/darkmode.js");
-
-__webpack_require__(/*! ./stopwatch */ "./resources/js/stopwatch.js");
-
-__webpack_require__(/*! ./pomodoro_timer */ "./resources/js/pomodoro_timer.js");
-
-__webpack_require__(/*! ./level_alert */ "./resources/js/level_alert.js");
-
-__webpack_require__(/*! ./top_back */ "./resources/js/top_back.js");
-
-__webpack_require__(/*! ./string_num */ "./resources/js/string_num.js"); // window.Vue = require('vue');
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js"); // window.Vue = require('vue');
 // /**
 //  * The following block of code may be used to automatically register your
 //  * Vue components. It will recursively scan this directory for the Vue
@@ -37352,381 +37340,6 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-/***/ "./resources/js/darkmode.js":
-/*!**********************************!*\
-  !*** ./resources/js/darkmode.js ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var btn = document.querySelector('#modeChange'); // チェックした時の挙動
-
-btn.addEventListener('change', function () {
-  if (btn.checked === true) {
-    // ダークモード
-    document.body.classList.add('darkTheme');
-    var darkmode = document.getElementsByClassName('darkmode-post');
-
-    for (var i = 0; i < darkmode.length; i++) {
-      darkmode[i].classList.add('darkTheme2');
-      /*global localStorage*/
-
-      localStorage.setItem('dark-mode-settings', 'darkTheme');
-    }
-  } else {
-    // ライトモード
-    document.body.classList.remove('darkTheme');
-
-    var _darkmode = document.getElementsByClassName('darkmode-post');
-
-    for (var _i = 0; _i < _darkmode.length; _i++) {
-      _darkmode[_i].classList.remove('darkTheme2');
-
-      localStorage.setItem('dark-mode-settings', 'light');
-    }
-  }
-});
-window.addEventListener('DOMContentLoaded', function () {
-  if (localStorage.getItem('dark-mode-settings') === 'darkTheme') {
-    var cp_ipcheck = document.getElementById('modeChange');
-    cp_ipcheck.checked = true;
-    document.body.classList.add('darkTheme');
-    var darkmode = document.getElementsByClassName('darkmode-post');
-
-    for (var i = 0; i < darkmode.length; i++) {
-      darkmode[i].classList.add('darkTheme2');
-    }
-  } else if (localStorage.getItem('dark-mode-settings') === 'light') {
-    var _cp_ipcheck = document.getElementById('modeChange');
-
-    _cp_ipcheck.checked = false;
-    document.body.classList.add("light");
-
-    var _darkmode2 = document.getElementsByClassName('darkmode-post');
-
-    for (var _i2 = 0; _i2 < _darkmode2.length; _i2++) {
-      _darkmode2[_i2].classList.remove('darkTheme2');
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./resources/js/level_alert.js":
-/*!*************************************!*\
-  !*** ./resources/js/level_alert.js ***!
-  \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-swal({
-  title: 'レベルアップ🎉',
-  text: 'おめでとうございます㊗️ レベルが上がりました!!\nこの調子で頑張ろう！！',
-  icon: 'success'
-});
-
-/***/ }),
-
-/***/ "./resources/js/pomodoro_timer.js":
-/*!****************************************!*\
-  !*** ./resources/js/pomodoro_timer.js ***!
-  \****************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-{
-  // カウントダウン用関数
-  var countDown = function countDown() {
-    if (workFlg == true) {
-      count = 60000 * parseInt(dropDown1.textContent);
-    } else {
-      count = 60000 * parseInt(dropDown2.textContent);
-    }
-
-    var d = new Date(startTime - Date.now() + elapsedTime + count);
-    var m = String(d.getMinutes()).padStart(2, '0');
-    var s = String(d.getSeconds()).padStart(2, '0');
-    pomodoro_timer.textContent = "".concat(m, ":").concat(s); // 残り3秒でカウントダウン音開始
-
-    if ("".concat(m) == '00' && "".concat(s) == '03') {
-      if (count3 == true) {
-        document.getElementById('sound-file-decision1').play();
-        count3 = false;
-      }
-    }
-
-    if ("".concat(m) == '00' && "".concat(s) == '02') {
-      if (count2 == true) {
-        document.getElementById('sound-file-decision1').play();
-        count2 = false;
-      }
-    }
-
-    if ("".concat(m) == '00' && "".concat(s) == '01') {
-      if (count1 == true) {
-        document.getElementById('sound-file-decision1').play();
-        count1 = false;
-      }
-    } // カウントが０になった時の処理
-
-
-    if ("".concat(m) == '00' && "".concat(s) == '00') {
-      // 初期化処理
-      startTime = Date.now();
-      elapsedTime = 0; // soundFlg = true;
-
-      count1 = true;
-      count2 = true;
-      count3 = true; // // 終了サウンド
-      // document.getElementById( 'sound-file-decision4' ).play();
-
-      if (workFlg == true) {
-        workFlg = false;
-        workText.textContent = '休憩中';
-      } else {
-        workFlg = true;
-        workText.textContent = '活動中';
-      }
-    }
-
-    timeoutId = setTimeout(function () {
-      countDown();
-    }, 10);
-  };
-
-  /* 変数定義 */
-  var startBtn = document.getElementById('startBtn');
-  var stopBtn = document.getElementById('stopBtn');
-  var cancelBtn = document.getElementById('cancelBtn');
-  var dropDown1 = document.getElementById('dropdownMenu1');
-  var dropDown2 = document.getElementById('dropdownMenu2');
-  var workText = document.getElementById('work');
-  var pomodoro_timer = document.getElementById('pomodoro-timer');
-  var startTime;
-  var timeoutId;
-  var elapsedTime = 0;
-  var count;
-  var workFlg = true; // true = 活動中  ,  false = インターバル
-
-  var count1 = true;
-  var count2 = true;
-  var count3 = true; // ドロップダウンの項目を変更
-
-  $(function () {
-    $('.dropdown-menu .dropdown-item').click(function () {
-      var visibleItem = $('.dropdown-toggle', $(this).closest('.dropdown'));
-      visibleItem.text($(this).attr('value'));
-    });
-  }); // スタートボタンを押した時の処理
-
-  startBtn.addEventListener('click', function () {
-    // page切り替え
-    document.getElementById('page1').classList.add("displayNone");
-    document.getElementById('page2').classList.remove("displayNone");
-    startTime = Date.now();
-    countDown();
-  }); // 一時停止ボタンを押した時の処理
-
-  stopBtn.addEventListener('click', function () {
-    if (stopBtn.textContent == '一時停止') {
-      clearTimeout(timeoutId);
-      elapsedTime += startTime - Date.now();
-      stopBtn.textContent = 'スタート';
-    } else {
-      stopBtn.textContent = '一時停止';
-      startTime = Date.now();
-      countDown();
-    }
-  }); // キャンセルボタンを押した時の処理
-
-  cancelBtn.addEventListener('click', function () {
-    // page切り替え
-    document.getElementById('page1').classList.remove("displayNone");
-    document.getElementById('page2').classList.add("displayNone"); // 初期化
-
-    count1 = true;
-    count2 = true;
-    count3 = true;
-    elapsedTime = 0;
-    workText.textContent = '活動中';
-    stopBtn.textContent = '一時停止';
-    clearTimeout(timeoutId);
-    workFlg = true;
-  });
-}
-
-/***/ }),
-
-/***/ "./resources/js/stopwatch.js":
-/*!***********************************!*\
-  !*** ./resources/js/stopwatch.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-{
-  // StartからStopまでの経過時間
-  var countUp = function countUp() {
-    var d = new Date(Date.now() - startTime + elapsedTime);
-    /* padStart()で二桁または三桁固定表示とする */
-
-    var m = String(d.getMinutes()).padStart(2, '0');
-    var s = String(d.getSeconds()).padStart(2, '0');
-    /* 描画 */
-
-    timer.textContent = "".concat(m, ":").concat(s);
-    timeoutid = setTimeout(function () {
-      //再帰呼び出し
-      countUp();
-    }, 10);
-  }; // 状態:初期 または Reset直後
-
-
-  var setButtonStateInitial = function setButtonStateInitial() {
-    start.classList.remove('inactive'); // 活性
-
-    stop.classList.add('inactive'); // 非活性
-
-    reset.classList.add('inactive'); // 非活性
-  }; // 状態:タイマー動作中
-
-
-  var setButtonStateRunning = function setButtonStateRunning() {
-    start.classList.add('inactive'); // 非活性
-
-    stop.classList.remove('inactive'); // 活性
-
-    reset.classList.add('inactive'); // 非活性
-  }; // 状態:タイマー停止中
-
-
-  var setButtonStateStopped = function setButtonStateStopped() {
-    start.classList.remove('inactive'); // 活性
-
-    stop.classList.add('inactive'); // 非活性
-
-    reset.classList.remove('inactive'); // 活性
-  }; // ボタンを'初期'状態とする
-
-
-  var timer = document.getElementById('timer');
-  var start = document.getElementById('start');
-  var stop = document.getElementById('stop');
-  var reset = document.getElementById('reset');
-  var startTime; // Startボタンクリック時の時刻
-
-  var timeoutid; // ID
-
-  var elapsedTime = 0;
-  setButtonStateInitial(); // Startボタンクリック
-  // …タイマーを開始します
-
-  start.addEventListener('click', function () {
-    if (start.classList.contains('inactive') === true) {
-      return;
-    } // ボタンをタイマー'動作中'状態とする
-
-
-    setButtonStateRunning();
-    startTime = Date.now();
-    countUp();
-  }); // Stopボタンクリック
-  // …タイマーを停止します
-
-  stop.addEventListener('click', function () {
-    if (stop.classList.contains('inactive') === true) {
-      return;
-    } // タイマーを'停止中'状態とする
-
-
-    setButtonStateStopped();
-    clearTimeout(timeoutid);
-    elapsedTime += Date.now() - startTime;
-  }); // Resetボタンクリック
-  // …タイマーを「00:00.000」で上書きします
-
-  reset.addEventListener('click', function () {
-    if (reset.classList.contains('inactive') === true) {
-      return;
-    } // ボタンを'初期'状態とする
-
-
-    setButtonStateInitial();
-    timer.textContent = '00:00';
-    elapsedTime = 0;
-  });
-}
-
-/***/ }),
-
-/***/ "./resources/js/string_num.js":
-/*!************************************!*\
-  !*** ./resources/js/string_num.js ***!
-  \************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
- //投稿のテキストエリア
-
-var textarea = document.querySelector('.textarea'); //入力の文字数
-
-var string_num = document.querySelector('.string_num'); //テキストを入力するたびにonKeyUp()を実行する
-
-textarea.addEventListener('keyup', onKeyUp);
-
-function onKeyUp() {
-  //入力されたテキスト
-  var inputText = textarea.value; //文字数を反映
-
-  string_num.innerText = inputText.length;
-}
-
-/***/ }),
-
-/***/ "./resources/js/top_back.js":
-/*!**********************************!*\
-  !*** ./resources/js/top_back.js ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// scroll to
-
-/*global $*/
-$(function () {
-  $(window).on('scroll', function () {
-    if (700 < $(this).scrollTop()) {
-      $('.to-top').addClass('is-show');
-    } else {
-      $('.to-top').removeClass('is-show');
-    }
-  }); // navigation
-
-  $('a[href^="#"]').on("click", function () {
-    var $header = $('#js-header');
-    var speed = 500;
-    var href = $(this).attr("href");
-    var target = $(href === "#" || href === "" ? 'html' : href);
-    var position = target.offset().top - $header.outerHeight();
-    $('html , body').animate({
-      scrollTop: position
-    }, speed);
-    return false;
-  });
-});
-
-/***/ }),
-
 /***/ "./resources/sass/_darkmode.scss":
 /*!***************************************!*\
   !*** ./resources/sass/_darkmode.scss ***!
@@ -37760,10 +37373,10 @@ $(function () {
 
 /***/ }),
 
-/***/ "./resources/sass/_sidemenu_hover.scss":
-/*!*********************************************!*\
-  !*** ./resources/sass/_sidemenu_hover.scss ***!
-  \*********************************************/
+/***/ "./resources/sass/_ranking.scss":
+/*!**************************************!*\
+  !*** ./resources/sass/_ranking.scss ***!
+  \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -37771,9 +37384,9 @@ $(function () {
 
 /***/ }),
 
-/***/ "./resources/sass/_speech_bubbles.scss":
+/***/ "./resources/sass/_sidemenu_hover.scss":
 /*!*********************************************!*\
-  !*** ./resources/sass/_speech_bubbles.scss ***!
+  !*** ./resources/sass/_sidemenu_hover.scss ***!
   \*********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -37816,9 +37429,9 @@ $(function () {
 /***/ }),
 
 /***/ 0:
-/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/_top_back.scss ./resources/sass/_darkmode.scss ./resources/sass/_stopwatch.scss ./resources/sass/_speech_bubbles.scss ./resources/sass/_pomodoro_timer.scss ./resources/sass/_sidemenu_hover.scss ./resources/sass/_level_tooltip.scss ***!
-  \*********************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/_top_back.scss ./resources/sass/_darkmode.scss ./resources/sass/_stopwatch.scss ./resources/sass/_pomodoro_timer.scss ./resources/sass/_sidemenu_hover.scss ./resources/sass/_level_tooltip.scss ./resources/sass/_ranking.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -37827,10 +37440,10 @@ __webpack_require__(/*! /home/ec2-user/environment/study_log/resources/sass/app.
 __webpack_require__(/*! /home/ec2-user/environment/study_log/resources/sass/_top_back.scss */"./resources/sass/_top_back.scss");
 __webpack_require__(/*! /home/ec2-user/environment/study_log/resources/sass/_darkmode.scss */"./resources/sass/_darkmode.scss");
 __webpack_require__(/*! /home/ec2-user/environment/study_log/resources/sass/_stopwatch.scss */"./resources/sass/_stopwatch.scss");
-__webpack_require__(/*! /home/ec2-user/environment/study_log/resources/sass/_speech_bubbles.scss */"./resources/sass/_speech_bubbles.scss");
 __webpack_require__(/*! /home/ec2-user/environment/study_log/resources/sass/_pomodoro_timer.scss */"./resources/sass/_pomodoro_timer.scss");
 __webpack_require__(/*! /home/ec2-user/environment/study_log/resources/sass/_sidemenu_hover.scss */"./resources/sass/_sidemenu_hover.scss");
-module.exports = __webpack_require__(/*! /home/ec2-user/environment/study_log/resources/sass/_level_tooltip.scss */"./resources/sass/_level_tooltip.scss");
+__webpack_require__(/*! /home/ec2-user/environment/study_log/resources/sass/_level_tooltip.scss */"./resources/sass/_level_tooltip.scss");
+module.exports = __webpack_require__(/*! /home/ec2-user/environment/study_log/resources/sass/_ranking.scss */"./resources/sass/_ranking.scss");
 
 
 /***/ })

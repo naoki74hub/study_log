@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 5);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -96,7 +96,7 @@
 // scroll to
 
 /*global $*/
-$(function () {
+window.addEventListener('DOMContentLoaded', function () {
   $(window).on('scroll', function () {
     if (700 < $(this).scrollTop()) {
       $('.to-top').addClass('is-show');
@@ -120,7 +120,7 @@ $(function () {
 
 /***/ }),
 
-/***/ 5:
+/***/ 2:
 /*!*************************************!*\
   !*** multi ./resources/js/top_back ***!
   \*************************************/

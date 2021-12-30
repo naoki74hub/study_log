@@ -30,6 +30,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::resource('users', 'UserController');
     Route::resource('comments', 'CommentController');
 });
+    
+    Route::get('ranking', 'RankingController@index')->name('ranking');
 
 Route::group(['prefix' => 'comments', 'as' => 'replies.', 'middleware' => 'auth'], function() {
     Route::get('{comment}/reply/create', 'ReplyController@create')->name('create');

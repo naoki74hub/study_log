@@ -111,7 +111,6 @@ class LoginController extends Controller
        $myinfo = User::firstOrCreate(['token' => $user->token ],
                  ['name' => $user->nickname,'email' => $user->getEmail()]);
                  Auth::login($myinfo);
-                 return redirect()->to('posts/index'); // homeへ転送
-    
+                 return redirect()->to('posts/index'); 
     }
 }

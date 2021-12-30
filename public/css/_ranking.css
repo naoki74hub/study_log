@@ -1,0 +1,64 @@
+.rank1 {
+  margin-right: 40px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #fff;
+  background-color: #ffd700;
+  position: relative;
+}
+
+.rank1-text {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+}
+
+.rank2 {
+  margin-right: 40px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #fff;
+  background-color: #b2b8b8;
+  position: relative;
+}
+
+.rank2-text {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+}
+
+.rank3 {
+  margin-right: 40px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #fff;
+  background-color: #7e5435;
+  position: relative;
+}
+
+.rank3-text {
+  position: absolute;
+  top: 10px;
+  left: 15px;
+}
+
+.ranks {
+  margin-right: 40px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: #000;
+  background-color: #FFF;
+  position: relative;
+}
+
+.ranks-text {
+  position: absolute;
+  top: 8px;
+  left: 14px;
+}
+

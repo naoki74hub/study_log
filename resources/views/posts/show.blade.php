@@ -110,7 +110,7 @@
             </div>
           </div>
           @foreach ($comment->replies as $reply)
-            <div class="card mt-2" style="position:relative;">
+           <div class="card mt-2" style="position:relative;">
               <div class="card-body darkmode-post">
                 <div class="card-body d-flex flex-row">
                   <div class="d-flex flex-row">

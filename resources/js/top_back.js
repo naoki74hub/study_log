@@ -1,6 +1,6 @@
 // scroll to
 /*global $*/
-$(function () {
+window.addEventListener('DOMContentLoaded', function () {
     $(window).on('scroll', function () {
         if (700 < $(this).scrollTop()) {
             $('.to-top').addClass('is-show');

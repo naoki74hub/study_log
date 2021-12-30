@@ -24,7 +24,7 @@
               </div>
               @if ( Auth::id() === $user->id )
                 <div class="mr-5" style="max-width:600px;width:100%;">
-                  <div class="border mt-3 ml-3 rounded speech-bubbles" style="max-width:600px; width:100%;height:130px;">
+                  <div class="border mt-3 ml-3 rounded balloon" style="max-width:600px; width:100%;height:130px;">
                     @if ($user->id === Auth::user()->id && empty($user->self_introduction))
                       <p class="mt-5 ml-4" style="font-size:18px;">自己紹介を設定し、自分を表現しよう!!
                     @elseif (!empty($user->self_introduction))

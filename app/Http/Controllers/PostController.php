@@ -82,6 +82,7 @@ class PostController extends Controller
             $flg = 'true';
         }
         
+        $user->total_hour = $total_hour;
         $user->level = $level;
         $user->save();
         
@@ -105,7 +106,7 @@ class PostController extends Controller
         //中間テーブルpost_tagに保存
         $post->tags()->attach($tag_ids);
         
-        return redirect()->route('posts.index')->with('flg', $flg);
+        return redirect()->route('posts.index')->with('status', $flg);
     }
     
     public function edit(Post $post)

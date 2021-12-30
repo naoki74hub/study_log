@@ -15,11 +15,10 @@ class TwitterController extends Controller
     
     public function store(Request $request)
     { 
-        $twitter = new TwitterOAuth(env('TWITTER_CLIENT_ID'),
-            env('TWITTER_CLIENT_SECRET'),
-            env('TWITTER_CLIENT_ID_ACCESS_TOKEN'),
-            env('TWITTER_CLIENT_ID_ACCESS_TOKEN_SECRET'));
-            
+        $twitter = new TwitterOAuth(config('services.twitter.client_id'),
+            config('services.twitter.client_secret'),
+            config('services.twitter.client_id_access_token'),
+            config('services.twitter.client_id_access_token_secret'));
         $twitter->post("statuses/update", [
             "status" =>'あ'
         ]);

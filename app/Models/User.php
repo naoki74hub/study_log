@@ -20,6 +20,8 @@ class User extends Authenticatable
         'name',
         'email', 
         'password',
+        'level',
+        'total_hour',
         'self_introduction',
         'goal',
         'important_day_title',

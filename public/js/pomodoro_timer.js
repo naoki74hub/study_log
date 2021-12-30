@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 4);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -174,7 +174,7 @@
   var count2 = true;
   var count3 = true; // ドロップダウンの項目を変更
 
-  $(function () {
+  window.addEventListener('DOMContentLoaded', function () {
     $('.dropdown-menu .dropdown-item').click(function () {
       var visibleItem = $('.dropdown-toggle', $(this).closest('.dropdown'));
       visibleItem.text($(this).attr('value'));
@@ -219,7 +219,7 @@
 
 /***/ }),
 
-/***/ 4:
+/***/ 1:
 /*!**********************************************!*\
   !*** multi ./resources/js/pomodoro_timer.js ***!
   \**********************************************/
