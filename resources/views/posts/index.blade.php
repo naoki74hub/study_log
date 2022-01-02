@@ -4,7 +4,7 @@
 
 @section('content')
  <div class="container mt-5">
-   @isset($search_result)
+    @isset($search_result)
      <div class="text-center">
        <div class="search-title h3 mt-5">{{ $search_result }}</div>
      </div>
@@ -18,6 +18,6 @@
    </div>
 </div>
  @if (session('status') === 'true')
-     <script src="{{ mix('js/level_alert.js') }}"></script>
+     <script src="{{ asset('js/level_alert.js') }}"></script>
    @endif
 @endsection

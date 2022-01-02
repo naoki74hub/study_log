@@ -11,7 +11,7 @@
 
    <title>@yield('title')</title>
    <!-- Scripts -->
-   <script src="{{ mix('js/app.js') }}" defer></script>
+   <script src="{{ asset('js/app.js') }}" defer></script>
    <!-- sweetAlert2 -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
    
@@ -122,7 +122,7 @@
   </div>
 </div>
 @yield('script')
-<script src="{{ mix('js/top_back.js') }}"></script>
-<script src="{{ mix('js/darkmode.js') }}"></script>
+<script src="{{ asset('js/top_back.js') }}"></script>
+<script src="{{ asset('js/darkmode.js') }}"></script>
 </body>
 </html>

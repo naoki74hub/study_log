@@ -34,19 +34,4 @@ class Comment extends Model
         return $this->belongsTo('App\Models\Post');
     }
     
-    /**
-     * コメントへのリレーション
-     */
-    public function comments()
-    {
-        return $this->hasMany('App\Models\Comment');
-    }
-    
-    /**
-     * コメントへのリレーション
-     */
-    public function comment()
-    {
-        return $this->belongsTo('App\Models\Comment');
-    }
 }
