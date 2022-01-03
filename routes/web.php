@@ -25,17 +25,17 @@ Route::group(['prefix' => 'posts', 'as' => 'posts.', 'middleware' => 'auth'], fu
     Route::delete('{post}/unfollow', 'PostController@unfollow')->name('unfollow');
     Route::get('followings/timeline', 'PostController@timeline')->name('followings.timeline');
 });
+
 Route::get('/', 'Auth\LoginController@showLoginForm');
+
 Route::group(['middleware' => 'auth'], function(){
     Route::resource('users', 'UserController');
     Route::resource('comments', 'CommentController');
 });
-    
-    Route::get('ranking', 'RankingController@index')->name('ranking');
 
-Route::group(['prefix' => 'comments', 'as' => 'replies.', 'middleware' => 'auth'], function() {
-   
-});
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('ranking', 'RankingController@index')->name('ranking');
+    });
 
 Route::group(['prefix' => 'users', 'as' => 'users.', 'middleware' => 'auth'], function() {
     Route::get('{name}/followings', 'UserController@followings')->name('followings');

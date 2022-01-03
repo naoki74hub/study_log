@@ -1,5 +1,10 @@
 @extends('app')
-
+<script>
+'use strict';
+function ShowLength( idn, str ) {
+   document.getElementById(idn).innerHTML = str.length;
+}
+</script>
 @section('title', '投稿更新')
 
 @section('content')

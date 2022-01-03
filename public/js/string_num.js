@@ -81,53 +81,35 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/top_back.js":
-/*!**********************************!*\
-  !*** ./resources/js/top_back.js ***!
-  \**********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// scroll to
-
-/*global $*/
-window.addEventListener('DOMContentLoaded', function () {
-  $(window).on('scroll', function () {
-    if (700 < $(this).scrollTop()) {
-      $('.to-top').addClass('is-show');
-    } else {
-      $('.to-top').removeClass('is-show');
-    }
-  }); // navigation
-
-  $('a[href^="#"]').on("click", function () {
-    var $header = $('#js-header');
-    var speed = 500;
-    var href = $(this).attr("href");
-    var target = $(href === "#" || href === "" ? 'html' : href);
-    var position = target.offset().top - $header.outerHeight();
-    $('html , body').animate({
-      scrollTop: position
-    }, speed);
-    return false;
-  });
-});
-
-/***/ }),
-
-/***/ 3:
-/*!*************************************!*\
-  !*** multi ./resources/js/top_back ***!
-  \*************************************/
+/***/ "./resources/js/string_num.js":
+/*!************************************!*\
+  !*** ./resources/js/string_num.js ***!
+  \************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/ec2-user/environment/study_log/resources/js/top_back */"./resources/js/top_back.js");
+"use strict";
+
+
+function ShowLength(idn, str) {
+  document.getElementById(idn).innerHTML = str.length + "文字";
+}
+
+/***/ }),
+
+/***/ 1:
+/*!******************************************!*\
+  !*** multi ./resources/js/string_num.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(/*! /home/ec2-user/environment/study_log/resources/js/string_num.js */"./resources/js/string_num.js");
 
 
 /***/ })

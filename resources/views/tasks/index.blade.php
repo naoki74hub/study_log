@@ -211,8 +211,8 @@
     </div>
   </div>
  @section('script')
- <script src="{{ asset('js/pomodoro_timer.js') }}"></script>
- <script src="{{ asset('js/stopwatch.js') }}"></script>
+ <script src="{{ mix('js/pomodoro_timer.js') }}"></script>
+ <script src="{{ mix('js/stopwatch.js') }}"></script>
  @endsection
 @endsection
  

@@ -122,7 +122,7 @@
   </div>
 </div>
 @yield('script')
-<script src="{{ asset('js/top_back.js') }}"></script>
-<script src="{{ asset('js/darkmode.js') }}"></script>
+<script src="{{ mix('js/top_back.js') }}"></script>
+<script src="{{ mix('js/darkmode.js') }}"></script>
 </body>
 </html>

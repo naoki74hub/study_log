@@ -1,5 +1,10 @@
 @extends('app')
-
+<script>
+'use strict';
+function ShowLength( idn, str ) {
+   document.getElementById(idn).innerHTML = str.length;
+}
+</script>
 @section('title', 'Twitter投稿')
 
 @section('content')

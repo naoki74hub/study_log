@@ -18,6 +18,6 @@
    </div>
 </div>
  @if (session('status') === 'true')
-     <script src="{{ asset('js/level_alert.js') }}"></script>
+     <script src="{{ mix('js/level_alert.js') }}"></script>
    @endif
 @endsection

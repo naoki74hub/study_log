@@ -64,7 +64,7 @@
       <?php $rank = 1;?>
       <?php $cnt = 1;?>
       <?php $bef_point = 0;?>
-      @foreach ($user_rankings as $key => $value) 
+      @foreach ($user_month_rankings as $key => $value) 
         @if ($bef_point != $value['total_hour'])
           <?php $rank = $cnt;?>
         @endif
