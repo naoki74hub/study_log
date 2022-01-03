@@ -110,11 +110,13 @@ class PostController extends Controller
     
     public function edit(Post $post)
     {
+        $this->authorize('update', $post);
         return view('posts/edit', compact('post'));
     }
     
     public function update(PostRequest $request, Post $post)
     {
+        $this->authorize('update', $post);
         //bodyからtagを抽出
         preg_match_all('/#([a-zA-Z0-9０-９ぁ-んァ-ヶー一-龠]+)/u', $request->body, $match);
         $tags = [];
