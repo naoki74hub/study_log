@@ -9,7 +9,7 @@
         <div class="card darkmode-post">
           <div>
             <div class="d-flex justify-content-center">
-              <div class="ml-2">
+              <div class="ml-2 mr-4">
                 <div class="avatar mt-3 mr-4" style="width:110px;height:110px;border-radius:50%;">
                   @if (empty($user->avatar))
                     <i class="fas fa-user-circle fa-8x"></i>
@@ -191,31 +191,31 @@
                   <!--コメント機能-->
                     <div class="mt-4">
                       <a href="{{ route('posts.show', ['post' => $timeline->id]) }}" class='comments mr-3'>
-                        <div class="btn btn-primary py-1">
-                          <i class="far fa-comment-alt fa-lg mr-2"></i>{{ $timeline->comments()->count() }}
+                        <div class="btn btn-primary py-1" style="height:37px;">
+                          <i class="far fa-comment-alt fa-lg mr-2 mt-2"></i>{{ $timeline->comments()->count() }}
                         </div>
                       </a>
                     </div>
-                    <div class="mt-4">
+                    <div class="mt-4" style="width:70px;">
                       @if ($timeline->likes()->where('user_id', Auth::id())->exists())
                         <div class="col-md-3" style="width:70px;">
                           <form method="POST" action="{{ route('unlikes', $timeline) }}">
                             @csrf
-                            <input type="submit" class="fas btn btn-danger mr-2 py-2" value="&#xf004; {{ $timeline->likes()->count() }}">
+                            <input type="submit" class="fas border btn-danger rounded-left" style="height:37px; width:55px;" value="&#xf004; {{ $timeline->likes()->count() }}">
                           </form>
                         </div>
                       @else
-                        <div class="col-md-3" style="width:70px;">
+                        <div class="col-md-3">
                           <form method="POST" action="{{ route('likes', $timeline) }}">
                             @csrf
-                            <input type="submit" class="fas btn border py-2 darkmode-like text-secondary" value="&#xf004; {{ $timeline->likes()->count() }}">
+                            <input type="submit" class="fas border py-2 darkmode-like bg-white rounded-left" value="&#xf004; {{ $timeline->likes()->count() }}"  style="color:#6c7176; width:56px; height:37px;">
                           </form>
                         </div>
                       @endif
                     </div>
                     <div style="width:32px; height:32px;" class="pr-2 pt-4">
                       <a href="{{ route('likes.users', ['post' => $timeline]) }}">
-                        <span><i class="fas fa-user fa-2x" style="height:32px; color:#E3342F;"></i></span>
+                        <span><i class="fas fa-user fa-2x border rounded-right" style="height:37px; width:37px; color:#E3342F; padding-top:4px; padding-left:5px;"></i></span>
                       </a>
                     </div>
                   </div>

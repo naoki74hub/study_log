@@ -110,8 +110,8 @@
           <!--コメント機能-->
           <div class="mt-4">
             <a href="{{ route('posts.show', ['post'=> $post->id]) }}" class='comments mr-3'>
-            <div class="btn btn-primary py-1">
-              <i class="far fa-comment-alt fa-lg mr-2"></i>{{ $post->comments()->count() }}
+            <div class="btn btn-primary py-1" style="height:37px;">
+              <i class="far fa-comment-alt fa-lg mr-2 mt-2"></i>{{ $post->comments()->count() }}
             </div>
             </a>
           </div>
@@ -120,21 +120,21 @@
             <div class="col-md-3">
               <form method="POST" action="{{ route('unlikes', $post) }}">
                 @csrf
-                <input type="submit" class="fas btn btn-danger mr-2 py-2 js-like-toggle" data-postid="{{ $post->id }}" value="&#xf004; {{ $post->likes()->count() }}">
+                <input type="submit" class="fas border btn-danger js-like-toggle rounded-left" style="height:37px; width:55px;" data-postid="{{ $post->id }}" value="&#xf004; {{ $post->likes()->count() }}">
               </form>
             </div>
           @else
-          <div class="col-md-3">
+          <div class="col-md-3" style="width:70px;">
             <form method="POST" action="{{ route('likes', $post) }}">
               @csrf
-              <input type="submit" class="fas btn border py-2 js-like-toggle darkmode-like" data-postid="{{ $post->id }}" value="&#xf004; {{ $post->likes()->count() }}" style="color:#6c7176;">
+              <input type="submit" class="fas border py-2 js-like-toggle darkmode-like bg-white rounded-left" data-postid="{{ $post->id }}" value="&#xf004; {{ $post->likes()->count() }}" style="color:#6c7176; width:56px; height:37px;">
             </form>
           </div>
           @endif
          </div> 
-          <div style="width:32px; height:32px;" class="pr-2 pt-4">
+          <div class="pr-2 pt-4">
             <a href="{{ route('likes.users', ['post' => $post]) }}">
-              <span><i class="fas fa-user fa-2x" style="height:32px; color:#E3342F;"></i></span>
+              <span><i class="fas fa-user border fa-2x rounded-right" style="height:37px; width:37px; padding-top:4px; padding-left:5px; color:#E3342F;"></i></span>
             </a>
           </div>
         </div>

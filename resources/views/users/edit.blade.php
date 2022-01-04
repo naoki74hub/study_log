@@ -26,17 +26,17 @@ function ShowLength( idn, str ) {
                   <div class="md-form mt-4">
                     <label class="font-weight-bold">自己紹介</label>
                     <textarea name="self_introduction" class="form-control textarea" placeholder="自己紹介" onkeyup="ShowLength('inputlength1', value);" style="height:80px;">{{ $user->self_introduction ?? old('self_introduction') }}</textarea>
-                    <p class="text-muted">現在<span id="inputlength1">0</span>文字入力中です。(160字以内)</p>
+                    <p style="color:#919599;">現在<span id="inputlength1">0</span>文字入力中です。(160字以内)</p>
                   </div>  
                   <div class="form-group">
                     <label class="font-weight-bold">目標</label>
                     <textarea name="goal" class="form-control textarea" placeholder="達成目標" onkeyup="ShowLength('inputlength2', value);" style="height:80px;">{{ $user->goal ?? old('goal') }}</textarea>
-                    <p class="text-muted">現在<span id="inputlength2">0</span>文字入力中です。(120字以内)</p>
+                    <p style="color:#919599;">現在<span id="inputlength2">0</span>文字入力中です。(120字以内)</p>
                   </div>
                   <div class="from-group mt-4">
                     <label class="font-weight-bold">イベントタイトル（試験名など)→カウントダウンの上に表示されるよ</label>
                     <input type="text" name="important_day_title" class="form-control textarea" onkeyup="ShowLength('inputlength3', value);" placeholder="イベントタイトル" value="{{$user->important_day_title ?? old('important_day_title') }}">
-                    <p class="text-muted">現在<span id="inputlength3">0</span>文字入力中です。(30字以内)</p>
+                    <p style="color:#919599;">現在<span id="inputlength3">0</span>文字入力中です。(30字以内)</p>
                   </div>
                   <div class="form-group mt-4">
                     <label class="font-weight-bold">大切な日の日付（試験日など）→今日から大切な日までのカウントダウンを実行できるよ！！</label>

@@ -21,7 +21,7 @@
    <link rel="dns-prefetch" href="//fonts.gstatic.com">
    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     
-   <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
+   <link type="text/css" rel="stylesheet" href="{{ asset('css/app.css') }}">
    
    <!-- Styles -->
    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -93,7 +93,7 @@
           </li>
           <li class="nav-item">
             <a class="nav-link h5 menu-hover" href="{{ route('ranking') }}">
-              <i class="far fa-calendar-alt"></i>
+              <i class="fas fa-crown"></i>
               <span data-feather="report text-hover text-white">勉強時間ランキング</span>
             </a>
           </li>
