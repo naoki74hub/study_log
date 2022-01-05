@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddImportantDayTitleToUsersTable extends Migration
+class AddImportantDayToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddImportantDayTitleToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-             $table->string('important_day_title',30)->nullable()->after('goal');
+            $table->date('important_day')->nullable()->after('important_day_title');
         });
     }
 

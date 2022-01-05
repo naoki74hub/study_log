@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddGoalToUsersTable extends Migration
+class AddLevelToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddGoalToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-              $table->text('goal')->nullable()->after('self_introduction');
+            $table->integer('level')->nullable()->after('important_day');
         });
     }
 

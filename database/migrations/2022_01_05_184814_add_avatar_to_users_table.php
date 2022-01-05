@@ -14,7 +14,7 @@ class AddAvatarToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('avatar')->nullable()->after('updated_at');
+            $table->string('avatar')->nullable()->after('total_hour');
         });
     }
 
