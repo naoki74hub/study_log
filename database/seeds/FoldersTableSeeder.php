@@ -13,7 +13,7 @@ class FoldersTableSeeder extends Seeder
      */
     public function run()
     {
-        $titles = ['英語','プログラミング'];
+        $titles = ['英語','プログラミング','読書'];
         
         foreach($titles as $title) {
          DB::table('folders')->insert([
