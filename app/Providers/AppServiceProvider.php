@@ -51,7 +51,7 @@ class AppServiceProvider extends ServiceProvider
                     }
                     
                     //投稿を日毎に取得し、$post_dayに代入
-                    $post_day = $post::where('time', '>', 0)
+                    $post_day = $post::whereNotNull('time')
                            ->Where('user_id', $user->id)
                            ->selectRaw('DATE(created_at) as date')
                            ->groupBy('date')
@@ -59,7 +59,7 @@ class AppServiceProvider extends ServiceProvider
                            ->count();
                            
                     //投稿を日毎に取得
-                    $continue_days = $post::where('time', '>' , 0)
+                    $continue_days = $post::whereNotNull('time')
                           ->where('user_id', $user->id)
                           ->selectRaw('DATE(created_at) as date')
                           ->groupBy('date')
