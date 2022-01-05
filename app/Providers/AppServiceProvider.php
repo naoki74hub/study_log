@@ -8,6 +8,8 @@ use App\Models\Post;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Schema;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -28,6 +30,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(UrlGenerator $url)
     {
+        Schema::defaultStringLength(191);
+        
         \URL::forceScheme('https');
         //全ページで使う共通変数を定義（サイドバー）
         view()->composer('*', function ($view) 
