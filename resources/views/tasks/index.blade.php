@@ -116,9 +116,10 @@
                   {{ $folder->title }}
                 </a>
                 <a href="{{route('folders.edit', ['folder' => $folder])}}"><i class="fa fa-pen mt-3 ml-2"></i></a></td>
-             
+              @if ($folder->id === 1)
+              @else
                 <span class="folder-delete mr-2" data-toggle="modal" data-target="#modal-delete-{{ $folder->id }}"><i class="fa fa-trash-alt text-danger mt-3 ml-4"></i></span>
-              
+              @endif
              </div>
              <!-- modal -->
              <div id="modal-delete-{{ $folder->id }}" class="modal fade" tabindex="-1" role="dialog">
