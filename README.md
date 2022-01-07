@@ -126,7 +126,7 @@ Twitterのような、いいねやフォロー、コメントなどの機能に�
 
 ER図（IE記法）
 
-![ER](https://user-images.githubusercontent.com/90256385/148501737-a3f76632-e164-447f-9a7d-3b4a804b94bf.jpeg)
+![DD27A3FD-8FF9-4B0A-BCA4-A6B8314FC311](https://user-images.githubusercontent.com/90256385/148501957-0f647641-82d3-4208-8b39-82f82fca6e7c.jpeg)
 
 # 各テーブルについて
 
