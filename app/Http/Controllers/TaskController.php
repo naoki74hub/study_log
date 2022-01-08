@@ -71,7 +71,6 @@ class TaskController extends Controller
         
         return redirect()->route('folders.index', [
             'folder' => $task->folder_id,
-            'task' => $task,
             ]);
     }
 }
