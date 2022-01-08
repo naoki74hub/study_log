@@ -13,7 +13,7 @@ class TaskController extends Controller
     public function index(Folder $folder)
     {
         $folders = Folder::all();
-        $tasks = $folder->tasks()->get();
+        $tasks = $folder->tasks;
         
         return view('tasks/index', [
              'folders' => $folders,
