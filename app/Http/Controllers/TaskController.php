@@ -10,16 +10,14 @@ use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
-    public function index(int $id)
+    public function index(Folder $folder)
     {
-        
         $folders = Folder::all();
-        $current_folder = Folder::find($id);
-        $tasks = $current_folder->tasks()->get();
+        $tasks = $folder->tasks()->get();
         
         return view('tasks/index', [
              'folders' => $folders,
-             'current_folder_id' => $current_folder->id,
+             'current_folder_id' => $folder->id,
              'tasks' => $tasks,
         ]);
     }
