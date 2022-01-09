@@ -8,6 +8,7 @@ use App\Models\Post;
 use App\Models\User;
 use App\Policies\PostPolicy;
 use App\Policies\UserPolicy;
+use App\Policies\FolderPolicy;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -17,9 +18,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        
-         User::class => UserPolicy::class,
          Post::class => PostPolicy::class,
+         User::class => UserPolicy::class,
     ];
 
     /**
