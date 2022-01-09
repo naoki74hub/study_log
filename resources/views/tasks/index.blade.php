@@ -1,5 +1,5 @@
-@extends('app')
 
+@extends('app')
 @section('title', '管理')
  
 @section('content')
@@ -115,10 +115,11 @@
                 <a href="{{ route('folders.tasks.index', ['folder' => $folder]) }}" class="list-group-item text-decoration-none {{ $current_folder_id === $folder->id ? 'active' : ''}}" style="width:285px;">
                   {{ $folder->title }}
                 </a>
-                <a href="{{route('folders.edit', ['folder' => $folder])}}"><i class="fa fa-pen mt-3 ml-2"></i></a>
-                @if ($folder->id !== 1)
-                 <span class="folder-delete mr-2" data-toggle="modal" data-target="#modal-delete-{{ $folder->id }}"><i class="fa fa-trash-alt text-danger mt-3 ml-4"></i></span>
-                @endif
+                <a href="{{route('folders.edit', ['folder' => $folder])}}"><i class="fa fa-pen mt-3 ml-2"></i></a></td>
+              @if ($folder->id === 1)
+              @else
+                <span class="folder-delete mr-2" data-toggle="modal" data-target="#modal-delete-{{ $folder->id }}"><i class="fa fa-trash-alt text-danger mt-3 ml-4"></i></span>
+              @endif
              </div>
              <!-- modal -->
              <div id="modal-delete-{{ $folder->id }}" class="modal fade" tabindex="-1" role="dialog">
@@ -150,9 +151,9 @@
       <div class="column col-md">
         <div class="card mt-5 darkmode-post">
           <div class="card-text text-white pl-2 py-2" style="background-color:#1b253c;"><i class="fas fa-fire mr-2"></i>タスク</div>
-           <div class="card-body">
+          <div class="card-body">
             <div class="text-center">
-              <a href="{{ route('folders.tasks.create', ['folder' => $folder]) }}" class="btn btn-default btn-block bg-primary text-white">
+              <a href="{{ route('folders.tasks.create', ['folder' => $current_folder_id]) }}" class="btn btn-default btn-block bg-primary text-white">
                 <i class="fas fa-plus mr-2"></i>タスクを追加する
               </a>
             </div>
@@ -210,8 +211,7 @@
     </div>
   </div>
  @section('script')
- <script src="{{ mix('js/pomodoro_timer.js') }}"></script>
- <script src="{{ mix('js/stopwatch.js') }}"></script>
+ <script src="{{ asset('js/pomodoro_timer.js') }}"></script>
+ <script src="{{ asset('js/stopwatch.js') }}"></script>
  @endsection
 @endsection
- 
