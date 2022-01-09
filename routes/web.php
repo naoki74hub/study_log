@@ -45,7 +45,7 @@ Route::group(['prefix' => 'users', 'as' => 'users.', 'middleware' => 'auth'], fu
 });
 
 Route::group(['prefix' => 'folders', 'as' => 'folders.', 'middleware' => 'auth'], function() {
-   Route::get('{folder}/tasks', 'TaskController@index')->name('index');
+   Route::get('{folder}/tasks', 'TaskController@index')->name('tasks.index');
    Route::get('create', 'FolderController@create')->name('create');
    Route::post('store', 'FolderController@store')->name('store');
    Route::post('{folder}/destroy', 'FolderController@destroy')->name('destroy');

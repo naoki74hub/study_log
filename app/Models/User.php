@@ -66,6 +66,14 @@ class User extends Authenticatable
     }
     
     /**
+     * フォルダーへのリレーション
+     */
+    public function folders()
+    {
+        return $this->hasMany('App\Models\Folder');
+    }
+    
+    /**
      * ユーザーへのリレーション
      */
     public function followers()

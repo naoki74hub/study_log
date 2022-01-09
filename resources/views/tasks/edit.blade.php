@@ -21,7 +21,9 @@
               <div class="form-group">
                 <label for="status">状態</label>
                 <select name="status" id="status" class="form-control">
+                  //Taskモデルで定義した配列定数をループ
                   @foreach(\App\Models\Task::STATUS as $key => $val)
+                  //ループしたキーと直前の入力値、あるいは、データベースに登録済みの値を比べて、一致すれば'selected'を出力
                     <option value="{{ $key }}" {{ $key == old('status', $task->status) ? 'selected' : '' }}>
                       {{ $val['badge'] }}
                     </option>
