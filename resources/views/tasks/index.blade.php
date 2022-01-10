@@ -210,6 +210,27 @@
       </div>
     </div>
   </div>
+  <div class="container">
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal1">
+  Bootstrap modal fade-in
+</button>
+<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalLabelId">modal title</h3>
+            </div>
+            <div class="modal-body">
+                <label>mobal body</label>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+  </div>
  @section('script')
  <script src="{{ asset('js/pomodoro_timer.js') }}"></script>
  <script src="{{ asset('js/stopwatch.js') }}"></script>
