@@ -25,6 +25,7 @@ mix.js('resources/js/app.js', 'public/js')
    .sass('resources/sass/_sidemenu_hover.scss', 'public/css')
    .sass('resources/sass/_level_tooltip.scss', 'public/css')
    .sass('resources/sass/_ranking.scss', 'public/css')
+   .sass('resources/sass/_study_tips.scss', 'public/css')
    
    
  

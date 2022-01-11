@@ -37406,6 +37406,17 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/sass/_study_tips.scss":
+/*!*****************************************!*\
+  !*** ./resources/sass/_study_tips.scss ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
 /***/ "./resources/sass/_top_back.scss":
 /*!***************************************!*\
   !*** ./resources/sass/_top_back.scss ***!
@@ -37429,9 +37440,9 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 /***/ }),
 
 /***/ 0:
-/*!**************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/_top_back.scss ./resources/sass/_darkmode.scss ./resources/sass/_stopwatch.scss ./resources/sass/_pomodoro_timer.scss ./resources/sass/_sidemenu_hover.scss ./resources/sass/_level_tooltip.scss ./resources/sass/_ranking.scss ***!
-  \**************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/_top_back.scss ./resources/sass/_darkmode.scss ./resources/sass/_stopwatch.scss ./resources/sass/_pomodoro_timer.scss ./resources/sass/_sidemenu_hover.scss ./resources/sass/_level_tooltip.scss ./resources/sass/_ranking.scss ./resources/sass/_study_tips.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -37443,7 +37454,8 @@ __webpack_require__(/*! /home/ec2-user/environment/study_log/resources/sass/_sto
 __webpack_require__(/*! /home/ec2-user/environment/study_log/resources/sass/_pomodoro_timer.scss */"./resources/sass/_pomodoro_timer.scss");
 __webpack_require__(/*! /home/ec2-user/environment/study_log/resources/sass/_sidemenu_hover.scss */"./resources/sass/_sidemenu_hover.scss");
 __webpack_require__(/*! /home/ec2-user/environment/study_log/resources/sass/_level_tooltip.scss */"./resources/sass/_level_tooltip.scss");
-module.exports = __webpack_require__(/*! /home/ec2-user/environment/study_log/resources/sass/_ranking.scss */"./resources/sass/_ranking.scss");
+__webpack_require__(/*! /home/ec2-user/environment/study_log/resources/sass/_ranking.scss */"./resources/sass/_ranking.scss");
+module.exports = __webpack_require__(/*! /home/ec2-user/environment/study_log/resources/sass/_study_tips.scss */"./resources/sass/_study_tips.scss");
 
 
 /***/ })

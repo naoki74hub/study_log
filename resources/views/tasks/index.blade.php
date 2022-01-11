@@ -210,29 +210,113 @@
       </div>
     </div>
   </div>
-  <div class="container">
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal1">
-  Bootstrap modal fade-in
-</button>
-<div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title" id="modalLabelId">modal title</h3>
-            </div>
-            <div class="modal-body">
-                <label>mobal body</label>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">OK</button>
-            </div>
-        </div>
-    </div>
-</div>
-  </div>
- @section('script')
- <script src="{{ asset('js/pomodoro_timer.js') }}"></script>
- <script src="{{ asset('js/stopwatch.js') }}"></script>
- @endsection
-@endsection
+  <div class="container　mt-5">
+      <div class="text-center mt-5">
+          <div class="heading"><span class="heading1">勉強に取りかかれる、集中できるアドバイス！！</span></div> 
+            <button type="button" class="btn btn-danger study-tips" data-toggle="modal" data-target="#modal1">
+              <i class="fas fa-sad-tear fa-2x mr-2"></i><span class="study-tips-text">勉強に集中できないあなたへ</span>
+            </button>
+       </div>
+       <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+           <div class="modal-dialog" style="max-width:inherit; width:45%;">
+               <div class="modal-content darkmode-post">
+                   <div class="modal-body mt-4" style="padding-left:55px;">
+                        <div class="d-flex align-items-center">
+                            <div class="tips-image">
+                                <i class="fas fa-building fa-5x"></i>
+                            </div>
+                            <div class="tips-content">
+                                <p class="tips-title">勉強する場所を変える</p>
+                                <p>勉強する場所を変えてみてはいかがでしょうか？<br>静かな場所がいいのであれば図書館。ざわついた雰囲気の中でも集中できるのならカフェ。自分が1番集中できる場所を見つけよう。</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mt-5 align-items-center">
+                            <div class="tips-image">
+                                <i class="fas fa-running fa-5x"></i>
+                            </div>
+                            <div class="tips-content">
+                                <p class="tips-title">運動を取り入れる</p>
+                                <p>運動すれば、やる気ホルモンといわれるドーパミンが生成されます。勉強の合間に少しストレッチをしたり、軽い筋トレをしたりするのがおすすめです。<br>朝のウォーキングなどの有酸素運動も、 脳の働きを活性化させます。有酸素運動を取り入れると、記憶力、集中力がアップし、暗記や計算などもうまくこなせるようになります。</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mt-5 align-items-center">
+                            <div class="tips-image">
+                                <i class="fas fa-brain fa-5x" style="width:60px;"></i>
+                            </div>
+                            <div class="tips-content">
+                                <p class="tips-title">とりあえず行動する</p>
+                                <p>「やる気」というのは、脳の側坐核という部分が働き、脳内物質が分泌することで「やる気」ができます。では、どうすれば側坐核が働き、「やる気」を出すことができるのか？答えは、実際に行動することです。
+                                勉強などの作業に入ると、脳の側坐核が働き、「やる気」に繋がります。つまり、ほんの一歩行動するだけで「やる気」が引き出されるのです。最初は「やる気」がなかったけど、勉強し始めたらだんだん「やる気」が出てきて、気づけば長時間勉強していたなんて経験はないでしょうか？考える必要はありません。まずは行動してみましょう！！</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mt-5 align-items-center">
+                            <div class="tips-image">
+                                <i class="fas fa-bed fa-5x" style="width:60px;"></i>
+                            </div>
+                            <div class="tips-content">
+                                <p class="tips-title">適度な休憩を取り入れる</p>
+                                <p>長時間の勉強は、疲れや眠気などで集中力が切れてしまうものです。１５分間仮眠したり、少しストレッチしてみたり、軽く軽食を取ったりなどしましょう。適度な休憩を取り入れることで、リラックスでき、気持ちをリセットできます。このアプリにはポモドーロタイマーがついています。ぜひ活用してください。</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mt-5 align-items-center">
+                            <div class="tips-image">
+                                <i class="fas fa-ban fa-5x" style="width:60px;"></i>
+                            </div>
+                            <div class="tips-content">
+                                <p class="tips-title">誘惑するものを片付ける</p>
+                                <p>スマホ、ゲームなどが目に見える場所にあると、ついつい触ってしまって勉強に集中できなという人もいるでしょう。机の上を整理整頓し、誘惑するものが視界に入らないようにしましょう。
+                                または、スマホの使用時間制限を利用したり、電源を切って別の部屋に置いておくなど、いろいろな工夫をしてみましょう。</p>
+                            </div>
+                        </div>
+                      　<div class="d-flex mt-5 align-items-center">
+                            <div class="tips-image">
+                                <i class="fas fa-tshirt fa-5x" style="width:60px;"></i>
+                            </div>
+                            <div class="tips-content">
+                                <p class="tips-title">勉強するための服装に着替える</p>
+                                <p>パジャマやジャージなどの部屋着だと、メリハリがつかず、集中できないこともあるでしょう。メリハリをつけるために、勉強するための服装に着替えましょう。
+                                寝る前にパジャマに着替える習慣がある人は、そうでない人よりも睡眠の質が高いという研究結果もあります。勉強の前に、勉強するための服装に着替える習慣をつけることによって、即座に勉強モードに切り替えることができるようになります。</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mt-5 align-items-center">
+                            <div class="tips-image">
+                                <i class="far fa-clock fa-5x" style="width:60px;"></i>
+                            </div>
+                            <div class="tips-content">
+                                <p class="tips-title">アクショントリガーを決める</p>
+                                <p>アクショントリガーとは、「ある行動をとったら勉強を始める」というルーティンを決めておくことです。朝起きたら３０分間ランニング→7時からプログラミングの勉強→昼15分間仮眠→１3時から英語、というように行動を書き記しておきましょう。
+                                計画を立てておけば、考えることなく即座に行動に移せます。このアプリにはタスク管理機能がついています。ぜひ活用しましょう！！</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mt-5 align-items-center">
+                            <div class="tips-image">
+                                <i class="fas fa-headphones-alt fa-5x"></i>
+                            </div>
+                            <div class="tips-content">
+                                <p class="tips-title">勉強する前に好きな音楽を聴く</p>
+                                <p>好きな音楽を聴くと、脳内でドーパミンが分泌されるという研究結果があります。好きな音楽を聴くことによって、やる気が沸き上がってきて、パフォーマンス向上につながります。
+                                勉強前に自分の好きな音楽を聴いて、気分を高めてはいかがでしょうか？</p>
+                            </div>
+                        </div>
+                        <div class="d-flex mt-5 align-items-center">
+                            <div class="tips-image">
+                                <i class="fas fa-music fa-5x"></i>
+                            </div>
+                            <div class="tips-content">
+                                <p class="tips-title">勉強中に自然音や環境音を流す</p>
+                                <p>音楽を聴きながら勉強する人は多いと思いますが、好きな音楽を聴きながら勉強するのは作業効率が落ちると言われています。しかし、50デジヘル程度の音楽であれば、学習効果を高める効果があります。
+                                自然音がそれに当たります。具体的には、「雨音」「川のせせらぎ」「鳥の声」などがあります。また、カフェなどで耳にするような、静かなメロディーが繰り返されるタイプの環境音も同じような効果があります。Youtubeなどにはこのような自然音や環境音がたくさんあります。ぜひ活用しましょう！！</p>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                         <button type="button" class="btn tips-close border" data-dismiss="modal" style="color: #787e87;">閉じる</button>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+             </div>
+             @section('script')
+             <script src="{{ asset('js/pomodoro_timer.js') }}"></script>
+             <script src="{{ asset('js/stopwatch.js') }}"></script>
+             @endsection
+             @endsection

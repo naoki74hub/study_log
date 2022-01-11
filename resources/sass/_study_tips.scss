@@ -1,0 +1,74 @@
+.study-tips {
+    width: 350px;
+    font-size: 20px;
+    margin-top: 10px;
+    
+    &-text {
+        font-size: 22px;
+    }
+}
+
+.heading1 {
+    display: inline-block;
+    position: relative;
+    padding: 0 17px;
+    font-size: 16px;
+    font-weight: bold;
+    
+    &:before {
+        content:"";
+        width: 2px;
+        height: 34px;
+        background-color: #787e87;
+        position: absolute;
+        left: 0;
+        top: 48%;
+        transform: translateY(-50%) rotate(-10deg);
+    }
+    
+    &:after {
+        content:"";
+        width: 2px;
+        height: 34px;
+        background-color: #787e87;
+        position: absolute;
+        right: 0;
+        top: 48%;
+        transform: translateY(-50%) rotate(10deg);
+    }
+}
+
+.tips {
+    &-image {
+        color: green;
+    }
+    
+    &-title {
+        background-color: #1b253c;
+        color: #fff;
+        padding: 6px 12px;
+        position: relative;
+        
+        &:after {
+            content:"";
+            position: absolute;
+            left: 30px;
+            top: 100%;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 12px 6px 0 6px;
+            border-color: #1b253c transparent transparent transparent;
+
+        }
+    }
+    
+    &-content {
+        font-size: 16px;
+        margin-left: 50px;
+    }
+    
+    &-close {
+        color: #787e87;
+    }
+}
