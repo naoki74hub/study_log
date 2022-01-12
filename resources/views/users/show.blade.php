@@ -76,14 +76,28 @@
                       <p class="font-weight-bold">ツイート数</p>
                       <span>{{ $post_count }}</span>
                     </div>
-                    <div class="p-2 d-flex flex-column align-items-center ml-2">
-                      <p class="font-weight-bold">フォロー数</p>
-                      <a href ="{{ route('users.followings', ['name' => $user->name])  }}" class="text-decoration-none">{{ $follow_count }}</a>
-                    </div>
-                    <div class="p-2 d-flex flex-column align-items-center ml-2">
+                    @if ($follow_count === 0 && $user->id !== Auth::user()->id)
+                      <div class="p-2 d-flex flex-column align-items-center ml-2">
+                        <p class="font-weight-bold">フォロー数</p>
+                        <span>{{ $follow_count }}</span>
+                      </div>
+                    @elseif ($follow_count > 0 || $follow_count === 0 )
+                      <div class="p-2 d-flex flex-column align-items-center ml-2">
+                        <p class="font-weight-bold">フォロー数</p>
+                        <a href ="{{ route('users.followings', ['user' => $user->id])  }}" class="text-decoration-none">{{ $follow_count }}</a>
+                      </div>
+                    @endif
+                    @if ($follower_count === 0 && $user->id !== Auth::user()->id)
+                      <div class="p-2 d-flex flex-column align-items-center ml-2">
                         <p class="font-weight-bold">フォロワー数</p>
-                        <a href="{{ route('users.followers', ['name' => $user->name])  }}" class="text-decoration-none">{{ $follower_count }}</a>
-                    </div>
+                        <span>{{ $follower_count }}</span>
+                      </div>
+                    @elseif ($follower_count > 0 || $follower_count === 0)
+                      <div class="p-2 d-flex flex-column align-items-center ml-2">
+                        <p class="font-weight-bold">フォロワー数</p>
+                        <a href="{{ route('users.followers', ['user' => $user->id])  }}" class="text-decoration-none">{{ $follower_count }}</a>
+                      </div>
+                    @endif
                   </div>
                 </div>
             </div>
@@ -225,7 +239,15 @@
         </div>
       @endforeach
     @endif
-    </div>
+    @if ($timelines->count() === 0 && $user->id === Auth::user()->id)
+      <div class="container">
+        <div class="user-container text-center user-post">
+          <i class="fas fa-user-edit fa-5x user-image"></i> 
+          <p class="user-title">自分の投稿</p>
+          <p class="user-content">ここに自分の投稿が表示されます。
+        </div>
+      </div>
+    @endif
       <div class="top-back">
         <a href="#"><div class="to-top"><i class="fas fa-3x fa-chevron-up"></i></div></a>
       </div>

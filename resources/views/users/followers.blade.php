@@ -41,9 +41,18 @@
          </div>
        </div>
      </div>
-   @endforeach
-    <div class="top-back">
-      <a href="#"><div class="to-top"><i class="fas fa-3x fa-chevron-up"></i></div></a>
-    </div>
- </div>
+     @endforeach
+     @if ($follower_count === 0)
+       <div class="container">
+         <div class="user-container text-center">
+           <i class="fas fa-user-plus fa-5x user-image"></i> 
+           <p class="user-title">フォロワー</p>
+           <p class="user-content">ここにすべてのフォロワーが表示されます。
+         </div>
+       </div>
+     @endif
+     <div class="top-back">
+       <a href="#"><div class="to-top"><i class="fas fa-3x fa-chevron-up"></i></div></a>
+     </div>
+  </div>
 @endsection

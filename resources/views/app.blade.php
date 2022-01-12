@@ -88,7 +88,7 @@
           <li class="nav-item">
             <a class="nav-link  h5 menu-hover" href="{{ route('folders.tasks.index', ['folder' => 1]) }}">
               <i class="far fa-clock"></i>
-              <span data-feather="record text-hover text-white">管理</span>
+              <span data-feather="record text-hover text-white">時間・タスク管理</span>
             </a>
           </li>
           <li class="nav-item">

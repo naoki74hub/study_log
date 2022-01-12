@@ -193,6 +193,7 @@ class PostController extends Controller
      */
     public function timeline(User $user) {
         $posts = Post::query()->whereIn('user_id', Auth::user()->follows()->pluck('followed_id'))->latest()->get();
+        
         return view('posts.timeline', compact('posts'));
     }
     

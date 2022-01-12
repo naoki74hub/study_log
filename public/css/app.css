@@ -368,6 +368,32 @@ h3 span {
   color: #787e87;
 }
 
+.user-container {
+  margin-top: 300px;
+}
+
+.user-image {
+  border: 1px solid #656965;
+  border-radius: 50%;
+  width: 140px;
+  height: 140px;
+  padding: 30px;
+}
+
+.user-title {
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.user-content {
+  color: #9a9c9a;
+}
+
+.user-post {
+  margin-top: 70px;
+}
+
 /*!
  * Bootstrap v4.6.1 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors

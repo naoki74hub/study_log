@@ -38,8 +38,8 @@ Route::group(['middleware' => 'auth'], function(){
     });
 
 Route::group(['prefix' => 'users', 'as' => 'users.', 'middleware' => 'auth'], function() {
-    Route::get('{name}/followings', 'UserController@followings')->name('followings');
-    Route::get('{name}/followers', 'UserController@followers')->name('followers');
+    Route::get('{user}/followings', 'UserController@followings')->name('followings');
+    Route::get('{user}/followers', 'UserController@followers')->name('followers');
     Route::post('{user}/follow', 'UserController@follow')->name('follow');
     Route::delete('{user}/unfollow', 'UserController@unfollow')->name('unfollow');
 });

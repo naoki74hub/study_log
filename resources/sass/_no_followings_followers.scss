@@ -1,0 +1,27 @@
+.user {
+    &-container {
+        margin-top: 300px;
+    }
+    
+    &-image {
+        border:1px solid #656965;
+        border-radius: 50%;
+        width: 140px;
+        height: 140px;
+        padding: 30px;
+    }
+    
+    &-title {
+        margin-top: 10px;
+        font-weight: bold;
+        font-size: 25px;
+    }
+    
+    &-content {
+        color: #9a9c9a;
+    }
+    
+    &-post {
+        margin-top: 70px;
+    }
+}

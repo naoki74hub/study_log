@@ -12,12 +12,11 @@
    @foreach ($posts as $post)
      @include('posts.card')
    @endforeach
-  
-   <div class="top-back">
+  <div class="top-back">
      <a href="#"><div class="to-top"><i class="fas fa-3x fa-chevron-up"></i></div></a>
    </div>
 </div>
  @if (session('status') === 'true')
-     <script src="{{ mix('js/level_alert.js') }}"></script>
-   @endif
+   <script src="{{ mix('js/level_alert.js') }}"></script>
+ @endif
 @endsection

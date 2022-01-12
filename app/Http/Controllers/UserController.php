@@ -157,9 +157,10 @@ class UserController extends Controller
         //
     }
     
-    public function followings(string $name)
+    public function followings(Follower $follower, User $user)
     {
-        $user = User::where('name', $name)->first();
+        $follow_count = $follower->getFollowCount($user->id);
+        $user = User::where('name', $user->name)->first();
         $post = $user->id;
         $followings = $user->follows->sortByDesc('created_at');
         $self_introdunction = $user->self_introduction;
@@ -169,15 +170,17 @@ class UserController extends Controller
             'followings' => $followings,
             'post' => $post,
             'self_introduction' => $self_introdunction,
+            'follow_count' => $follow_count,
         ]);
     }
     
-    public function followers(string $name)
+    public function followers(User $user, Follower $follower)
     {
-        $user = User::where('name', $name)->first();
+        $follower_count = $follower->getFollowerCount($user->id);
+        $user = User::where('name', $user->name)->first();
         $followers = $user->followers->sortByDesc('created_at');
         
-        return view('users.followers', compact('user', 'followers'));
+        return view('users.followers', compact('user', 'followers', 'follower_count'));
     }
 
     public function follow(User $user)

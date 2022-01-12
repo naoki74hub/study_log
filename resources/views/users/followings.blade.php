@@ -42,6 +42,14 @@
         </div>
       </div>
    @endforeach
+   @if ($follow_count === 0)
+     <div class="container">
+     <div class="user-container text-center">
+        <i class="fas fa-user-plus fa-5x user-image"></i> 
+        <p class="user-title">フォロー中のユーザー</p>
+        <p class="user-content">フォロー中のユーザーがここ表示されます。
+     </div>
+     @endif
     <div class="top-back">
       <a href="#"><div class="to-top"><i class="fas fa-3x fa-chevron-up"></i></div></a>
     </div>
