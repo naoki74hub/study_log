@@ -17,11 +17,11 @@
         "laravel/tinker": "^2.5",
         "league/flysystem-aws-s3-v3": "^1.0",
         "nesbot/carbon": "^2.54",
-        "fzaninotto/faker": "^1.4"
+        "fzaninotto/faker": "^1.9"
     },
     "require-dev": {
         "facade/ignition": "^1.16.15",
-        "fzaninotto/faker": "^1.4",
+        "fzaninotto/faker": "^1.9",
         "laravel/ui": "^1.0",
         "mockery/mockery": "^1.0",
         "nunomaduro/collision": "^3.0",
