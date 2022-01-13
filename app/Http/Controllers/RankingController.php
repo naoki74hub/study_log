@@ -15,7 +15,6 @@ class RankingController extends Controller
     {
         //総勉強時間の取得
         $user_rankings = User::orderBy('total_hour', 'DESC')->take(100)->get();
-        
         //今月の最初の日を取得
         $dt_from = new \Carbon\Carbon();
         $dt_from->startOfMonth();

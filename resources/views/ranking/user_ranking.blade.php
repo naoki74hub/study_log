@@ -5,7 +5,7 @@
 @section('content')
 <div class="d-flex justify-content-around">
   <div class="card mb-4" style="max-width:450px; width:100%; margin-top:65px;">
-    <div class="card-header text-center darkmode-post">
+    <div class="card-header text-center darkmode-post border-bottom">
       <div>
         <i class="fas fa-2x fa-crown" style="color:#ffd700;"></i>
         <span class="mr-1 font-weight-bold" style="font-size:18px;">総勉強時間ランキング</span>
@@ -51,7 +51,7 @@
     </div>
   </div>
   <div class="card mb-4" style="max-width:450px; width:100%; margin-top:65px;">
-    <div class="card-header text-center darkmode-post d-flex justify-content-around">
+    <div class="card-header text-center darkmode-post d-flex justify-content-around border-bottom">
       <div>
         <i class="fas fa-2x fa-crown" style="color:#ffd700;"></i>
         <span class="mr-1 font-weight-bold" style="font-size:18px;">今月の勉強時間ランキング</span>

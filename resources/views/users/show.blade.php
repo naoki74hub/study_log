@@ -59,6 +59,12 @@
                 @elseif (!empty($user->important_day))
                   <p class="pt-3 mb-0 bg-warning pb-4" style="color:#333; position:relative;"><i class="far fa-3x fa-calendar-alt" style="position:absolute; top:10px; left:10px;"></i>あと<span class="display-3">{{ $count_down }}</span>日</p>
                 @endif
+                @if ($user->id !== Auth::user()->id && empty($user->important_day_title))
+                  <p class="p-4"></p>
+                @endif
+                @if ( Auth::user()->id !== $user->id && empty($user->important_day))
+                  <p class="pt-3 mb-0 bg-warning pb-4 text-dark" style="color:#333; position:relative;"><i class="far fa-3x fa-calendar-alt" style="position:absolute; top:10px; left:10px;"></i>あと<span class="display-3">000</span>日</p>
+                @endif
               </div>
               <div class="d-inline-block mt-4 border text-center rounded mb-3 ml-4" style="max-width:500px;height:150px;width:100%;display:teble-cel;vertical-align: middle;">
                 <div class="bg-success"><i class="far fa-flag fa-2x py-2 pr-2" style="color:black;"></i><span class="font-weight-bold h4 mb-0 py-2">達成目標</span>
@@ -103,9 +109,15 @@
             </div>
           </div>
        </div>
-       <div class="w-30 text-center mt-3">
-         <a href="{{ route('posts.followings.timeline') }}" class="text-decoration-none text-white bg-primary rounded p-2"><i class="fas fa-eye pr-2"></i>フォロー中の投稿一覧を見る</a>
+       @if ($user->id !== Auth::user()->id && $follow_count === 0)
+        <div class="w-30 text-center mt-3">
+         <span class="text-decoration-none text-white bg-secondary rounded p-2"><i class="fas fa-eye pr-2"></i>フォロー中の投稿一覧を見る</span>
        </div>
+       @elseif ($user->id === Auth::user()->id || $user->id !== Auth::user()->id && $follow_count > 0)
+       <div class="w-30 text-center mt-3">
+         <a href="{{ route('posts.followings.timeline', ['user' => $user->id]) }}" class="text-decoration-none text-white bg-primary rounded p-2"><i class="fas fa-eye pr-2"></i>フォロー中の投稿一覧を見る</a>
+       </div>
+       @endif
        @if (isset($timelines))
          @foreach ($timelines as $timeline)
            <div class="container">
@@ -136,7 +148,7 @@
                      <h3 class="h4 card-title">
                        {{$timeline->title}}
                      </h3>
-                       @if( Auth::id() === $timeline->user_id )
+                       @if( Auth::user()->id === $timeline->user_id )
                        <!-- dropdown -->
                          <div class="ml-auto card-text">
                            <div class="dropdown">
@@ -227,11 +239,17 @@
                         </div>
                       @endif
                     </div>
+                    @if ($timeline->likes()->count() === 0)
+                    <div style="width:32px; height:32px;" class="pr-2 pt-4">
+                      <span><i class="fas fa-user fa-2x border rounded-right" style="height:37px; width:37px; color:#fff; padding-top:4px; padding-left:5px;"></i></span>
+                    </div>
+                    @elseif ($timeline->likes()->count() > 0)
                     <div style="width:32px; height:32px;" class="pr-2 pt-4">
                       <a href="{{ route('likes.users', ['post' => $timeline]) }}">
                         <span><i class="fas fa-user fa-2x border rounded-right" style="height:37px; width:37px; color:#E3342F; padding-top:4px; padding-left:5px;"></i></span>
                       </a>
                     </div>
+                    @endif
                   </div>
                 </div>
              </div>

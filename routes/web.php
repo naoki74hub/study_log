@@ -23,7 +23,7 @@ Route::group(['prefix' => 'posts', 'as' => 'posts.', 'middleware' => 'auth'], fu
     Route::post('search', 'PostController@search')->name('search');
     Route::post('{post}/follow', 'PostController@follow')->name('follow');
     Route::delete('{post}/unfollow', 'PostController@unfollow')->name('unfollow');
-    Route::get('followings/timeline', 'PostController@timeline')->name('followings.timeline');
+    Route::get('followings/{user}/timeline', 'PostController@timeline')->name('followings.timeline');
 });
 
 Route::get('/', 'Auth\LoginController@showLoginForm');

@@ -4,7 +4,7 @@
 
 @section('content')
   <div class="container mt-5">
-    @foreach ($post->likes as $user )
+    @foreach ($post->likes as $user)
       <div class="card mt-3 border-light darkmode-post">
         <div class="card-body border-top border-bottom d-flex">
           <div>

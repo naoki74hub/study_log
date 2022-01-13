@@ -154,7 +154,7 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
     
     public function followings(Follower $follower, User $user)

@@ -131,12 +131,18 @@
             </form>
           </div>
           @endif
-         </div> 
+         </div>
+         @if ($post->likes()->count() === 0)
+         <div class="pr-2 pt-4">
+          <span><i class="fas fa-user border fa-2x rounded-right" style="height:37px; width:37px; padding-top:4px; padding-left:5px; color:#fff;"></i></span>
+        </div>
+          @elseif ($post->likes()->count() > 0)
           <div class="pr-2 pt-4">
             <a href="{{ route('likes.users', ['post' => $post]) }}">
               <span><i class="fas fa-user border fa-2x rounded-right" style="height:37px; width:37px; padding-top:4px; padding-left:5px; color:#E3342F;"></i></span>
             </a>
           </div>
+          @endif
         </div>
       </div> 
     </div>

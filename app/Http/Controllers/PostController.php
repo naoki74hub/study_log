@@ -192,7 +192,7 @@ class PostController extends Controller
      * フォローしているユーザーの投稿を取得し、表示する
      */
     public function timeline(User $user) {
-        $posts = Post::query()->whereIn('user_id', Auth::user()->follows()->pluck('followed_id'))->latest()->get();
+        $posts = Post::query()->whereIn('posts.user_id', $user->follows()->pluck('followed_id'))->latest()->get();
         
         return view('posts.timeline', compact('posts'));
     }

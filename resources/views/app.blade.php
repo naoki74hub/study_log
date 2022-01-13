@@ -62,7 +62,7 @@
   <div class="row vh-100">
     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse pt-5" style="background-color:#1b253c;">
       <div class="sidebar-sticky sticky-top">
-        <ul class="nav flex-column">
+        <ul class="nav flex-column" style="padding-top:30px;">
           <div class="level mt-5 tooltip2">
             <p class="level-shadow"><span class="display-3 text-white">Lv.</span><span class="display-3 text-white" id="level">{{ $level }}</span></p>
             <div class="description">10時間勉強するごとにレベルが1上がります！！</div>
