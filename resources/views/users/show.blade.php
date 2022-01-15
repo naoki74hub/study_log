@@ -24,11 +24,11 @@
               </div>
               @if ( Auth::id() === $user->id )
                 <div class="mr-5" style="max-width:600px;width:100%;">
-                  <div class="border mt-3 ml-3 rounded balloon" style="max-width:600px; width:100%;height:130px;">
+                  <div class="border mt-5 ml-3 rounded balloon" style="max-width:600px; width:100%;">
                     @if ($user->id === Auth::user()->id && empty($user->self_introduction))
                       <p class="mt-5 ml-4" style="font-size:18px;">自己紹介を設定し、自分を表現しよう!!
                     @elseif (!empty($user->self_introduction))
-                      <p class="p-2">{{ $user->self_introduction ?? old('self_introduction') }}</p>
+                      <p class="p-2" style="white-space:pre-wrap">{{ $user->self_introduction ?? old('self_introduction') }}</p>
                     @endif
                   </div>
               @else
@@ -43,7 +43,7 @@
                   </div>
                 @elseif ($user->id === Auth::user()->id && !empty($user->self_introduction || $user->goal || $user->important_day_title || $user->important_day))
                   <div>
-                    <a href="{{ route('users.edit', ['user' => $user]) }}" class="btn btn-primary mt-3">プロフィールを編集する</a>
+                    <a href="{{ route('users.edit', ['user' => $user]) }}" class="btn btn-primary mt-5">プロフィールを編集する</a>
                   </div>
                 @endif
             </div>
@@ -66,13 +66,13 @@
                   <p class="pt-3 mb-0 bg-warning pb-4 text-dark" style="color:#333; position:relative;"><i class="far fa-3x fa-calendar-alt" style="position:absolute; top:10px; left:10px;"></i>あと<span class="display-3">000</span>日</p>
                 @endif
               </div>
-              <div class="d-inline-block mt-4 border text-center rounded mb-3 ml-4" style="max-width:500px;height:150px;width:100%;display:teble-cel;vertical-align: middle;">
+              <div class="d-inline-block mt-4 border text-center rounded mb-3 ml-4" style="max-width:500px;width:100%;display:teble-cel;vertical-align: middle;">
                 <div class="bg-success"><i class="far fa-flag fa-2x py-2 pr-2" style="color:black;"></i><span class="font-weight-bold h4 mb-0 py-2">達成目標</span>
                 </div><hr class="m-0">
                 @if ($user->id === Auth::user()->id && empty($user->goal))
                   <p style="padding-top:40px;font-size:18px;">達成したい目標を視覚化すると効果的!! ぜひ設定しよう</p>
                 @elseif (!empty($user->goal))
-                  <p class="p-2 text-left">{{ $user->goal ?? old('goal') }}</p>
+                  <p class="p-2 text-left" style="white-space:pre-wrap;">{{ $user->goal ?? old('goal') }}</p>
                 @endif
               </div>
               </div>
@@ -227,7 +227,7 @@
                         <div class="col-md-3" style="width:70px;">
                           <form method="POST" action="{{ route('posts.unlikes', $timeline) }}">
                             @csrf
-                            <input type="submit" class="fas border btn-danger rounded-left" style="height:37px; width:55px;" value="&#xf004; {{ $timeline->likes()->count() }}">
+                            <input type="submit" class="fas border btn-danger rounded-left" style="height:37px; width:56px;" value="&#xf004; {{ $timeline->likes()->count() }}">
                           </form>
                         </div>
                       @else

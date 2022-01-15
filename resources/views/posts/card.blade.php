@@ -120,7 +120,7 @@
             <div class="col-md-3">
               <form method="POST" action="{{ route('posts.unlikes', ['post' => $post]) }}">
                 @csrf
-                <input type="submit" class="fas border btn-danger js-like-toggle rounded-left" style="height:37px; width:55px;" data-postid="{{ $post->id }}" value="&#xf004; {{ $post->likes()->count() }}">
+                <input type="submit" class="fas border btn-danger js-like-toggle rounded-left" style="height:37px; width:56px;" data-postid="{{ $post->id }}" value="&#xf004; {{ $post->likes()->count() }}">
               </form>
             </div>
           @else
