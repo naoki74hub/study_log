@@ -39,7 +39,7 @@
                 </div>
                 @if ($user->id === Auth::user()->id && empty($user->self_introduction || $user->goal || $user->important_day_title || $user->important_day))
                   <div class="ml-2">
-                    <a href="{{ route('users.create') }}" class="btn btn-primary mt-3">プロフィールを設定する</a>
+                    <a href="{{ route('users.create') }}" class="btn btn-primary mt-5">プロフィールを設定する</a>
                   </div>
                 @elseif ($user->id === Auth::user()->id && !empty($user->self_introduction || $user->goal || $user->important_day_title || $user->important_day))
                   <div>
