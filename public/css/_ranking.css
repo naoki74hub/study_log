@@ -13,6 +13,12 @@
   left: 15px;
 }
 
+.rank-texts {
+  position: absolute;
+  top: 8px;
+  left: 14px;
+}
+
 .rank-color1 {
   background-color: #ffd700;
 }
@@ -25,19 +31,7 @@
   background-color: #7e5435;
 }
 
-.ranks {
-  margin-right: 40px;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  color: #000;
-  background-color: #FFF;
-  position: relative;
-}
-
-.ranks-text {
-  position: absolute;
-  top: 8px;
-  left: 14px;
+.rank-colors {
+  background-color: #fff;
 }
 
