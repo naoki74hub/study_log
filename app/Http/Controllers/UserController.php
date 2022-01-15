@@ -78,6 +78,13 @@ class UserController extends Controller
             ])
         );
     }
+    
+    public function create(User $user)
+    {
+        $this->authorize('update', $user);
+        
+        return view('users/create');
+    }
 
     /**
      * Show the form for editing the specified resource.
