@@ -173,7 +173,7 @@
                         <!-- modal -->
                         <div id="modal-delete-{{ $timeline->id }}" class="modal fade" tabindex="-1" role="dialog">
                           <div class="modal-dialog" role="document">
-                            <div class="modal-content">
+                            <div class="modal-content darkmode-post">
                               <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
                                   <span aria-hidden="true">&times;</span>
@@ -185,7 +185,7 @@
                                   {{ $timeline->title }}を削除します。よろしいですか？
                                 </div>
                                 <div class="modal-footer justify-content-between">
-                                  <a class="btn border" data-dismiss="modal">キャンセル</a>
+                                  <a class="btn border" style="color:#8c8b88;" data-dismiss="modal">キャンセル</a>
                                   <button type="submit" class="btn btn-danger">削除する</button>
                                 </div>
                               </form>
