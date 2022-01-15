@@ -17,11 +17,10 @@ class FolderController extends Controller
     
     public function store(FolderRequest $request, Folder $folder)
     {
-        
         $folder->title = $request->input('title');
         Auth::user()->folders()->save($folder);
         
-        return redirect()->route('folders.tasks.index', ['folder' => $folder]);
+        return redirect()->route('folders.tasks.index', ['folder' => $folder->id]);
     }
     
     public function edit(Folder $folder)
@@ -32,15 +31,15 @@ class FolderController extends Controller
     public function update(FolderRequest $request, Folder $folder)
     {
         $folder->title = $request->input('title');
-        $folder->save();
+        Auth::user()->folders()->save($folder);
         
-        return redirect()->route('folders.tasks.index', ['folder' => 1]);
+        return redirect()->route('folders.tasks.index', ['folder' => $folder->id]);
     }
     
     public function destroy(Folder $folder)
     {
       $folder->delete();
-       
+      
       return redirect()->route('folders.tasks.index', ['folder' => 1]);
     }
 }

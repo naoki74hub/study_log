@@ -62,6 +62,7 @@ class User extends Authenticatable
      */
     public function likes()
     {
+        //中間テーブルlikesは、created_atカラム、updated_atカラムを作成していないので、withTimestamps()で自動的に更新するようにする
         return $this->belongsToMany('App\Models\Post', 'likes')->withTimestamps();
     }
     

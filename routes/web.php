@@ -24,6 +24,10 @@ Route::group(['prefix' => 'posts', 'as' => 'posts.', 'middleware' => 'auth'], fu
     Route::post('{post}/follow', 'PostController@follow')->name('follow');
     Route::delete('{post}/unfollow', 'PostController@unfollow')->name('unfollow');
     Route::get('followings/{user}/timeline', 'PostController@timeline')->name('followings.timeline');
+    Route::post('{post}/likes', 'LikeController@store')->name('likes');
+    Route::post('{post}/unlikes', 'LikeController@destroy')->name('unlikes');
+    Route::get('{post}/likes/users', 'PostController@getLikesUsers')->name('likes.users');
+
 });
 
 Route::get('/', 'Auth\LoginController@showLoginForm');
@@ -70,10 +74,5 @@ Route::get('login/twitter', 'TwitterController@redirectToProvider')->name('twitt
 Route::get('login/twitter/callback', 'TwitterController@handleProviderCallback');
 //ゲストユーザーログイン
 Route::get('guest', 'Auth\LoginController@guestLogin')->name('login.guest');
-
-//いいねボタン
-Route::post('posts/{post}/likes', 'LikeController@store')->name('likes');
-Route::post('posts/{post}/unlikes', 'LikeController@destroy')->name('unlikes');
-Route::get('posts/{post}/likes/users', 'PostController@getLikesUsers')->name('likes.users');
 
 Route::get('/home', 'HomeController@index')->name('home');

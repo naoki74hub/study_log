@@ -241,7 +241,7 @@
                     </div>
                     @if ($timeline->likes()->count() === 0)
                     <div style="width:32px; height:32px;" class="pr-2 pt-4">
-                      <span><i class="fas fa-user fa-2x border rounded-right" style="height:37px; width:37px; color:#fff; padding-top:4px; padding-left:5px;"></i></span>
+                      <span><i class="fas fa-user fa-2x border rounded-right" style="height:37px; width:37px; color:#6c7176; padding-top:4px; padding-left:5px;"></i></span>
                     </div>
                     @elseif ($timeline->likes()->count() > 0)
                     <div style="width:32px; height:32px;" class="pr-2 pt-4">

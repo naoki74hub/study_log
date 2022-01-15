@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\CommentRequest;
 use App\Models\Comment;
 use App\Models\Post;
+use App\Models\User;
 
 class CommentController extends Controller
 {
@@ -20,6 +21,12 @@ class CommentController extends Controller
     
     public function store(CommentRequest $request, Comment $comment)
     {
+        // $comment->comment = $request->input('comment');
+        // $comment->user_id = $request->user()->id;
+        // $comment->post_id = $request->post()->id;
+        // $comment->save();
+        // dd($comment);
+        
         //コメント送信時に、コメントモデル内の$fillableの値を取得し、$inputに代入
         $input = $request->only($comment->getfillable());
         $comment->fill($input);

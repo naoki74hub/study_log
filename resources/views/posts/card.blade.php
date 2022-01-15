@@ -118,14 +118,14 @@
          <div class="mt-4" style="width:70px;">
           @if ($post->likes()->where('user_id', Auth::id())->exists())
             <div class="col-md-3">
-              <form method="POST" action="{{ route('unlikes', $post) }}">
+              <form method="POST" action="{{ route('posts.unlikes', ['post' => $post]) }}">
                 @csrf
                 <input type="submit" class="fas border btn-danger js-like-toggle rounded-left" style="height:37px; width:55px;" data-postid="{{ $post->id }}" value="&#xf004; {{ $post->likes()->count() }}">
               </form>
             </div>
           @else
           <div class="col-md-3" style="width:70px;">
-            <form method="POST" action="{{ route('likes', $post) }}">
+            <form method="POST" action="{{ route('posts.likes', ['post' => $post]) }}">
               @csrf
               <input type="submit" class="fas border py-2 js-like-toggle darkmode-like bg-white rounded-left" data-postid="{{ $post->id }}" value="&#xf004; {{ $post->likes()->count() }}" style="color:#6c7176; width:56px; height:37px;">
             </form>
@@ -134,11 +134,11 @@
          </div>
          @if ($post->likes()->count() === 0)
          <div class="pr-2 pt-4">
-          <span><i class="fas fa-user border fa-2x rounded-right" style="height:37px; width:37px; padding-top:4px; padding-left:5px; color:#fff;"></i></span>
+          <span><i class="fas fa-user border fa-2x rounded-right" style="height:37px; width:37px; padding-top:4px; padding-left:5px; color:#6c7176;"></i></span>
         </div>
           @elseif ($post->likes()->count() > 0)
           <div class="pr-2 pt-4">
-            <a href="{{ route('likes.users', ['post' => $post]) }}">
+            <a href="{{ route('posts.likes.users', ['post' => $post]) }}">
               <span><i class="fas fa-user border fa-2x rounded-right" style="height:37px; width:37px; padding-top:4px; padding-left:5px; color:#E3342F;"></i></span>
             </a>
           </div>
