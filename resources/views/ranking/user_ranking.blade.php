@@ -13,21 +13,21 @@
     </div>
     <div class="card-body user-ranking-list darkmode-post">
       <?php $rank = 1;?>
-      <?php $cnt = 1;?>
-      <?php $bef_point = 0;?>
+      <?php $count = 1;?>
+      <?php $before_point = 0;?>
       @foreach ($user_rankings as $key => $value) 
-        @if ($bef_point != $value['total_hour'])
-          <?php $rank = $cnt;?>
+        @if ($before_point !== $value['total_hour'])
+          <?php $rank = $count;?>
         @endif
         <div class="d-flex align-items-center">
           @if($rank === 1)
-          <div class="rank1"><span class="rank1-text">{{ $rank }}</span></div>
+          <div class="rank rank-color1"><span class="rank-text">{{ $rank }}</span></div>
           @elseif ($rank === 2)
-          <div class="rank2"><span class="rank2-text">{{ $rank }}</span></div>
+          <div class="rank rank-color2"><span class="rank-text">{{ $rank }}</span></div>
           @elseif ($rank == 3)
-          <div class="rank3"><span class="rank3-text">{{ $rank }}</span></div>
+          <div class="rank rank-color3"><span class="rank-text">{{ $rank }}</span></div>
           @elseif($rank >= 4)
-          <div class="ranks border border-dark"><span class="ranks-text">{{ $rank }}</span></div>
+          <div class="rank rank-colors border border-dark"><span class="rank-texts">{{ $rank }}</span></div>
           @endif
             <div class="avatar mt-3 mr-5">
               @if (empty($value->avatar))
@@ -45,8 +45,8 @@
               {{ $value->total_hour }}時間
             </div>
         </div>
-        <?php $bef_point = $value['total_hour'];?>
-        <?php $cnt++;?>
+        <?php $before_point = $value['total_hour'];?>
+        <?php $count++;?>
       @endforeach
     </div>
   </div>
@@ -62,21 +62,21 @@
     </div>
     <div class="card-body user-ranking-list darkmode-post">
       <?php $rank = 1;?>
-      <?php $cnt = 1;?>
-      <?php $bef_point = 0;?>
+      <?php $count = 1;?>
+      <?php $before_point = 0;?>
       @foreach ($user_month_rankings as $key => $value) 
-        @if ($bef_point != $value['total_hour'])
-          <?php $rank = $cnt;?>
+        @if ($before_point != $value['total_hour'])
+          <?php $rank = $count;?>
         @endif
         <div class="d-flex align-items-center">
           @if($rank === 1)
-          <div class="rank1"><span class="rank1-text">{{ $rank }}</span></div>
+          <div class="rank rank-color1"><span class="rank-text">{{ $rank }}</span></div>
           @elseif ($rank === 2)
-          <div class="rank2"><span class="rank2-text">{{ $rank }}</div>
+          <div class="rank rank-color2"><span class="rank-text">{{ $rank }}</div>
           @elseif ($rank == 3)
-          <div class="rank3"><span class="rank3-text">{{ $rank }}</span></div>
+          <div class="rank rank-color3"><span class="rank-text">{{ $rank }}</span></div>
           @elseif($rank >= 4)
-          <div class="ranks border border-dark"><span class="ranks-text">{{ $rank }}</span></div>
+          <div class="rank rank-colors border border-dark"><span class="ranks-text">{{ $rank }}</span></div>
           @endif
           <div class="avatar mt-3 mr-5">
             @if (empty($value->avatar))
@@ -94,8 +94,8 @@
             {{ $value->total_hour }}時間
           </div>
         </div>
-        <?php $bef_point = $value['total_hour'];?>
-        <?php $cnt++;?>
+        <?php $before_point = $value['total_hour'];?>
+        <?php $count++;?>
       @endforeach
   　</div>
   </div>

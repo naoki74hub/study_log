@@ -16,8 +16,8 @@ class PostController extends Controller
 {
     public function index(Request $request, Comment $comment, Post $post, User $user)
     {
-        $image = $post->image_url;
         $q = $request->query();
+        #〜をクリックした場合に表示される
         if (isset($q['tag_name'])) {
             $posts = Post::latest()->where('body', 'like', "%{$q['tag_name']}%")->get();
             
@@ -29,7 +29,7 @@ class PostController extends Controller
        } else {
         $posts = Post::latest()->get();
         
-        return view('posts/index', compact('posts', 'user', 'image'));
+        return view('posts/index', compact('posts', 'user'));
         }
     }
     
@@ -43,7 +43,7 @@ class PostController extends Controller
         $post->title = $request->input('title');
         $post->time = $request->input('time');
         $post->body = $request->input('body');
-        $post->user_id = auth()->user()->id;
+        $post->user_id = Auth::user()->id;
         
         //s3アップロード開始
         if (!empty($request->file('image_url'))) {
@@ -164,7 +164,7 @@ class PostController extends Controller
     
     public function follow(Post $post)
     {
-        $follower = auth()->user();
+        $follower = Auth::user();
         //フォローしているか
         $is_following = $follower->isFollowing($post->user->id);
         if (!$is_following) {
@@ -177,9 +177,10 @@ class PostController extends Controller
     
     public function unfollow(Post $post)
     {
-        $follower = auth()->user();
+        $follower = Auth::user();
         //フォローしているか
         $is_following = $follower->isFollowing($post->user->id);
+        
         if ($is_following) {
             //フォローしていればフォロー解除する
             $follower->unfollow($post->user->id);

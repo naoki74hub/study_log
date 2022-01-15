@@ -19,9 +19,9 @@ class CommentController extends Controller
             ]);
     }
     
-    public function store(CommentRequest $request, Comment $comment)
+    public function store(CommentRequest $request, Comment $comment, Post $post)
     {
-        // $comment->comment = $request->input('comment');
+       // $comment->comment = $request->input('comment');
         // $comment->user_id = $request->user()->id;
         // $comment->post_id = $request->post()->id;
         // $comment->save();

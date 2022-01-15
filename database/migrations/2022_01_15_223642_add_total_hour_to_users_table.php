@@ -14,7 +14,7 @@ class AddTotalHourToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('total_hour')->nullable()->after('level');
+            $table->integer('total_hour')->default(0)->nullable()->after('level');
         });
     }
 

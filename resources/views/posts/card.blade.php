@@ -16,10 +16,10 @@
          <div class="font-weight-lighter">
             {{ $post->created_at->format('Y/m/d H:i') }} 
          </div>
-        @if (auth()->user()->isFollowed($post->user->id))
+        @if (Auth::user()->isFollowed($post->user->id))
           <span class="bg-secondary text-white" style="width:145px;">フォローされています</span>
         @endif
-        @if (auth()->user()->isFollowing($post->user->id))
+        @if (Auth::user()->isFollowing($post->user->id))
           <form method="POST" action="{{ route('posts.unfollow', ['post' => $post]) }}">
             @csrf
             @method('DELETE')
@@ -95,7 +95,7 @@
                   <p class="h3 mb-0">{{ substr($post->time, 0,2) }}時間 {{ substr($post->time, 3,2) }}分</p>
                 </div>
               </div>
-              <div class="card-text mt-3">
+              <div class="card-text mt-3" style="white-space:pre-wrap;">
                 {{$post->body}}
               </div>
             </div>

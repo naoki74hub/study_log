@@ -225,14 +225,14 @@
                     <div class="mt-4" style="width:70px;">
                       @if ($timeline->likes()->where('user_id', Auth::id())->exists())
                         <div class="col-md-3" style="width:70px;">
-                          <form method="POST" action="{{ route('unlikes', $timeline) }}">
+                          <form method="POST" action="{{ route('posts.unlikes', $timeline) }}">
                             @csrf
                             <input type="submit" class="fas border btn-danger rounded-left" style="height:37px; width:55px;" value="&#xf004; {{ $timeline->likes()->count() }}">
                           </form>
                         </div>
                       @else
                         <div class="col-md-3">
-                          <form method="POST" action="{{ route('likes', $timeline) }}">
+                          <form method="POST" action="{{ route('posts.likes', $timeline) }}">
                             @csrf
                             <input type="submit" class="fas border py-2 darkmode-like bg-white rounded-left" value="&#xf004; {{ $timeline->likes()->count() }}"  style="color:#6c7176; width:56px; height:37px;">
                           </form>
@@ -245,7 +245,7 @@
                     </div>
                     @elseif ($timeline->likes()->count() > 0)
                     <div style="width:32px; height:32px;" class="pr-2 pt-4">
-                      <a href="{{ route('likes.users', ['post' => $timeline]) }}">
+                      <a href="{{ route('posts.likes.users', ['post' => $timeline]) }}">
                         <span><i class="fas fa-user fa-2x border rounded-right" style="height:37px; width:37px; color:#E3342F; padding-top:4px; padding-left:5px;"></i></span>
                       </a>
                     </div>

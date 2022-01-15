@@ -38,7 +38,7 @@
     </div>
     <form  method="POST" action="{{ route('posts.search') }}">
       @csrf
-      <input type="text" class="form-control input-lg mx-auto" name="search" placeholder="検索" style="position:relative;top:20px;">
+      <input type="text" class="form-control input-lg mx-auto" name="you" placeholder="検索" style="position:relative;top:20px;">
       <span class="input-group-btn">
         <button class="btn btn-info" type="submit" style="position:relative;top:-17px;right:-200px;height:37px;">
           <i class="fas fa-search"></i>
