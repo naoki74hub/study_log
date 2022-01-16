@@ -15,8 +15,23 @@
 
 .rank-texts {
   position: absolute;
+  color: #000;
   top: 8px;
   left: 14px;
+}
+
+.rank-texts-ajust {
+  position: absolute;
+  color: #000;
+  top: 9px;
+  left: 10px;
+}
+
+.rank-texts-end {
+  position: absolute;
+  color: #000;
+  top: 8px;
+  left: 5px;
 }
 
 .rank-color1 {

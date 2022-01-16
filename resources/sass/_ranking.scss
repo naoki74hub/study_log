@@ -14,8 +14,23 @@
     
     &-texts {
         position: absolute;
+        color: #000;
         top: 8px;
         left: 14px;
+        
+         &-ajust {
+             position: absolute;
+             color: #000;
+             top: 9px;
+             left: 10px;
+         }
+         
+         &-end {
+             position: absolute;
+             color: #000;
+             top: 8px;
+             left: 5px;
+        }
     }
     
     &-color1 {

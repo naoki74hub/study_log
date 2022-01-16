@@ -69,14 +69,18 @@
           <?php $rank = $count;?>
         @endif
         <div class="d-flex align-items-center">
-          @if($rank === 1)
+          @if ($rank === 1)
           <div class="rank rank-color1"><span class="rank-text">{{ $rank }}</span></div>
           @elseif ($rank === 2)
           <div class="rank rank-color2"><span class="rank-text">{{ $rank }}</div>
           @elseif ($rank == 3)
           <div class="rank rank-color3"><span class="rank-text">{{ $rank }}</span></div>
-          @elseif($rank >= 4)
-          <div class="rank rank-colors border border-dark"><span class="ranks-text">{{ $rank }}</span></div>
+          @elseif ($rank >= 4)
+          <div class="rank rank-colors border border-dark"><span class="rank-texts">{{$rank}}</span></div>
+          @elseif ($rank >= 10)
+          <div class="rank rank-colors border border-dark"><span class="rank-texts-ajust">{{ $rank }}</span></div>
+          @elseif ($rank === 100)
+          <div class="rank rank-colors border border-dark"><span class="rank-texts-end">{{ $rank }}</span></div>
           @endif
           <div class="avatar mt-3 mr-5">
             @if (empty($value->avatar))
