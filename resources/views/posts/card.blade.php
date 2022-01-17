@@ -95,8 +95,8 @@
                   <p class="h3 mb-0">{{ substr($post->time, 0,2) }}時間 {{ substr($post->time, 3,2) }}分</p>
                 </div>
               </div>
-              <div class="card-text mt-3" style="white-space:pre-wrap;">
-                {{$post->body}}
+              <div class="card-text mt-3">
+                <p style="white-space:pre-wrap;">{{$post->body}}</p>
               </div>
             </div>
             <div class="tags">
