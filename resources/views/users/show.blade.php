@@ -133,7 +133,7 @@
                  </div>
                  <div>
                    <div class="font-weight-bold">
-                     <p class="mb-0">{{ $timeline->user->name }}</p>
+                     <p class="mb-0" style="width:110px">{{ $timeline->user->name }}</p>
                    </div>
                    <div class="font-weight-lighter">
                      <p class="mb-0 text-secondary">{{ $timeline->created_at->format('Y-m-d H:i') }}</p>
