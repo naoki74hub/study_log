@@ -26,7 +26,7 @@ class PostRequest extends FormRequest
         return [
             'title' => 'required | max:40',
             'time' => 'required',
-            'body' => 'max:280 | nullable',
+            'body' => 'max:290 | nullable',
             'image_url' => 'file | mimes:jpeg, png, jpg, bmb | max:2048 | nullable'
         ];
     }
