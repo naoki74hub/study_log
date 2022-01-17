@@ -13,5 +13,5 @@
 <div class="form-group mt-3">
   <label class="font-weight-bold">本文</label>
   <textarea name="body" required class="form-control textarea" rows="6" onkeyup="ShowLength('inputlength2', value);">{!!nl2br(e(($post->body ?? old('body')))) !!}</textarea>
-  <p style="color:#919599;">現在<span id="inputlength2">0</span>文字入力中です。(210字以内)</p>
+  <p style="color:#919599;">現在<span id="inputlength2">0</span>文字入力中です。(290字以内)</p>
 </div>
