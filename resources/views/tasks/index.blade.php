@@ -215,7 +215,7 @@
       <div class="text-center mt-5">
           <div class="heading"><span class="heading1">勉強に取りかかれる、集中できるアドバイス！！</span></div> 
             <button type="button" class="btn btn-danger study-tips" data-toggle="modal" data-target="#modal1">
-              <i class="fas fa-sad-tear fa-2x mr-2"></i><span class="study-tips-text">勉強に集中できないあなたへ</span>
+              <i class="fas fa-sad-tear study-tips-text">勉強に集中できないあなたへ</i>
             </button>
        </div>
        <div class="modal fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">

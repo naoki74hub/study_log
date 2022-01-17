@@ -26,13 +26,13 @@
                 <div class="mr-5" style="max-width:600px;width:100%;">
                   <div class="border mt-5 ml-3 rounded balloon" style="max-width:600px; width:100%;">
                     @if ($user->id === Auth::user()->id && empty($user->self_introduction))
-                      <p class="mt-5 ml-4" style="font-size:18px;">自己紹介を設定し、自分を表現しよう!!
+                      <p class="mt-4 ml-4" style="font-size:18px; color:#919599;">自己紹介を設定し、自分を表現しよう!!
                     @elseif (!empty($user->self_introduction))
                       <p class="p-2" style="white-space:pre-wrap">{{ $user->self_introduction ?? old('self_introduction') }}</p>
                     @endif
                   </div>
               @else
-                <div class="border mt-3 mr-2 speech-bubbles" style="max-width:600px; width:100%; height:130px;">
+                <div class="border mt-3 mr-2 rounded" style="max-width:600px; width:100%; height:130px;">
                   <p class="p-2">{{ $user->self_introduction ?? old('self_introduction') }}</p>
                 </div>
               @endif
@@ -51,6 +51,8 @@
               <div class="d-inline-block mt-4 text-center rounded  bg-success" style="max-width:235px;height:180px;width:100%;display:teble-cell;vertical-align:middle;">
                 @if ($user->id === Auth::user()->id && empty($user->important_day_title))
                   <p class="p-2 text-left mb-0">イベントタイトルとその日までのカウントダウンを設定しよう!</p><hr style="margin:0;">
+                @elseif ($user->id !== Auth::user()->id && empty($user->important_day_title))
+                  <p class="p-4">
                 @elseif (!empty($user->important_day_title))
                   <p class="p-2 text-left">{{ $user->important_day_title }}</p><hr class="m-0">
                 @endif
@@ -70,7 +72,9 @@
                 <div class="bg-success"><i class="far fa-flag fa-2x py-2 pr-2" style="color:black;"></i><span class="font-weight-bold h4 mb-0 py-2">達成目標</span>
                 </div><hr class="m-0">
                 @if ($user->id === Auth::user()->id && empty($user->goal))
-                  <p style="padding-top:40px;font-size:18px;">達成したい目標を視覚化すると効果的!! ぜひ設定しよう</p>
+                  <p style="padding-top:24px;font-size:18px; color:#919599;">達成したい目標を視覚化すると効果的!! ぜひ設定しよう</p>
+                @elseif ($user->id !== Auth::user()->id && empty($user->goal))
+                  <div class="p-5"></div>
                 @elseif (!empty($user->goal))
                   <p class="p-2 text-left" style="white-space:pre-wrap;">{{ $user->goal ?? old('goal') }}</p>
                 @endif

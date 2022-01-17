@@ -113,7 +113,7 @@ class AppServiceProvider extends ServiceProvider
                 } elseif ($posts2->count() === 0) { 
                     $level = '0';
                     $result ='0'.'日';
-                    $total_time = '0'.'日';
+                    $total_time = '0'.'時間';
                     $post_day = '0'.'日';
                     
                     $view->with([
