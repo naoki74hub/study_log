@@ -156,9 +156,9 @@ class PostController extends Controller
             ->orWhere('body', 'like', "%{$request->search}%")
             ->latest()
             ->get();
-           
+            
         $search_result = '「'.$request->search.'」'.'の検索結果'.count($posts).'件';
-        
+    
         return view('posts.index', compact('posts', 'search_result'));
     }
     
